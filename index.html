@@ -29,7 +29,15 @@
         /* Circular Std - Bold (700) */
         @font-face {
             font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'CS Facile';
+            src: url('fonts/CsfaciledrawnRegularDemo-Zpx5x.otf') format('truetype');
             font-weight: 600;
             font-style: normal;
         }
@@ -43,7 +51,7 @@ html{scroll-behavior:smooth;font-size:16px}
   --font-d:'Fraunces',serif;
   --font-b:'Circular Std',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   --r-sm:8px;--r-md:14px;--r-lg:22px;--r-xl:32px;
-  --sh-sm:0 2px 8px rgba(0,0,0,.07);--sh-md:0 6px 24px rgba(0,0,0,.10);--sh-lg:0 16px 48px rgba(0,0,0,.14);
+  --sh-sm:0 2px 4px rgba(0,0,0,.07);--sh-md:0 2px 2px rgba(0, 0, 0, 0.177);--sh-lg:0 16px 48px rgba(0,0,0,.14);
   --ease:cubic-bezier(.4,0,.2,1);--nav-h:68px
 }
 body{font-family:var(--font-b);background:var(--white);color:var(--ink);overflow-x:clip;-webkit-font-smoothing:antialiased}
@@ -56,8 +64,8 @@ nav#topnav{
   position:sticky;top:0;z-index:900;height:var(--nav-h);
   display:flex;align-items:center;justify-content:space-between;
   padding:0 2rem;
-  background:rgba(255,255,255,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(0,0,0,.06);transition:box-shadow .3s var(--ease)
+  background:rgb(255, 255, 255);
+  border-bottom:1px solid rgba(0,0,0,.06);transition:box-shadow .3s var(--ease);
 }
 nav#topnav.scrolled{box-shadow:var(--sh-md)}
 .nav-left{display:flex;align-items:center;gap:2.2rem}
@@ -220,18 +228,17 @@ mark.hl{background:var(--yellow);border-radius:2px;padding:0 2px;font-style:norm
 .sec-cat-lbl::before{content:'';width:16px;height:2px;background:var(--yellow);border-radius:2px}
 .sec-title{font-family:var(--font-d);font-size:1.7rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
 .prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1.2rem}
-.prod-card{background:var(--white);border:1px solid var(--gray-100);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;transition:all .25s var(--ease);display:flex;flex-direction:column}
-.prod-card:hover{transform:translateY(-3px);box-shadow:var(--sh-md);border-color:rgba(255,214,0,.5)}
+.prod-card{background:var(--white);border:1px solid var(--gray-100);border-radius: 1px;overflow:hidden;cursor:pointer;transition:all .25s var(--ease);display:flex;flex-direction:column}
 .prod-img-wrap{overflow:hidden;aspect-ratio:4/3}
 .prod-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s var(--ease)}
 .prod-card:hover .prod-img{transform:scale(1.05)}
 .prod-body{padding:1.1rem 1.2rem 1.3rem;flex:1;display:flex;flex-direction:column}
 .prod-cat{font-size:.65rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gray-500);margin-bottom:.3rem}
-.prod-name{font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:var(--ink);line-height:1.25;margin-bottom:.4rem}
-.prod-desc{font-size:.78rem;color:var(--gray-500);line-height:1.55;margin-bottom:1rem;flex:1}
+.prod-name{font-family:var(--font-d);font-size:1.4rem;font-weight:600;color:var(--ink);line-height:1.25;margin-bottom:.4rem}
+.prod-desc{font-size:1rem;color:var(--gray-500);line-height:1.3;margin-bottom:1rem;flex:1}
 .prod-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
 .prod-price{font-family:var(--font-d);font-size:1.25rem;font-weight:700;color:var(--ink)}
-.add-btn{width:36px;height:36px;border-radius:10px;background:var(--yellow);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s var(--ease);flex-shrink:0}
+.add-btn{width:36px;height:36px;border-radius:50px;background:var(--yellow);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s var(--ease);flex-shrink:0}
 .add-btn:hover{background:var(--yellow-dk);transform:scale(1.1)}
 .add-btn svg{width:18px;height:18px;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;fill:none}
 
@@ -292,7 +299,7 @@ mark.hl{background:var(--yellow);border-radius:2px;padding:0 2px;font-style:norm
 .pdp-name{font-family:var(--font-d);font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:700;color:var(--ink);letter-spacing:-.03em;line-height:1.1;margin-bottom:.8rem}
 .pdp-price{font-family:var(--font-d);font-size:2rem;font-weight:800;color:var(--ink);margin-bottom:1.2rem;letter-spacing:-.03em}
 .pdp-price-lbl{font-size:1rem;font-weight:400;color:var(--gray-500);margin-left:4px}
-.pdp-desc{font-size:.95rem;color:var(--gray-500);line-height:1.75;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1.5px solid var(--gray-100)}
+.pdp-desc{font-size:1rem;color:var(--gray-500);line-height:1.75;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1.5px solid var(--gray-100)}
 .pdp-opts{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:1.5rem}
 .opt-title{font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gray-500);margin-bottom:.6rem;display:flex;align-items:center;justify-content:space-between}
 .opt-req{font-size:.6rem;background:var(--yellow-lt);color:var(--yellow-dk);padding:2px 8px;border-radius:50px;font-weight:700;letter-spacing:.04em}
@@ -440,10 +447,10 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
 .ft-inner{max-width:1200px;margin:0 auto}
 .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
 .ft-logo{font-family:var(--font-d);font-size:1.8rem;font-weight:800;color:var(--yellow);margin-bottom:.8rem}
-.ft-desc{font-size:.84rem;color:var(--gray-500);line-height:1.7;max-width:280px}
-.ft-col-ttl{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-300);margin-bottom:1.2rem}
+.ft-desc{font-size:1.1rem;color:var(--gray-500);line-height:1.7;max-width:280px}
+.ft-col-ttl{font-size:.9rem;font-weight:500;color:var(--gray-300);margin-bottom:1.2rem}
 .ft-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
-.ft-links a{text-decoration:none;font-size:.84rem;color:#F4F3EF}
+.ft-links a{text-decoration:none;font-size:1.5rem;color:#F4F3EF}
 .ft-links a:hover{color:var(--yellow)}
 .ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .ft-copy{font-size:.78rem;color:var(--gray-500)}
@@ -639,6 +646,464 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
     <div><div class="phone-frame"><img src="images/Screenshot 2026-02-23 174841.png" alt="Food By K App" loading="lazy"><div class="phone-notch"></div></div></div>
   </div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+class FFXPRestaurantFeature extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
+  connectedCallback() {
+    this.shadowRoot.innerHTML = `
+    <style>
+      @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+      :host {
+        display: block;
+        font-family: 'Circular Std', sans-serif;
+        --ffxp-cream: #dcd9c8;
+      }
+
+      .ffxp-section {
+        width: 100%;
+      }
+
+      /* =========================
+         HERO SECTION
+      ========================== */
+
+      .ffxp-hero {
+        position: relative;
+        background: url('https://images.pexels.com/photos/4294500/pexels-photo-4294500.jpeg') center/cover no-repeat;
+        padding: 120px 0;
+      }
+
+      .ffxp-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+      }
+
+      .ffxp-hero-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
+
+      .ffxp-hero-left {
+        flex: 1;
+        color: white;
+      }
+
+      .ffxp-hero-left h1 {
+        font-size: 84px;
+        line-height: 1.05;
+        font-weight: 700;
+        margin: 0 0 25px 0;
+      }
+
+      .ffxp-hero-left p {
+        font-size: 17px;
+        line-height: 1.6;
+        max-width: 520px;
+        margin-bottom: 30px;
+      }
+
+      .ffxp-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+      }
+
+      .ffxp-cta-circle {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 1px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s ease;
+      }
+
+      .ffxp-cta:hover .ffxp-cta-circle {
+        background: white;
+        color: black;
+      }
+
+      /* HERO VIDEO */
+
+      .ffxp-hero-video {
+        flex: 0 0 420px;
+        height: 500px;
+        overflow: hidden;
+        background: #000;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+      }
+
+      .ffxp-hero-video video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* =========================
+         CARD SECTION
+      ========================== */
+
+      .ffxp-cards-section {
+        background: #f4f4f4;
+        padding: 120px 0 140px;
+      }
+
+      .ffxp-cards-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 60px;
+        padding: 0 20px;
+      }
+
+      .ffxp-card {
+        position: relative;
+      }
+
+      /* IMAGE (Top Layer) */
+      .ffxp-card-image {
+        width: 100%;
+        height: 320px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* BACKGROUND BOX (260px behind image, -25px left) */
+      .ffxp-card-box {
+        background: var(--ffxp-cream);
+        padding: 40px 30px 30px;
+        position: relative;
+        z-index: 1;
+
+        margin-top: -260px;   /* 260px behind image */
+        margin-left: -25px;   /* shift left */
+        margin-right: 25px;
+        padding-top: 300px;   /* space for image overlap */
+      }
+
+      .ffxp-card-box h3 {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.5;
+        font-weight: 500;
+        color: #1a1a1a;
+      }
+
+      /* =========================
+         RESPONSIVE
+      ========================== */
+
+      @media (max-width: 1100px) {
+
+        .ffxp-hero-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .ffxp-hero-left h1 {
+          font-size: 48px;
+        }
+
+        .ffxp-hero-video {
+          width: 100%;
+          height: 400px;
+        }
+
+        .ffxp-cards-inner {
+          grid-template-columns: 1fr;
+          gap: 80px;
+        }
+
+        .ffxp-card-box {
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: -260px;
+        }
+      }
+
+    </style>
+
+    <!-- HERO -->
+    <section class="ffxp-section ffxp-hero">
+      <div class="ffxp-overlay"></div>
+
+      <div class="ffxp-hero-inner">
+        <div class="ffxp-hero-left">
+          <h1>10 Questions for Our First Global Flavor Creators</h1>
+          <p>
+            Meet the chefs redefining fast food culture. From global street markets 
+            to modern kitchens, they’re exploring bold flavors and telling the 
+            story behind every bite.
+          </p>
+
+          <a href="#" class="ffxp-cta">
+            <div class="ffxp-cta-circle">→</div>
+            <span>Learn More</span>
+          </a>
+        </div>
+
+        <div class="ffxp-hero-video">
+          <video autoplay muted loop playsinline>
+            <source src="https://www.pexels.com/download/video/8523312/" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARDS -->
+    <section class="ffxp-section ffxp-cards-section">
+      <div class="ffxp-cards-inner">
+
+        <div class="ffxp-card">
+          <div class="ffxp-card-image"
+            style="background-image:url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0');">
+          </div>
+          <div class="ffxp-card-box">
+            <h3>Our Commitment to Fresh & Ethical Ingredients ›</h3>
+          </div>
+        </div>
+
+        <div class="ffxp-card">
+          <div class="ffxp-card-image"
+            style="background-image:url('https://images.unsplash.com/photo-1541167760496-1628856ab772');">
+          </div>
+          <div class="ffxp-card-box">
+            <h3>Introducing Our Signature Flame-Grilled Classic ›</h3>
+          </div>
+        </div>
+
+        <div class="ffxp-card">
+          <div class="ffxp-card-image"
+            style="background-image:url('https://images.unsplash.com/photo-1550547660-d9450f859349');">
+          </div>
+          <div class="ffxp-card-box">
+            <h3>Celebrating Global Street Food Inspirations ›</h3>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    `;
+  }
+}
+
+customElements.define("ffxp-restaurant-feature", FFXPRestaurantFeature);
+</script>
+
+<ffxp-restaurant-feature></ffxp-restaurant-feature>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- FOOTER -->
 <footer id="contact">
