@@ -37,10 +37,7 @@ nav#topnav{
 nav#topnav.scrolled{box-shadow:var(--sh-md)}
 .nav-left{display:flex;align-items:center;gap:2.2rem}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-.nav-logo-mark{width:38px;height:38px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center}
-.nav-logo-mark svg{width:20px;height:20px;stroke:var(--white);stroke-width:2.2;stroke-linecap:round;fill:none}
-.nav-logo-text{font-family:var(--font-d);font-size:1.2rem;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1}
-.nav-logo-text span{color:var(--gray-500);font-weight:400;font-family:var(--font-b);font-size:.7rem;display:block;letter-spacing:.04em;margin-top:2px}
+.nav-logo-img{height:38px;width:auto;object-fit:contain;display:block}
 .nav-links{display:flex;gap:1.8rem;list-style:none}
 .nav-links a{text-decoration:none;font-size:.875rem;font-weight:400;color:var(--ink);letter-spacing:.01em;transition:color .2s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--green);border-radius:2px;transition:width .25s var(--ease)}
@@ -634,8 +631,9 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
   .menu-sidebar{
     position:sticky;top:var(--nav-h);height:auto;
     overflow-x:auto;overflow-y:hidden;
-    border-bottom:2px solid var(--gray-100);
-    padding:1rem 1.2rem;background:var(--white);z-index:10;scrollbar-width:none
+    border-bottom:1.5px solid var(--gray-100);
+    padding:.75rem 1.2rem;background:var(--white);z-index:10;scrollbar-width:none;
+    margin-top:0
   }
   
   .sb-nav{display:flex;flex-direction:row;gap:6px;white-space:nowrap}
@@ -643,7 +641,8 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
   .sb-head{display:none}
   .menu-content{padding:1.5rem 1rem 3rem}
   .menu-header{padding:1.5rem 1rem .8rem}
-  nav#topnav{padding:0 1rem}
+  nav#topnav{padding:0 1rem;border-bottom:none;box-shadow:none!important}
+  nav#topnav.scrolled{box-shadow:none!important}
   .ft-top{grid-template-columns:1fr 1fr;gap:2rem}
   footer{padding:3rem 1rem 1.5rem}
   .back-top{bottom:1.5rem;right:1rem}
@@ -694,10 +693,8 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
 <nav id="topnav">
   <div class="nav-left">
     <a href="#" class="nav-logo">
-      <div class="nav-logo-mark">
-        <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M5 10h14M7 14h10M9 18h6"/></svg>
-      </div>
-      <div class="nav-logo-text">Food By K<span>Premium Fast Food</span></div>
+      <!-- INSERT YOUR LOGO IMAGE HERE — replace the src attribute -->
+      <img src="images/canva.jpg" alt="Food By K" class="nav-logo-img">
     </a>
     <ul class="nav-links">
       <li><a href="#menu">Menu</a></li>
@@ -1716,6 +1713,3 @@ document.addEventListener('keydown',(e)=>{
 </script>
 </body>
 </html>
-
-
-
