@@ -163,16 +163,14 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
   display:flex;flex-direction:column;align-items:center;text-align:center;gap:.8rem;
   transition:transform .25s var(--ease)
 }
-.prod-card:hover{transform:translateY(-5px)}
+
 /* Perfect circle */
 .prod-img-wrap{
   width:100%;aspect-ratio:1/1;
   border-radius:50%;overflow:hidden;
   background:var(--gray-100);
-  box-shadow:0 4px 18px rgba(0,0,0,.10);
   transition:box-shadow .3s var(--ease)
 }
-.prod-card:hover .prod-img-wrap{box-shadow:0 10px 30px rgba(30,57,50,.2)}
 .prod-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s var(--ease)}
 .prod-card:hover .prod-img{transform:scale(1.08)}
 .prod-info{width:100%}
@@ -799,6 +797,205 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
     </div>
   </div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ff-marquee-section">
+  <div class="ff-marquee-inner">
+    <h2 class="ff-marquee-title">Brands we use in our kitchen</h2>
+    
+    <div class="ff-marquee-viewport">
+      <div class="ff-marquee-track">
+        <div class="ff-logo-item"><img src="images/eskort.jpg" alt="Partner Brand 1"></div>
+        <div class="ff-logo-item"><img src="images/picknpay.jpg" alt="Partner Brand 2"></div>
+        <div class="ff-logo-item"><img src="images/spar.png" alt="Partner Brand 3"></div>
+        <div class="ff-logo-item"><img src="images/parmalat.png" alt="Partner Brand 4"></div>
+        <div class="ff-logo-item"><img src="images/jacobs.png" alt="Partner Brand 5"></div>
+        <div class="ff-logo-item"><img src="images/sasko.jpg" alt="Partner Brand 6"></div>
+        
+        <div class="ff-logo-item"><img src="images/eskort.jpg" alt="Partner Brand 1"></div>
+        <div class="ff-logo-item"><img src="images/picknpay.jpg" alt="Partner Brand 2"></div>
+        <div class="ff-logo-item"><img src="images/spar.png" alt="Partner Brand 3"></div>
+        <div class="ff-logo-item"><img src="images/parmalat.png" alt="Partner Brand 4"></div>
+        <div class="ff-logo-item"><img src="images/jacobs.png" alt="Partner Brand 5"></div>
+        <div class="ff-logo-item"><img src="images/sasko.jpg" alt="Partner Brand 6"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.ff-marquee-section {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 80px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  overflow: hidden;
+}
+
+.ff-marquee-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.ff-marquee-title {
+  font-family: 'Circular Std', 'Helvetica Neue', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  font-weight: 800;
+  color: #1e3932;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 50px;
+  text-align: left; /* Aligned Left */
+  position: relative;
+}
+
+/* Optional: small decorative line under the left-aligned title */
+.ff-marquee-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #1e3932;
+  margin-top: 10px;
+}
+
+.ff-marquee-viewport {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  /* Fade effect for edges */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.ff-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scrollMarquee 40s linear infinite;
+}
+
+/* Pause on interaction */
+.ff-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.ff-logo-item {
+  flex: 0 0 auto;
+  margin: 0 40px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+  /* Grayscale by default for a high-end look, pops on hover */
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
+.ff-logo-item img {
+  display: block;
+  width: clamp(120px, 15vw, 180px);
+  height: auto;
+  object-fit: contain;
+}
+
+.ff-logo-item:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .ff-marquee-section {
+    padding: 50px 0;
+  }
+  .ff-marquee-title {
+    margin-bottom: 30px;
+  }
+  .ff-marquee-track {
+    animation-duration: 25s; /* Slightly faster on small screens for better feel */
+  }
+  .ff-logo-item {
+    margin: 0 20px;
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ══ FOOTER ════════════════════════════════════════════ -->
 <footer id="contact">

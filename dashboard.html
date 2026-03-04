@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Food By K — Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;0,900;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1E3932;--green-dk:#145242;--green-lt:#EAF2EE;--green-mid:#2C6B4F;--green-vivid:#5BE09A;
+  --ink:#0D1F1A;--white:#fff;--gray:#F2F2F0;--gray-100:#F7F7F5;--gray-200:#EBEBEA;
+  --gray-500:#6B6B67;--gray-700:#2E2E2C;
+  --red:#C0392B;--red-lt:#FFF0EE;--orange:#E67E22;--orange-lt:#FFF8F0;
+  --font-d:'Fraunces',serif;--font-b:'DM Sans',sans-serif;
+  --sidebar:230px;--ease:cubic-bezier(.4,0,.2,1)
+}
+html{font-size:16px}
+body{font-family:var(--font-b);background:var(--gray-100);color:var(--ink);
+  display:flex;min-height:100vh;-webkit-font-smoothing:antialiased}
+
+/* ══ LOGIN ══ */
+#loginScreen{
+  position:fixed;inset:0;background:var(--green);
+  display:flex;align-items:center;justify-content:center;z-index:9999;
+  padding:1rem
+}
+.login-card{
+  background:var(--white);border-radius:24px;padding:3rem 2.5rem;
+  width:100%;max-width:400px;box-shadow:0 32px 80px rgba(0,0,0,.3)
+}
+.login-icon{font-size:2.8rem;margin-bottom:1rem;display:block}
+.login-title{font-family:var(--font-d);font-size:1.9rem;font-weight:900;
+  color:var(--green);margin-bottom:.25rem}
+.login-sub{font-size:.84rem;color:var(--gray-500);margin-bottom:2.2rem}
+.login-err{background:var(--red-lt);border:1px solid #FFBFB5;color:var(--red);
+  border-radius:10px;padding:.65rem 1rem;font-size:.83rem;margin-bottom:.9rem;display:none}
+.login-lbl{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--gray-500);display:block;margin-bottom:.4rem}
+.login-input{width:100%;background:var(--gray);border:1.5px solid transparent;
+  border-radius:12px;padding:12px 14px;font-family:var(--font-b);font-size:.95rem;
+  color:var(--ink);outline:none;transition:all .2s;margin-bottom:1.3rem}
+.login-input:focus{border-color:var(--green);background:var(--white)}
+.login-btn{width:100%;background:var(--green);color:var(--white);border:none;
+  border-radius:12px;padding:13px;font-family:var(--font-b);font-size:.95rem;
+  font-weight:600;cursor:pointer;transition:background .2s}
+.login-btn:hover{background:var(--green-dk)}
+
+/* ══ LAYOUT ══ */
+.sidebar{
+  width:var(--sidebar);background:var(--green);
+  display:flex;flex-direction:column;
+  position:fixed;top:0;left:0;height:100vh;z-index:100;
+  transition:transform .3s var(--ease)
+}
+.sb-logo{padding:1.5rem 1.4rem 1.1rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.sb-brand{font-family:var(--font-d);font-size:1.2rem;font-weight:900;
+  color:var(--white);letter-spacing:-.01em}
+.sb-tag{font-size:.65rem;color:rgba(255,255,255,.4);margin-top:2px;letter-spacing:.05em}
+.sb-nav{flex:1;padding:.8rem 0;overflow-y:auto}
+.sb-sec{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.28);padding:.8rem 1.4rem .35rem}
+.sb-btn{display:flex;align-items:center;gap:.65rem;padding:.65rem 1.4rem;
+  font-size:.85rem;font-weight:500;color:rgba(255,255,255,.6);
+  cursor:pointer;transition:all .15s;border:none;background:none;width:100%;
+  text-align:left;border-left:3px solid transparent}
+.sb-btn:hover{background:rgba(255,255,255,.07);color:var(--white)}
+.sb-btn.active{background:rgba(255,255,255,.11);color:var(--white);border-left-color:var(--green-vivid)}
+.sb-btn svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;fill:none;flex-shrink:0;opacity:.65}
+.sb-btn.active svg{opacity:1}
+.sb-bottom{padding:.9rem 1.4rem;border-top:1px solid rgba(255,255,255,.08)}
+.sb-logout{display:flex;align-items:center;gap:.55rem;color:rgba(255,255,255,.4);
+  font-size:.78rem;background:none;border:none;cursor:pointer;transition:color .2s;
+  font-family:var(--font-b)}
+.sb-logout:hover{color:rgba(255,255,255,.8)}
+.sb-logout svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round}
+
+.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
+.topbar{
+  background:var(--white);border-bottom:1px solid var(--gray-200);
+  padding:.85rem 1.8rem;display:flex;align-items:center;
+  justify-content:space-between;position:sticky;top:0;z-index:50;
+  box-shadow:0 1px 0 var(--gray-200)
+}
+.topbar-title{font-family:var(--font-d);font-size:1.05rem;font-weight:700;color:var(--ink)}
+.content{padding:1.8rem;flex:1}
+.panel{display:none}.panel.active{display:block}
+
+/* ══ STATS ══ */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.8rem}
+.stat-card{background:var(--white);border-radius:14px;padding:1.3rem 1.5rem;
+  border:1px solid var(--gray-200)}
+.stat-num{font-family:var(--font-d);font-size:2rem;font-weight:900;color:var(--green);line-height:1}
+.stat-lbl{font-size:.76rem;color:var(--gray-500);margin-top:.3rem;font-weight:500}
+.stat-card.warn .stat-num{color:var(--orange)}
+
+/* ══ FILTERS ══ */
+.filters-bar{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.fcat{background:var(--white);border:1.5px solid var(--gray-200);border-radius:50px;
+  padding:.4rem .95rem;font-size:.78rem;font-weight:500;color:var(--gray-500);
+  cursor:pointer;transition:all .15s;font-family:var(--font-b)}
+.fcat:hover,.fcat.active{background:var(--green);border-color:var(--green);color:var(--white)}
+.fsearch{background:var(--white);border:1.5px solid var(--gray-200);border-radius:10px;
+  padding:.48rem .9rem;font-family:var(--font-b);font-size:.84rem;color:var(--ink);
+  outline:none;transition:border-color .2s;min-width:200px;margin-left:auto}
+.fsearch:focus{border-color:var(--green)}
+
+/* ══ TABLE ══ */
+.tbl-wrap{background:var(--white);border-radius:14px;overflow:hidden;
+  border:1px solid var(--gray-200)}
+table{width:100%;border-collapse:collapse}
+thead th{background:var(--gray-100);padding:.65rem 1rem;text-align:left;
+  font-size:.63rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--gray-500);border-bottom:1px solid var(--gray-200)}
+tbody td{padding:.8rem 1rem;border-bottom:1px solid var(--gray-200);
+  vertical-align:middle;font-size:.855rem}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:var(--gray-100)}
+.item-cell{display:flex;align-items:center;gap:.75rem}
+.item-thumb{width:44px;height:44px;border-radius:50%;object-fit:cover;
+  flex-shrink:0;border:2px solid var(--gray-200)}
+.item-thumb-ph{width:44px;height:44px;border-radius:50%;background:var(--green-lt);
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.item-name{font-weight:600;font-size:.875rem}
+.item-desc-short{font-size:.73rem;color:var(--gray-500);margin-top:1px;
+  max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cat-pill{background:var(--green-lt);color:var(--green-mid);border-radius:50px;
+  padding:2px 9px;font-size:.7rem;font-weight:600;display:inline-block}
+.price-cell{font-family:var(--font-d);font-weight:700;font-size:.98rem}
+.avail-btn{display:inline-flex;align-items:center;gap:5px;border-radius:50px;
+  padding:4px 10px;font-size:.73rem;font-weight:600;cursor:pointer;
+  border:none;font-family:var(--font-b);transition:all .18s}
+.avail-btn.on{background:#EAFAF3;color:#27AE60}
+.avail-btn.off{background:var(--orange-lt);color:var(--orange)}
+.dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.avail-btn.on .dot{background:#27AE60}
+.avail-btn.off .dot{background:var(--orange)}
+.act-btns{display:flex;gap:.35rem;align-items:center}
+.ibtn{width:30px;height:30px;border-radius:8px;border:1.5px solid var(--gray-200);
+  background:var(--white);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .15s;flex-shrink:0}
+.ibtn:hover{border-color:var(--green);background:var(--green-lt)}
+.ibtn.del:hover{border-color:var(--red);background:var(--red-lt)}
+.ibtn svg{width:13px;height:13px;stroke:var(--gray-500);stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;fill:none}
+.ibtn:hover svg{stroke:var(--green)}
+.ibtn.del:hover svg{stroke:var(--red)}
+
+/* ══ BUTTONS ══ */
+.btn{display:inline-flex;align-items:center;gap:6px;border:none;border-radius:10px;
+  padding:.58rem 1.1rem;font-family:var(--font-b);font-size:.84rem;font-weight:600;
+  cursor:pointer;transition:all .18s var(--ease)}
+.btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;fill:none}
+.btn-green{background:var(--green);color:var(--white)}
+.btn-green:hover{background:var(--green-dk)}
+.btn-ghost{background:var(--white);color:var(--ink);border:1.5px solid var(--gray-200)}
+.btn-ghost:hover{border-color:var(--green);color:var(--green)}
+.btn-danger{background:var(--red-lt);color:var(--red);border:1.5px solid #FFBFB5}
+.btn-danger:hover{background:var(--red);color:var(--white);border-color:var(--red)}
+
+/* ══ MODAL ══ */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.42);backdrop-filter:blur(4px);
+  z-index:400;display:none;align-items:center;justify-content:center;padding:1rem}
+.overlay.open{display:flex}
+.modal{background:var(--white);border-radius:20px;width:100%;max-width:600px;
+  max-height:92vh;display:flex;flex-direction:column;
+  box-shadow:0 32px 80px rgba(0,0,0,.2);overflow:hidden}
+.modal-hd{padding:1.3rem 1.6rem;border-bottom:1px solid var(--gray-200);
+  display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.modal-hd-title{font-family:var(--font-d);font-size:1.15rem;font-weight:700}
+.modal-x{width:30px;height:30px;border-radius:50%;background:var(--gray);
+  border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .15s}
+.modal-x:hover{background:var(--gray-200)}
+.modal-x svg{width:13px;height:13px;stroke:var(--ink);stroke-width:2.2;fill:none;stroke-linecap:round}
+.modal-body{overflow-y:auto;padding:1.5rem 1.6rem;flex:1}
+.modal-ft{padding:1.1rem 1.6rem;border-top:1px solid var(--gray-200);
+  display:flex;justify-content:flex-end;gap:.65rem;flex-shrink:0;background:var(--gray-100)}
+
+/* ══ FORM ══ */
+.fg{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.flbl{font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--gray-500)}
+.fi{background:var(--gray);border:1.5px solid transparent;border-radius:10px;
+  padding:10px 12px;font-family:var(--font-b);font-size:.88rem;
+  color:var(--ink);outline:none;transition:all .2s;width:100%}
+.fi:focus{border-color:var(--green);background:var(--white)}
+textarea.fi{resize:vertical;min-height:72px}
+.fhint{font-size:.7rem;color:var(--gray-500)}
+
+/* ══ OPTS BUILDER ══ */
+.opts-wrap{margin-top:.5rem}
+.opts-hd{font-family:var(--font-d);font-size:.92rem;font-weight:700;margin-bottom:.6rem}
+.opt-row{background:var(--gray);border-radius:10px;padding:.7rem .9rem;
+  display:flex;align-items:flex-start;gap:.7rem;margin-bottom:.5rem}
+.opt-info{flex:1}
+.opt-type{font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--green-lt);color:var(--green-mid);border-radius:50px;
+  padding:2px 8px;display:inline-block;margin-bottom:.3rem}
+.opt-type.add-on{background:#FFF4E6;color:var(--orange)}
+.opt-lbl{font-size:.84rem;font-weight:600;margin-bottom:.3rem}
+.choices-row{display:flex;flex-wrap:wrap;gap:.3rem}
+.choice-chip{background:var(--white);border:1px solid var(--gray-200);
+  border-radius:50px;padding:2px 9px;font-size:.72rem;color:var(--gray-700)}
+.opt-del{background:none;border:none;cursor:pointer;color:var(--gray-500);
+  transition:color .15s;padding:2px;flex-shrink:0;margin-top:2px}
+.opt-del:hover{color:var(--red)}
+.opt-del svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.2;fill:none;stroke-linecap:round}
+.add-opt-box{background:var(--green-lt);border-radius:12px;padding:1rem;
+  margin-top:.6rem;display:flex;flex-direction:column;gap:.6rem}
+.add-opt-title{font-size:.68rem;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--green-mid)}
+.add-opt-row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+
+/* ══ CATEGORIES PANEL ══ */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.9rem;margin-bottom:1.8rem}
+.cat-card{background:var(--white);border-radius:14px;padding:1.2rem 1.3rem;
+  border:1.5px solid var(--gray-200);display:flex;align-items:center;gap:.85rem}
+.cat-icon{width:38px;height:38px;background:var(--green-lt);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.cat-name{font-weight:600;font-size:.88rem}
+.cat-count{font-size:.73rem;color:var(--gray-500)}
+.cat-del{margin-left:auto;background:none;border:none;cursor:pointer;
+  color:var(--gray-500);transition:color .15s;padding:2px}
+.cat-del:hover{color:var(--red)}
+.cat-del svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round}
+.new-cat-row{display:flex;gap:.75rem;max-width:400px;align-items:center}
+
+/* ══ PRICING PANEL ══ */
+.tool-card{background:var(--white);border-radius:16px;padding:1.6rem;
+  border:1px solid var(--gray-200);max-width:520px;margin-bottom:1.5rem}
+.tool-title{font-family:var(--font-d);font-size:1rem;font-weight:700;margin-bottom:1rem}
+
+/* ══ EXPORT PANEL ══ */
+.export-steps{font-size:.84rem;color:var(--gray-700);line-height:2;
+  padding-left:1.2rem;margin:1rem 0}
+.code-preview{background:var(--gray-100);border:1px solid var(--gray-200);
+  border-radius:10px;padding:1rem;font-size:.76rem;font-family:monospace;
+  color:var(--green-mid);overflow-x:auto;margin-bottom:1rem;line-height:1.7}
+
+/* ══ CONFIRM DIALOG ══ */
+.confirm-box{background:var(--white);border-radius:18px;padding:1.8rem;
+  max-width:360px;width:90%;box-shadow:0 24px 60px rgba(0,0,0,.22);z-index:500}
+.confirm-title{font-family:var(--font-d);font-size:1.1rem;font-weight:700;margin-bottom:.45rem}
+.confirm-msg{font-size:.85rem;color:var(--gray-500);margin-bottom:1.4rem;line-height:1.6}
+.confirm-acts{display:flex;gap:.6rem;justify-content:flex-end}
+
+/* ══ TOAST ══ */
+#toast{position:fixed;bottom:1.8rem;right:1.8rem;background:var(--ink);
+  color:var(--white);border-radius:12px;padding:.75rem 1.3rem;
+  font-size:.855rem;font-weight:500;z-index:9999;
+  opacity:0;transform:translateY(10px);transition:all .3s var(--ease);
+  pointer-events:none;max-width:320px}
+#toast.show{opacity:1;transform:translateY(0)}
+#toast.ok{background:var(--green)}
+#toast.err{background:var(--red)}
+
+/* ══ EMPTY ══ */
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--gray-500)}
+.empty-state .ei{font-size:2.4rem;margin-bottom:.7rem}
+.empty-state .et{font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.3rem}
+</style>
+</head>
+<body>
+
+<!-- ══ LOGIN ════════════════════════════════════════════════ -->
+<div id="loginScreen">
+  <div class="login-card">
+    <span class="login-icon">🔐</span>
+    <div class="login-title">Food By K</div>
+    <div class="login-sub">Admin Dashboard — Staff only</div>
+    <div class="login-err" id="loginErr">Incorrect password. Try again.</div>
+    <label class="login-lbl">Password</label>
+    <input class="login-input" type="password" id="loginPwd" placeholder="Enter password"
+      onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+  </div>
+</div>
+
+<!-- ══ APP (hidden until logged in) ════════════════════════ -->
+<div id="app" style="display:none;width:100%;display:none">
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sb-logo">
+      <div class="sb-brand">Food By K</div>
+      <div class="sb-tag">Admin Dashboard</div>
+    </div>
+    <div class="sb-nav">
+      <div class="sb-sec">Menu</div>
+      <button class="sb-btn active" id="nav-items" onclick="showPanel('items')">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18M5 10h14M7 14h10M9 18h6"/></svg>Menu Items
+      </button>
+      <button class="sb-btn" id="nav-cats" onclick="showPanel('cats')">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Categories
+      </button>
+      <div class="sb-sec">Tools</div>
+      <button class="sb-btn" id="nav-pricing" onclick="showPanel('pricing')">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Bulk Pricing
+      </button>
+      <button class="sb-btn" id="nav-export" onclick="showPanel('export')">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Export
+      </button>
+    </div>
+    <div class="sb-bottom">
+      <button class="sb-logout" onclick="doLogout()">
+        <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-title" id="pageTitle">Menu Items</div>
+      <div>
+        <button class="btn btn-green" id="addItemBtn" onclick="openItemModal(null)">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Item
+        </button>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ── ITEMS PANEL ── -->
+      <div class="panel active" id="panel-items">
+        <div class="stats-grid" id="statsGrid"></div>
+        <div class="filters-bar" id="filtersBar"></div>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th><th>Category</th><th>Price</th>
+                <th>Options</th><th>Status</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="itemsBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── CATS PANEL ── -->
+      <div class="panel" id="panel-cats">
+        <div class="cat-grid" id="catsGrid"></div>
+        <div style="margin-top:.5rem">
+          <div style="font-family:var(--font-d);font-size:1rem;font-weight:700;margin-bottom:.7rem">Add New Category</div>
+          <div class="new-cat-row">
+            <input class="fi" type="text" id="newCatInput" placeholder="e.g. Desserts" style="max-width:260px">
+            <button class="btn btn-green" onclick="addCat()">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PRICING PANEL ── -->
+      <div class="panel" id="panel-pricing">
+        <div class="tool-card">
+          <div class="tool-title">Bulk Price Adjustment</div>
+          <div class="fg">
+            <label class="flbl">Apply to</label>
+            <select class="fi" id="bulkCat"><option value="">All Categories</option></select>
+          </div>
+          <div class="fg">
+            <label class="flbl">Action</label>
+            <select class="fi" id="bulkAction">
+              <option value="inc_pct">Increase by %</option>
+              <option value="dec_pct">Decrease by %</option>
+              <option value="inc_fix">Increase by fixed amount (R)</option>
+              <option value="dec_fix">Decrease by fixed amount (R)</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label class="flbl">Value</label>
+            <input class="fi" type="number" id="bulkVal" min="0" step="1" placeholder="e.g. 10">
+          </div>
+          <button class="btn btn-green" onclick="applyBulk()">Apply Price Change</button>
+        </div>
+      </div>
+
+      <!-- ── EXPORT PANEL ── -->
+      <div class="panel" id="panel-export">
+        <div class="tool-card" style="max-width:580px">
+          <div class="tool-title">Export Menu for Your Storefront</div>
+          <p style="font-size:.84rem;color:var(--gray-500);line-height:1.65;margin-bottom:.8rem">
+            After making changes here, export the menu data and paste it into <code>index.html</code> to update what customers see.
+          </p>
+          <div class="code-preview" id="codePreview">Loading…</div>
+          <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.5rem">
+            <button class="btn btn-green" onclick="downloadExport()">
+              <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download menu_data.js
+            </button>
+            <button class="btn btn-ghost" onclick="copyExport()">Copy to Clipboard</button>
+          </div>
+          <div style="border-top:1px solid var(--gray-200);padding-top:1.3rem">
+            <div style="font-family:var(--font-d);font-size:.95rem;font-weight:700;margin-bottom:.3rem">How to update index.html</div>
+            <ol class="export-steps">
+              <li>Click <strong>Download menu_data.js</strong> above</li>
+              <li>Open <code>index.html</code> in Notepad or VS Code</li>
+              <li>Find the line starting with <code>const CATS=</code></li>
+              <li>Also find the line starting with <code>const ITEMS=</code></li>
+              <li>Replace <strong>both</strong> lines with the downloaded file's contents</li>
+              <li>Save &amp; refresh your browser</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /app -->
+
+<!-- ══ ITEM MODAL ═════════════════════════════════════════════ -->
+<div class="overlay" id="itemOverlay">
+  <div class="modal">
+    <div class="modal-hd">
+      <div class="modal-hd-title" id="modalTitle">Add New Item</div>
+      <button class="modal-x" onclick="closeModal()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="fg2">
+        <div class="fg">
+          <label class="flbl">Item Name *</label>
+          <input class="fi" type="text" id="iName" placeholder="e.g. Spicy Wings">
+        </div>
+        <div class="fg">
+          <label class="flbl">Category *</label>
+          <select class="fi" id="iCat"></select>
+        </div>
+      </div>
+      <div class="fg2">
+        <div class="fg">
+          <label class="flbl">Price (R) *</label>
+          <input class="fi" type="number" id="iPrice" placeholder="0" min="0">
+        </div>
+        <div class="fg">
+          <label class="flbl">Image URL</label>
+          <input class="fi" type="url" id="iImg" placeholder="https://…">
+          <span class="fhint">Paste any image link from the web</span>
+        </div>
+      </div>
+      <div class="fg">
+        <label class="flbl">Description</label>
+        <textarea class="fi" id="iDesc" placeholder="Short, appetising description…"></textarea>
+      </div>
+
+      <!-- Opts builder -->
+      <div class="opts-wrap">
+        <div class="opts-hd">Customisation Options</div>
+        <div id="optsList"></div>
+        <div class="add-opt-box">
+          <div class="add-opt-title">Add option group</div>
+          <div class="add-opt-row">
+            <select class="fi" id="optType" style="width:auto;min-width:130px">
+              <option value="select">Select one</option>
+              <option value="add">Add-on</option>
+            </select>
+            <input class="fi" type="text" id="optLabel" placeholder="Group name (e.g. Size)" style="flex:1;min-width:130px">
+          </div>
+          <div class="add-opt-row">
+            <input class="fi" type="text" id="optChoices" placeholder="Choices, comma separated: Small, Medium, Large" style="flex:1">
+            <button class="btn btn-ghost" onclick="addOptGrp()" style="white-space:nowrap;flex-shrink:0">+ Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-ft">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-green" id="modalSave" onclick="saveItem()">Save Item</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONFIRM ════════════════════════════════════════════════ -->
+<div class="overlay" id="confirmOverlay">
+  <div class="confirm-box">
+    <div class="confirm-title" id="confirmTitle"></div>
+    <div class="confirm-msg" id="confirmMsg"></div>
+    <div class="confirm-acts">
+      <button class="btn btn-ghost" onclick="closeConfirm()">Cancel</button>
+      <button class="btn btn-danger" id="confirmOk" onclick="runConfirm()">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TOAST ════════════════════════════════════════════════ -->
+<div id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// CONSTANTS
+// ══════════════════════════════════════════════════════════════
+const PASSWORD = 'admin123'; // Change this to your own password
+const STORAGE_KEY = 'fbk_menu_v1';
+const CAT_ICONS = {ribs:'🍖',burgers:'🍔',wraps:'🌯',chicken:'🍗',sides:'🍟',drinks:'🥤'};
+
+// Default menu data (used on first launch only)
+const DEFAULT_MENU = {"categories":[{"id":"ribs","label":"Ribs"},{"id":"burgers","label":"Burgers"},{"id":"wraps","label":"Wraps"},{"id":"chicken","label":"Chicken"},{"id":"sides","label":"Sides"},{"id":"drinks","label":"Drinks"}],"items":[{"id":1,"cat":"ribs","name":"Baby Back Ribs — Full Rack","price":220,"available":true,"img":"https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80","desc":"Slow-cooked fall-off-the-bone pork ribs glazed in our signature BBQ sauce. Paired with your choice of sides.","opts":[{"type":"select","label":"Sauce","choices":["Signature BBQ","Honey Mustard","Peri-Peri","Garlic Butter"]},{"type":"select","label":"Side","choices":["Fries","Coleslaw","Corn on the Cob","House Salad"]},{"type":"select","label":"Spice Level","choices":["Mild","Medium","Hot"]}]},{"id":2,"cat":"ribs","name":"Baby Back Ribs — Half Rack","price":145,"available":true,"img":"https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=900&q=80","desc":"Half rack of our signature slow-cooked baby back ribs. Perfect for one.","opts":[{"type":"select","label":"Sauce","choices":["Signature BBQ","Honey Mustard","Peri-Peri","Garlic Butter"]},{"type":"select","label":"Side","choices":["Fries","Coleslaw","Corn on the Cob"]},{"type":"select","label":"Spice Level","choices":["Mild","Medium","Hot"]}]},{"id":3,"cat":"ribs","name":"Beef Short Ribs","price":195,"available":true,"img":"https://images.unsplash.com/photo-1558030006-450675393462?w=900&q=80","desc":"Thick, juicy beef short ribs slow-smoked for 8 hours with our dry rub blend.","opts":[{"type":"select","label":"Sauce","choices":["Smoky BBQ","Peri-Peri","Plain"]},{"type":"select","label":"Spice Level","choices":["Mild","Medium","Hot"]}]},{"id":4,"cat":"burgers","name":"Classic Beef Smash Burger","price":95,"available":true,"img":"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80","desc":"Two smashed beef patties, American cheese, pickles, caramelised onions, K-sauce on a toasted brioche bun.","opts":[{"type":"select","label":"Patties","choices":["Single","Double","Triple"]},{"type":"select","label":"Cheese","choices":["American","Cheddar","Pepper Jack","None"]},{"type":"select","label":"Spice Level","choices":["Mild","Medium","Hot"]},{"type":"add","label":"Extras","choices":["Bacon +R15","Avocado +R15","Extra Sauce"]}]},{"id":5,"cat":"burgers","name":"BBQ Bacon Burger","price":115,"available":true,"img":"https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=900&q=80","desc":"Beef patty, crispy bacon, BBQ sauce, pickled jalapeños, cheddar, fresh lettuce and ripe tomato.","opts":[{"type":"select","label":"Patties","choices":["Single","Double"]},{"type":"select","label":"Spice Level","choices":["Mild","Medium","Hot"]}]},{"id":6,"cat":"burgers","name":"Mushroom & Swiss Burger","price":110,"available":true,"img":"https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=900&q=80","desc":"Beef patty, sautéed garlic mushrooms, melted Swiss cheese, truffle mayo, fresh greens.","opts":[{"type":"select","label":"Patties","choices":["Single","Double"]},{"type":"add","label":"Extras","choices":["Extra Mushrooms","Extra Cheese"]}]},{"id":7,"cat":"burgers","name":"The K Special Burger","price":145,"available":true,"img":"https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=900&q=80","desc":"Double patty, crispy bacon, fried egg, cheese, caramelised onions, secret K-sauce.","opts":[{"type":"select","label":"Spice Level","choices":["Mild","Medium","Hot","Xtra Hot"]},{"type":"add","label":"Extras","choices":["Extra Bacon +R15","Avocado +R15"]}]},{"id":8,"cat":"wraps","name":"Grilled Steak Wrap","price":105,"available":true,"img":"https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=900&q=80","desc":"Tender ribeye steak strips, peri-peri drizzle, mixed greens, garlic cream sauce in a toasted flour tortilla.","opts":[{"type":"select","label":"Sauce","choices":["Peri-Peri","Garlic Butter","BBQ","Chilli"]},{"type":"select","label":"Spice Level","choices":["Mild","Medium","Hot","Xtra Hot"]},{"type":"add","label":"Extras","choices":["Extra Steak +R20","Add Cheese","Jalapeños"]}]},{"id":9,"cat":"wraps","name":"Crispy Chicken Wrap","price":90,"available":true,"img":"https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=900&q=80","desc":"Golden crispy chicken strips, creamy coleslaw, pickles, sweet sriracha honey drizzle.","opts":[{"type":"select","label":"Sauce","choices":["Sriracha Honey","BBQ","Peri-Peri","Plain"]},{"type":"select","label":"Spice Level","choices":["Mild","Medium","Hot"]}]},{"id":10,"cat":"wraps","name":"BBQ Sausage Wrap","price":80,"available":true,"img":"https://images.unsplash.com/photo-1555072956-7758afb20e8f?w=900&q=80","desc":"Chargrilled beef sausage, caramelised onions, tangy BBQ sauce, crunchy pickles in a warm tortilla.","opts":[{"type":"select","label":"Sauce","choices":["BBQ","Mustard","Peri-Peri"]},{"type":"select","label":"Spice Level","choices":["Mild","Medium","Hot"]}]},{"id":11,"cat":"chicken","name":"Crispy Fried Chicken — 3pcs","price":85,"available":true,"img":"https://images.unsplash.com/photo-1562967914-608f82629710?w=900&q=80","desc":"Three pieces of our golden, juicy, perfectly crispy-coated fried chicken.","opts":[{"type":"select","label":"Flavour","choices":["Original","Peri-Peri","Honey BBQ","Lemon Herb"]},{"type":"select","label":"Side","choices":["Fries","Coleslaw","Corn"]},{"type":"select","label":"Spice Level","choices":["Mild","Medium","Hot","Xtra Hot"]}]},{"id":12,"cat":"chicken","name":"Fried Chicken — 6pcs Bucket","price":155,"available":true,"img":"https://images.unsplash.com/photo-1606728035253-49e8a23146de?w=900&q=80","desc":"Six pieces of our legendary fried chicken. Great for sharing.","opts":[{"type":"select","label":"Flavour","choices":["Original","Peri-Peri","Honey BBQ","Lemon Herb"]},{"type":"select","label":"Spice Level","choices":["Mild","Medium","Hot","Xtra Hot"]}]},{"id":13,"cat":"chicken","name":"Grilled Chicken Strips","price":90,"available":true,"img":"https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=900&q=80","desc":"Marinated chicken breast strips grilled to juicy perfection. Served with dipping sauce.","opts":[{"type":"select","label":"Marinade","choices":["Peri-Peri","Garlic Herb","Honey Mustard","Plain"]},{"type":"select","label":"Dip","choices":["BBQ","Garlic Mayo","Sweet Chilli"]}]},{"id":14,"cat":"sides","name":"Loaded Cheese Fries","price":60,"available":true,"img":"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=900&q=80","desc":"Crispy golden fries smothered in house-made cheese sauce, jalapeños, and crispy bacon bits.","opts":[{"type":"add","label":"Extras","choices":["Extra Bacon +R10","Sour Cream","Guacamole +R15"]}]},{"id":15,"cat":"sides","name":"Classic Fries","price":35,"available":true,"img":"https://images.unsplash.com/photo-1576107232684-1279f390859f?w=900&q=80","desc":"Perfectly golden, lightly salted hand-cut fries.","opts":[{"type":"select","label":"Size","choices":["Regular","Large","XL"]},{"type":"select","label":"Seasoning","choices":["Classic Salt","Paprika","Peri-Peri Salt"]}]},{"id":16,"cat":"sides","name":"Grilled Sausages — 2pcs","price":75,"available":true,"img":"https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=900&q=80","desc":"Thick, juicy pure beef sausages charred on the grill.","opts":[{"type":"select","label":"Sauce","choices":["Mustard","BBQ","Peri-Peri","Tomato"]},{"type":"add","label":"Extras","choices":["Caramelised Onions","Cheese Sauce"]}]},{"id":17,"cat":"sides","name":"Onion Rings","price":40,"available":true,"img":"https://images.unsplash.com/photo-1639024471283-03518883512d?w=900&q=80","desc":"Beer-battered golden onion rings. Crispy on the outside, sweet within.","opts":[{"type":"select","label":"Dip","choices":["Ranch","BBQ","Sweet Chilli","Garlic Mayo"]}]},{"id":18,"cat":"drinks","name":"Craft Lemonade","price":30,"available":true,"img":"https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=900&q=80","desc":"Hand-squeezed fresh lemonade with garden mint and a touch of honey.","opts":[{"type":"select","label":"Size","choices":["Regular","Large"]},{"type":"select","label":"Flavour","choices":["Classic","Strawberry","Mango","Mint"]}]},{"id":19,"cat":"drinks","name":"Thick Milkshake","price":55,"available":true,"img":"https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=900&q=80","desc":"Thick, creamy hand-blended milkshakes made with premium ice cream.","opts":[{"type":"select","label":"Flavour","choices":["Chocolate","Vanilla","Strawberry","Salted Caramel","Peanut Butter"]},{"type":"select","label":"Size","choices":["Regular","Large"]}]},{"id":20,"cat":"drinks","name":"Soft Drinks","price":20,"available":true,"img":"https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80","desc":"Ice-cold canned soft drinks.","opts":[{"type":"select","label":"Choice","choices":["Coca-Cola","Sprite","Fanta Orange","Fanta Grape","Cream Soda","Still Water"]}]},{"id":21,"cat":"drinks","name":"Fresh Fruit Juice","price":35,"available":true,"img":"https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=900&q=80","desc":"100% natural fresh-pressed fruit juice. No added sugar, no preservatives.","opts":[{"type":"select","label":"Flavour","choices":["Orange","Apple","Watermelon","Mixed Tropical"]},{"type":"select","label":"Size","choices":["Small","Large"]}]}]};
+
+// ══════════════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════════════
+let menu = null;
+let editingId = null;
+let currentOpts = [];
+let confirmCb = null;
+let filterCat = 'all';
+let filterSearch = '';
+
+// ══════════════════════════════════════════════════════════════
+// STORAGE
+// ══════════════════════════════════════════════════════════════
+function loadMenu() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  menu = saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(DEFAULT_MENU));
+}
+function saveMenu() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(menu));
+}
+function nextId() {
+  return Math.max(0, ...menu.items.map(i => i.id)) + 1;
+}
+function getCatLabel(id) {
+  return (menu.categories.find(c => c.id === id) || {}).label || id;
+}
+
+// ══════════════════════════════════════════════════════════════
+// AUTH
+// ══════════════════════════════════════════════════════════════
+function doLogin() {
+  const pwd = document.getElementById('loginPwd').value;
+  if (pwd === PASSWORD) {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+    init();
+  } else {
+    document.getElementById('loginErr').style.display = 'block';
+    document.getElementById('loginPwd').value = '';
+    document.getElementById('loginPwd').focus();
+  }
+}
+function doLogout() {
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('loginPwd').value = '';
+  document.getElementById('loginErr').style.display = 'none';
+}
+
+// ══════════════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════════════
+function init() {
+  loadMenu();
+  renderStats();
+  renderFilters();
+  renderItems();
+  renderCats();
+  populateCatSelects();
+  renderExport();
+}
+
+// ══════════════════════════════════════════════════════════════
+// PANELS
+// ══════════════════════════════════════════════════════════════
+const PANEL_META = {
+  items:   { title: 'Menu Items',   showAdd: true  },
+  cats:    { title: 'Categories',   showAdd: false },
+  pricing: { title: 'Bulk Pricing', showAdd: false },
+  export:  { title: 'Export',       showAdd: false }
+};
+function showPanel(name) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sb-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  document.getElementById('nav-' + name).classList.add('active');
+  const meta = PANEL_META[name];
+  document.getElementById('pageTitle').textContent = meta.title;
+  document.getElementById('addItemBtn').style.display = meta.showAdd ? '' : 'none';
+  if (name === 'export') renderExport();
+}
+
+// ══════════════════════════════════════════════════════════════
+// STATS
+// ══════════════════════════════════════════════════════════════
+function renderStats() {
+  const avail = menu.items.filter(i => i.available !== false).length;
+  const unavail = menu.items.length - avail;
+  document.getElementById('statsGrid').innerHTML = `
+    <div class="stat-card"><div class="stat-num">${menu.items.length}</div><div class="stat-lbl">Total Items</div></div>
+    <div class="stat-card"><div class="stat-num">${avail}</div><div class="stat-lbl">Available</div></div>
+    <div class="stat-card warn"><div class="stat-num">${unavail}</div><div class="stat-lbl">Unavailable</div></div>
+    <div class="stat-card"><div class="stat-num">${menu.categories.length}</div><div class="stat-lbl">Categories</div></div>`;
+}
+
+// ══════════════════════════════════════════════════════════════
+// FILTERS
+// ══════════════════════════════════════════════════════════════
+function renderFilters() {
+  const bar = document.getElementById('filtersBar');
+  bar.innerHTML = `<button class="fcat ${filterCat==='all'?'active':''}" onclick="setFilter('all',this)">All</button>` +
+    menu.categories.map(c =>
+      `<button class="fcat ${filterCat===c.id?'active':''}" onclick="setFilter('${c.id}',this)">${c.label}</button>`
+    ).join('') +
+    `<input class="fsearch" type="text" placeholder="Search items…" value="${filterSearch}" oninput="setSearch(this.value)">`;
+}
+function setFilter(cat, btn) {
+  filterCat = cat;
+  document.querySelectorAll('.fcat').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderItems();
+}
+function setSearch(val) { filterSearch = val.toLowerCase(); renderItems(); }
+
+// ══════════════════════════════════════════════════════════════
+// ITEMS TABLE
+// ══════════════════════════════════════════════════════════════
+function renderItems() {
+  const filtered = menu.items.filter(item => {
+    const catOk = filterCat === 'all' || item.cat === filterCat;
+    const srchOk = !filterSearch || item.name.toLowerCase().includes(filterSearch);
+    return catOk && srchOk;
+  });
+  if (!filtered.length) {
+    document.getElementById('itemsBody').innerHTML =
+      `<tr><td colspan="6"><div class="empty-state"><div class="ei">🔍</div><div class="et">No items found</div></div></td></tr>`;
+    return;
+  }
+  document.getElementById('itemsBody').innerHTML = filtered.map(item => {
+    const avail = item.available !== false;
+    return `<tr>
+      <td>
+        <div class="item-cell">
+          ${item.img
+            ? `<img class="item-thumb" src="${esc(item.img)}" alt="" onerror="this.style.display='none'">`
+            : `<div class="item-thumb-ph">🍽️</div>`}
+          <div>
+            <div class="item-name">${esc(item.name)}</div>
+            <div class="item-desc-short">${esc(item.desc||'')}</div>
+          </div>
+        </div>
+      </td>
+      <td><span class="cat-pill">${esc(getCatLabel(item.cat))}</span></td>
+      <td><span class="price-cell">R${item.price}</span></td>
+      <td><span style="font-size:.76rem;color:var(--gray-500)">${item.opts.length} group${item.opts.length!==1?'s':''}</span></td>
+      <td>
+        <button class="avail-btn ${avail?'on':'off'}" onclick="toggleAvail(${item.id},this)">
+          <span class="dot"></span>${avail?'Available':'Unavailable'}
+        </button>
+      </td>
+      <td>
+        <div class="act-btns">
+          <button class="ibtn" onclick="openItemModal(${item.id})" title="Edit">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="ibtn" onclick="duplicateItem(${item.id})" title="Duplicate">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+          <button class="ibtn del" onclick="deleteItem(${item.id},'${escJs(item.name)}')" title="Delete">
+            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+          </button>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function toggleAvail(id, btn) {
+  const item = menu.items.find(i => i.id === id);
+  if (!item) return;
+  item.available = !item.available;
+  saveMenu();
+  renderStats();
+  const avail = item.available;
+  btn.className = `avail-btn ${avail?'on':'off'}`;
+  btn.innerHTML = `<span class="dot"></span>${avail?'Available':'Unavailable'}`;
+  toast(avail ? 'Marked as available' : 'Marked as unavailable', avail ? 'ok' : '');
+}
+
+function duplicateItem(id) {
+  const item = menu.items.find(i => i.id === id);
+  if (!item) return;
+  const copy = JSON.parse(JSON.stringify(item));
+  copy.id = nextId();
+  copy.name = item.name + ' (Copy)';
+  menu.items.push(copy);
+  saveMenu();
+  renderStats();
+  renderItems();
+  toast('Item duplicated', 'ok');
+}
+
+function deleteItem(id, name) {
+  confirm_(`Delete "${name}"?`, 'This will permanently remove the item. This cannot be undone.', () => {
+    menu.items = menu.items.filter(i => i.id !== id);
+    saveMenu();
+    renderStats();
+    renderItems();
+    toast('Item deleted');
+  });
+}
+
+// ══════════════════════════════════════════════════════════════
+// ITEM MODAL
+// ══════════════════════════════════════════════════════════════
+function openItemModal(id) {
+  editingId = id;
+  if (id) {
+    const item = menu.items.find(i => i.id === id);
+    currentOpts = JSON.parse(JSON.stringify(item.opts || []));
+    document.getElementById('modalTitle').textContent = 'Edit Item';
+    document.getElementById('modalSave').textContent = 'Save Changes';
+    document.getElementById('iName').value = item.name;
+    document.getElementById('iPrice').value = item.price;
+    document.getElementById('iImg').value = item.img || '';
+    document.getElementById('iDesc').value = item.desc || '';
+    document.getElementById('iCat').value = item.cat;
+  } else {
+    currentOpts = [];
+    document.getElementById('modalTitle').textContent = 'Add New Item';
+    document.getElementById('modalSave').textContent = 'Save Item';
+    ['iName','iPrice','iImg','iDesc'].forEach(x => document.getElementById(x).value = '');
+    document.getElementById('iCat').selectedIndex = 0;
+  }
+  renderOpts();
+  document.getElementById('itemOverlay').classList.add('open');
+  document.getElementById('iName').focus();
+}
+function closeModal() {
+  document.getElementById('itemOverlay').classList.remove('open');
+}
+function saveItem() {
+  const name = document.getElementById('iName').value.trim();
+  const price = parseInt(document.getElementById('iPrice').value);
+  const cat = document.getElementById('iCat').value;
+  if (!name) { toast('Item name is required', 'err'); return; }
+  if (!price || price < 0) { toast('Enter a valid price', 'err'); return; }
+  if (!cat) { toast('Select a category', 'err'); return; }
+  const data = {
+    name, price, cat,
+    img: document.getElementById('iImg').value.trim(),
+    desc: document.getElementById('iDesc').value.trim(),
+    opts: currentOpts,
+    available: true
+  };
+  if (editingId) {
+    const idx = menu.items.findIndex(i => i.id === editingId);
+    menu.items[idx] = { ...menu.items[idx], ...data };
+    toast('Item updated', 'ok');
+  } else {
+    menu.items.push({ id: nextId(), ...data });
+    toast('Item added', 'ok');
+  }
+  saveMenu();
+  closeModal();
+  renderStats();
+  renderItems();
+}
+
+// ══════════════════════════════════════════════════════════════
+// OPTS BUILDER
+// ══════════════════════════════════════════════════════════════
+function renderOpts() {
+  const el = document.getElementById('optsList');
+  if (!currentOpts.length) {
+    el.innerHTML = '<p style="font-size:.8rem;color:var(--gray-500);margin-bottom:.4rem">No options yet.</p>';
+    return;
+  }
+  el.innerHTML = currentOpts.map((opt, i) => `
+    <div class="opt-row">
+      <div class="opt-info">
+        <div>
+          <span class="opt-type ${opt.type==='add'?'add-on':''}">${opt.type==='add'?'Add-on':'Select one'}</span>
+          <span class="opt-lbl" style="margin-left:.4rem">${esc(opt.label)}</span>
+        </div>
+        <div class="choices-row">
+          ${opt.choices.map(c => `<span class="choice-chip">${esc(c)}</span>`).join('')}
+        </div>
+      </div>
+      <button class="opt-del" onclick="removeOpt(${i})" title="Remove">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>`).join('');
+}
+function removeOpt(i) { currentOpts.splice(i, 1); renderOpts(); }
+function addOptGrp() {
+  const type = document.getElementById('optType').value;
+  const label = document.getElementById('optLabel').value.trim();
+  const raw = document.getElementById('optChoices').value.trim();
+  if (!label) { toast('Enter a group name', 'err'); return; }
+  if (!raw) { toast('Enter at least one choice', 'err'); return; }
+  const choices = raw.split(',').map(c => c.trim()).filter(Boolean);
+  currentOpts.push({ type, label, choices });
+  document.getElementById('optLabel').value = '';
+  document.getElementById('optChoices').value = '';
+  renderOpts();
+}
+
+// ══════════════════════════════════════════════════════════════
+// CATEGORIES
+// ══════════════════════════════════════════════════════════════
+function renderCats() {
+  document.getElementById('catsGrid').innerHTML = menu.categories.map(cat => {
+    const count = menu.items.filter(i => i.cat === cat.id).length;
+    return `<div class="cat-card">
+      <div class="cat-icon">${CAT_ICONS[cat.id] || '🍽️'}</div>
+      <div>
+        <div class="cat-name">${esc(cat.label)}</div>
+        <div class="cat-count">${count} item${count!==1?'s':''}</div>
+      </div>
+      <button class="cat-del" onclick="deleteCat('${cat.id}','${escJs(cat.label)}')" title="Delete">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>`;
+  }).join('');
+}
+function addCat() {
+  const label = document.getElementById('newCatInput').value.trim();
+  if (!label) return;
+  const id = label.toLowerCase().replace(/\s+/g,'_').replace(/[^a-z0-9_]/g,'');
+  if (menu.categories.find(c => c.id === id)) { toast('Category already exists', 'err'); return; }
+  menu.categories.push({ id, label });
+  saveMenu();
+  renderCats();
+  renderFilters();
+  populateCatSelects();
+  document.getElementById('newCatInput').value = '';
+  toast('Category added', 'ok');
+}
+function deleteCat(id, label) {
+  const count = menu.items.filter(i => i.cat === id).length;
+  if (count > 0) { toast(`Move or delete all ${count} items first`, 'err'); return; }
+  confirm_(`Delete "${label}"?`, 'This category has no items and will be permanently removed.', () => {
+    menu.categories = menu.categories.filter(c => c.id !== id);
+    saveMenu();
+    renderCats();
+    renderFilters();
+    populateCatSelects();
+    toast('Category deleted');
+  });
+}
+function populateCatSelects() {
+  const opts = menu.categories.map(c => `<option value="${c.id}">${c.label}</option>`).join('');
+  document.getElementById('iCat').innerHTML = opts;
+  document.getElementById('bulkCat').innerHTML = '<option value="">All Categories</option>' + opts;
+}
+
+// ══════════════════════════════════════════════════════════════
+// BULK PRICING
+// ══════════════════════════════════════════════════════════════
+function applyBulk() {
+  const action = document.getElementById('bulkAction').value;
+  const val = parseFloat(document.getElementById('bulkVal').value);
+  const cat = document.getElementById('bulkCat').value;
+  if (!val || val <= 0) { toast('Enter a valid value', 'err'); return; }
+  const scope = cat ? `"${getCatLabel(cat)}"` : 'all items';
+  const verb = action.startsWith('inc') ? 'increase' : 'decrease';
+  const unit = action.endsWith('pct') ? '%' : ' (R)';
+  confirm_('Apply price change?',
+    `This will ${verb} prices for ${scope} by ${val}${unit}.`,
+    () => {
+      menu.items.forEach(item => {
+        if (cat && item.cat !== cat) return;
+        if (action === 'inc_pct') item.price = Math.round(item.price * (1 + val/100));
+        else if (action === 'dec_pct') item.price = Math.max(0, Math.round(item.price * (1 - val/100)));
+        else if (action === 'inc_fix') item.price = item.price + Math.round(val);
+        else if (action === 'dec_fix') item.price = Math.max(0, item.price - Math.round(val));
+      });
+      saveMenu();
+      renderItems();
+      toast('Prices updated', 'ok');
+    }
+  );
+}
+
+// ══════════════════════════════════════════════════════════════
+// EXPORT
+// ══════════════════════════════════════════════════════════════
+function getExportString() {
+  const catsJs = JSON.stringify(menu.categories);
+  const itemsJs = JSON.stringify(menu.items);
+  return `const CATS=${catsJs};\nconst ITEMS=${itemsJs};`;
+}
+function renderExport() {
+  const s = getExportString();
+  document.getElementById('codePreview').textContent =
+    `const CATS=[...]; // ${menu.categories.length} categories\nconst ITEMS=[...]; // ${menu.items.length} items`;
+}
+function downloadExport() {
+  const blob = new Blob([getExportString()], {type:'text/javascript'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'menu_data.js';
+  a.click();
+  toast('Downloaded menu_data.js', 'ok');
+}
+function copyExport() {
+  navigator.clipboard.writeText(getExportString())
+    .then(() => toast('Copied to clipboard!', 'ok'))
+    .catch(() => toast('Copy failed — try download instead', 'err'));
+}
+
+// ══════════════════════════════════════════════════════════════
+// CONFIRM DIALOG
+// ══════════════════════════════════════════════════════════════
+function confirm_(title, msg, cb) {
+  document.getElementById('confirmTitle').textContent = title;
+  document.getElementById('confirmMsg').textContent = msg;
+  confirmCb = cb;
+  document.getElementById('confirmOverlay').classList.add('open');
+}
+function closeConfirm() {
+  document.getElementById('confirmOverlay').classList.remove('open');
+  confirmCb = null;
+}
+function runConfirm() { closeConfirm(); confirmCb && confirmCb(); }
+
+// ══════════════════════════════════════════════════════════════
+// TOAST
+// ══════════════════════════════════════════════════════════════
+function toast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (type ? ' ' + type : '');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ══════════════════════════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════════════════════════
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escJs(s) {
+  return String(s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeModal(); closeConfirm(); }
+  if (e.key === 'Enter' && document.getElementById('loginScreen').style.display !== 'none') doLogin();
+});
+</script>
+</body>
+</html>

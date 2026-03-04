@@ -1,0 +1,1001 @@
+<div class="premium-ff-wrapper">
+  <div class="premium-ff-inner">
+    
+    <div class="premium-ff-hero">
+      <div class="premium-ff-image-col">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Chef preparing fresh fast food burger" class="premium-ff-img">
+      </div>
+      
+      <div class="premium-ff-text-card">
+        <h2 class="premium-ff-title">Our Signature Fast Food, Farm-to-Table</h2>
+        <p class="premium-ff-description">We're woven into the communities we serve. Our restaurants are gathering spaces for quick, quality meals and connection, where our dedicated team shares their passion for fresh ingredients with customers every single day.</p>
+        <a href="#" class="premium-ff-link">
+          <span class="premium-ff-icon-circle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+          Learn More
+        </a>
+      </div>
+    </div>
+
+    <div class="premium-ff-stats-section">
+      <h2 class="premium-ff-stats-heading">BY THE NUMBERS</h2>
+      
+      <div class="premium-ff-stats-viewport">
+        <div class="premium-ff-stats-track" id="premium-ff-stats-track">
+          
+          <div class="premium-ff-stat-slide">
+            <div class="premium-ff-stat-col">
+              <h3 class="premium-ff-stat-number">50K+</h3>
+              <p class="premium-ff-stat-text">Local farmers and producers who provide our fresh ingredients</p>
+            </div>
+          </div>
+          
+          <div class="premium-ff-stat-slide">
+            <div class="premium-ff-stat-col">
+              <h3 class="premium-ff-stat-number">35%+</h3>
+              <p class="premium-ff-stat-text">Of our menu is sourced sustainably and locally annually</p>
+            </div>
+          </div>
+          
+          <div class="premium-ff-stat-slide">
+            <div class="premium-ff-stat-col">
+              <h3 class="premium-ff-stat-number">20</h3>
+              <p class="premium-ff-stat-text">Years our classic Crispy Chicken Sandwich has been a customer favorite</p>
+            </div>
+          </div>
+
+          <div class="premium-ff-stat-slide">
+            <div class="premium-ff-stat-col">
+              <h3 class="premium-ff-stat-number">100%</h3>
+              <p class="premium-ff-stat-text">Commitment to using compostable and recyclable packaging by 2028</p>
+            </div>
+          </div>
+
+          <div class="premium-ff-stat-slide">
+            <div class="premium-ff-stat-col">
+              <h3 class="premium-ff-stat-number">1M+</h3>
+              <p class="premium-ff-stat-text">Happy customers served weekly across our nationwide locations</p>
+              <a href="#" class="premium-ff-link premium-ff-link-bottom">
+                <span class="premium-ff-icon-circle">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+                Explore
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="premium-ff-controls">
+        <div class="premium-ff-dots" id="premium-ff-dots-container"></div>
+        
+        <div class="premium-ff-arrows">
+          <button class="premium-ff-arrow premium-ff-prev" aria-label="Previous stat">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <button class="premium-ff-arrow premium-ff-next" aria-label="Next stat">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+/* --- Premium Fast Food Component Styles --- */
+* {
+    margin: 0;
+    padding: 0; box-sizing: border-box;
+}
+/* 1. Outer Wrapper: Full width of the screen */
+.premium-ff-wrapper {
+  font-family: 'Circular Std', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  width: 100%;
+  background-color: #f7f7f6;
+  color: #1e3932;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent horizontal scrollbar on whole page */
+}
+
+.premium-ff-wrapper * {
+  box-sizing: border-box;
+}
+
+/* 2. Inner Container: Constrained to 1200px */
+.premium-ff-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* Hero Section (Static) */
+.premium-ff-hero {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 80px;
+}
+
+@media (min-width: 900px) {
+  .premium-ff-hero {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.premium-ff-image-col {
+  flex: 1;
+  width: 100%;
+}
+
+.premium-ff-img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 8px 0 0 8px;
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .premium-ff-img {
+    height: 100%;
+    min-height: 450px;
+    max-height: 500px;
+  }
+}
+
+.premium-ff-text-card {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 0 40px 0 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  margin-top: -40px; /* Overlap on mobile */
+  position: relative;
+  z-index: 2;
+  width: 90%;
+}
+
+@media (min-width: 900px) {
+  .premium-ff-text-card {
+    flex: 0 0 45%;
+    width: auto;
+    margin-top: 0;
+    margin-left: -5%; /* Overlap on desktop */
+    padding: 60px 50px;
+  }
+}
+
+.premium-ff-title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+  color: #1e3932;
+}
+
+.premium-ff-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 30px 0;
+  color: #333333;
+}
+
+/* Links & Buttons */
+.premium-ff-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #1e3932;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: opacity 0.3s ease;
+}
+
+.premium-ff-link:hover {
+  opacity: 0.7;
+}
+
+.premium-ff-icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #1e3932;
+  border-radius: 50%;
+}
+
+/* Stats Section */
+.premium-ff-stats-section {
+  position: relative;
+}
+
+.premium-ff-stats-heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 30px 0;
+  color: #1e3932;
+  border-bottom: 1px solid #dcdcdc;
+  padding-bottom: 20px;
+}
+
+/* Stats Viewport and Slider Track */
+.premium-ff-stats-viewport {
+  overflow: hidden; /* Hide the overflow from the slider */
+  width: 100%;
+}
+
+.premium-ff-stats-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.premium-ff-stat-slide {
+  /* Default: 1 item per view on mobile */
+  flex: 0 0 100%;
+  min-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .premium-ff-stat-slide {
+    /* 2 items per view on tablet */
+    flex: 0 0 50%;
+    min-width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .premium-ff-stat-slide {
+    /* 3 items per view on desktop */
+    flex: 0 0 33.3333%;
+    min-width: 33.3333%;
+  }
+}
+
+.premium-ff-stat-col {
+  padding: 30px 20px 30px 0;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .premium-ff-stat-col {
+    padding: 20px 40px 20px 20px;
+    border-right: 1px solid #dcdcdc;
+  }
+}
+
+.premium-ff-stat-number {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+  color: #1e3932;
+  display: inline-block;
+  position: relative;
+}
+
+/* Subtle highlight behind numbers */
+.premium-ff-stat-number::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background-color: rgba(240, 235, 225, 0.7);
+  z-index: -1;
+}
+
+.premium-ff-stat-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #4a4a4a;
+  margin: 0;
+}
+
+.premium-ff-link-bottom {
+  margin-top: 20px;
+}
+
+/* Controls */
+.premium-ff-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 20px;
+}
+
+.premium-ff-dots {
+  display: flex;
+  gap: 12px;
+}
+
+.premium-ff-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #1e3932;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.premium-ff-dot.premium-ff-active {
+  background: #1e3932;
+}
+
+.premium-ff-arrows {
+  display: flex;
+  gap: 15px;
+}
+
+.premium-ff-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #1e3932;
+  background: transparent;
+  color: #1e3932;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.premium-ff-arrow:hover {
+  background: #1e3932;
+  color: #ffffff;
+}
+
+.premium-ff-arrow:active {
+  transform: scale(0.95);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.getElementById('premium-ff-stats-track');
+  const slides = document.querySelectorAll('.premium-ff-stat-slide');
+  const dotsContainer = document.getElementById('premium-ff-dots-container');
+  const prevBtn = document.querySelector('.premium-ff-prev');
+  const nextBtn = document.querySelector('.premium-ff-next');
+  
+  let currentIndex = 0;
+  let itemsPerView = 1;
+  let maxIndex = 0;
+
+  // Function to determine how many items fit on the screen
+  const updateLayout = () => {
+    const width = window.innerWidth;
+    if (width >= 1024) {
+      itemsPerView = 3; // Desktop
+    } else if (width >= 768) {
+      itemsPerView = 2; // Tablet
+    } else {
+      itemsPerView = 1; // Mobile
+    }
+    
+    // Max index is total slides minus the ones visible at the end
+    maxIndex = Math.max(0, slides.length - itemsPerView);
+    
+    // Keep currentIndex within bounds if resizing shrinks the maxIndex
+    if (currentIndex > maxIndex) {
+      currentIndex = maxIndex;
+    }
+
+    renderDots();
+    goToSlide(currentIndex);
+  };
+
+  // Generate the right amount of dots
+  const renderDots = () => {
+    dotsContainer.innerHTML = '';
+    // We only need dots for the number of available slides, not total items
+    for (let i = 0; i <= maxIndex; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'premium-ff-dot' + (i === currentIndex ? ' premium-ff-active' : '');
+      dot.setAttribute('aria-label', `Slide ${i + 1}`);
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+  };
+
+  // Move the track
+  const goToSlide = (index) => {
+    // Loop around logic
+    if (index < 0) {
+      currentIndex = maxIndex;
+    } else if (index > maxIndex) {
+      currentIndex = 0;
+    } else {
+      currentIndex = index;
+    }
+
+    // Calculate translation percentage.
+    // If we have 3 items per view, each item is 33.33%. 
+    // Moving 1 index shifts it by 33.33%.
+    const percentage = -(currentIndex * (100 / itemsPerView));
+    track.style.transform = `translateX(${percentage}%)`;
+
+    // Update active dot visual
+    const dots = dotsContainer.querySelectorAll('.premium-ff-dot');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('premium-ff-active', i === currentIndex);
+    });
+  };
+
+  // Event Listeners for arrows
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+  }
+
+  // Handle window resize to adjust layout
+  window.addEventListener('resize', () => {
+    updateLayout();
+  });
+
+  // Initial calculation on load
+  updateLayout();
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ff-marquee-section">
+  <div class="ff-marquee-inner">
+    <h2 class="ff-marquee-title">Brands we use in our kitchen</h2>
+    
+    <div class="ff-marquee-viewport">
+      <div class="ff-marquee-track">
+        <div class="ff-logo-item"><img src="images/eskort.jpg" alt="Partner Brand 1"></div>
+        <div class="ff-logo-item"><img src="images/picknpay.jpg" alt="Partner Brand 2"></div>
+        <div class="ff-logo-item"><img src="images/spar.png" alt="Partner Brand 3"></div>
+        <div class="ff-logo-item"><img src="images/parmalat.png" alt="Partner Brand 4"></div>
+        <div class="ff-logo-item"><img src="images/jacobs.png" alt="Partner Brand 5"></div>
+        <div class="ff-logo-item"><img src="images/sasko.jpg" alt="Partner Brand 6"></div>
+        
+        <div class="ff-logo-item"><img src="images/eskort.jpg" alt="Partner Brand 1"></div>
+        <div class="ff-logo-item"><img src="images/picknpay.jpg" alt="Partner Brand 2"></div>
+        <div class="ff-logo-item"><img src="images/spar.png" alt="Partner Brand 3"></div>
+        <div class="ff-logo-item"><img src="images/parmalat.png" alt="Partner Brand 4"></div>
+        <div class="ff-logo-item"><img src="images/jacobs.png" alt="Partner Brand 5"></div>
+        <div class="ff-logo-item"><img src="images/sasko.jpg" alt="Partner Brand 6"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.ff-marquee-section {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 80px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  overflow: hidden;
+}
+
+.ff-marquee-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.ff-marquee-title {
+  font-family: 'Circular Std', 'Helvetica Neue', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  font-weight: 800;
+  color: #1e3932;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 50px;
+  text-align: left; /* Aligned Left */
+  position: relative;
+}
+
+/* Optional: small decorative line under the left-aligned title */
+.ff-marquee-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #1e3932;
+  margin-top: 10px;
+}
+
+.ff-marquee-viewport {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  /* Fade effect for edges */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.ff-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scrollMarquee 40s linear infinite;
+}
+
+/* Pause on interaction */
+.ff-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.ff-logo-item {
+  flex: 0 0 auto;
+  margin: 0 40px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+  /* Grayscale by default for a high-end look, pops on hover */
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
+.ff-logo-item img {
+  display: block;
+  width: clamp(120px, 15vw, 180px);
+  height: auto;
+  object-fit: contain;
+}
+
+.ff-logo-item:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .ff-marquee-section {
+    padding: 50px 0;
+  }
+  .ff-marquee-title {
+    margin-bottom: 30px;
+  }
+  .ff-marquee-track {
+    animation-duration: 25s; /* Slightly faster on small screens for better feel */
+  }
+  .ff-logo-item {
+    margin: 0 20px;
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+class FFXPRestaurantFeature extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
+  connectedCallback() {
+    this.shadowRoot.innerHTML = `
+    <style>
+      @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+      :host {
+        display: block;
+        font-family: 'Circular Std', sans-serif;
+        --ffxp-cream: #dcd9c8;
+      }
+
+      .ffxp-section {
+        width: 100%;
+      }
+
+      /* =========================
+         HERO SECTION
+      ========================== */
+
+      .ffxp-hero {
+        position: relative;
+        background: url('https://images.pexels.com/photos/4294500/pexels-photo-4294500.jpeg') center/cover no-repeat;
+        padding: 120px 0;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .ffxp-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+      }
+
+      .ffxp-hero-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
+
+      .ffxp-hero-left {
+        flex: 1;
+        color: white;
+      }
+
+      .ffxp-hero-left h1 {
+        font-size: 84px;
+        line-height: 1.05;
+        font-weight: 700;
+        margin: 0 0 25px 0;
+      }
+
+      .ffxp-hero-left p {
+        font-size: 17px;
+        line-height: 1.6;
+        max-width: 520px;
+        margin-bottom: 30px;
+      }
+
+      .ffxp-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+      }
+
+      .ffxp-cta-circle {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 1px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s ease;
+      }
+
+      .ffxp-cta:hover .ffxp-cta-circle {
+        background: white;
+        color: black;
+      }
+
+      /* HERO VIDEO */
+
+      .ffxp-hero-video {
+        flex: 0 0 420px;
+        height: 500px;
+        overflow: hidden;
+        background: #000;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+      }
+
+      .ffxp-hero-video video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* =========================
+         CARD SECTION
+      ========================== */
+
+      .ffxp-cards-section {
+        background: #f4f4f4;
+        padding: 120px 0 140px;
+      }
+
+      .ffxp-cards-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 60px;
+        padding: 0 20px;
+      }
+
+      .ffxp-card {
+        position: relative;
+      }
+
+      /* IMAGE (Top Layer) */
+      .ffxp-card-image {
+        width: 100%;
+        height: 320px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* BACKGROUND BOX (260px behind image, -25px left) */
+      .ffxp-card-box {
+        background: var(--ffxp-cream);
+        padding: 40px 30px 30px;
+        position: relative;
+        z-index: 1;
+
+        margin-top: -260px;   /* 260px behind image */
+        margin-left: -25px;   /* shift left */
+        margin-right: 25px;
+        padding-top: 300px;   /* space for image overlap */
+      }
+
+      .ffxp-card-box h3 {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.5;
+        font-weight: 500;
+        color: #1a1a1a;
+      }
+
+      /* =========================
+         RESPONSIVE
+      ========================== */
+
+      @media (max-width: 1100px) {
+
+        .ffxp-hero-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .ffxp-hero-left h1 {
+          font-size: 48px;
+        }
+
+        .ffxp-hero-video {
+          width: 100%;
+          height: 400px;
+        }
+
+        .ffxp-cards-inner {
+          grid-template-columns: 1fr;
+          gap: 80px;
+        }
+
+        .ffxp-card-box {
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: -260px;
+        }
+      }
+
+    </style>
+
+    <!-- HERO -->
+    <section class="ffxp-section ffxp-hero">
+      <div class="ffxp-overlay"></div>
+
+      <div class="ffxp-hero-inner">
+        <div class="ffxp-hero-left">
+          <h1>10 Questions for Our First Global Flavor Creators</h1>
+          <p>
+            Meet the chefs redefining fast food culture. From global street markets 
+            to modern kitchens, they’re exploring bold flavors and telling the 
+            story behind every bite.
+          </p>
+
+          <a href="#" class="ffxp-cta">
+            <div class="ffxp-cta-circle">→</div>
+            <span>Learn More</span>
+          </a>
+        </div>
+
+        <div class="ffxp-hero-video">
+          <video autoplay muted loop playsinline>
+            <source src="https://www.pexels.com/download/video/8523312/" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARDS -->
+    <section class="ffxp-section ffxp-cards-section">
+      <div class="ffxp-cards-inner">
+
+        <div class="ffxp-card">
+          <div class="ffxp-card-image"
+            style="background-image:url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0');">
+          </div>
+          <div class="ffxp-card-box">
+            <h3>Our Commitment to Fresh & Ethical Ingredients ›</h3>
+          </div>
+        </div>
+
+        <div class="ffxp-card">
+          <div class="ffxp-card-image"
+            style="background-image:url('https://images.unsplash.com/photo-1541167760496-1628856ab772');">
+          </div>
+          <div class="ffxp-card-box">
+            <h3>Introducing Our Signature Flame-Grilled Classic ›</h3>
+          </div>
+        </div>
+
+        <div class="ffxp-card">
+          <div class="ffxp-card-image"
+            style="background-image:url('https://images.unsplash.com/photo-1550547660-d9450f859349');">
+          </div>
+          <div class="ffxp-card-box">
+            <h3>Celebrating Global Street Food Inspirations ›</h3>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    `;
+  }
+}
+
+customElements.define("ffxp-restaurant-feature", FFXPRestaurantFeature);
+</script>
+
+<ffxp-restaurant-feature></ffxp-restaurant-feature>
+
+
+
+
