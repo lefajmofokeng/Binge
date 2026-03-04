@@ -11,72 +11,39 @@
 @font-face{font-family:'Sodo Sans';src:url('fonts/SoDoSans-SemiBold.woff') format('woff');font-weight:500}
 @font-face{font-family:'Sodo Sans';src:url('fonts/SoDoSans-Bold.ttf') format('truetype');font-weight:700}
 
-@font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Book.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        /* Circular Std - Medium (500) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-        }
-
-        /* Circular Std - Bold (700) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Book.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-        }
-
-        /* Circular Std - Bold (700) */
-        @font-face {
-            font-family: 'CS Facile';
-            src: url('fonts/CsfaciledrawnRegularDemo-Zpx5x.otf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-        }
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
 :root{
-  --yellow:#FFD600;--yellow-dk:#E8C200;--yellow-lt:#FFFAE6;
-  --ink:#1C1C1A;--gray-700:#3D3D3A;--gray-500:#6B6B67;
-  --gray-300:#AAAAAA;--gray-100:#F4F3EF;--white:#FFFFFF;--red:#D94F2B;
+  --green:#1E3932;--green-dk:#145242;--green-lt:#EAF2EE;--green-mid:#2C6B4F;--green-vivid:#5BE09A;
+  --ink:#0D1F1A;--gray-700:#2E2E2C;--gray-500:#6B6B67;--gray-300:#AAAAAA;--gray-100:#F2F2F0;
+  --white:#FFFFFF;--red:#C0392B;
   --font-d:'Fraunces',serif;
-  --font-b:'Circular Std',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-b:'Sodo Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   --r-sm:8px;--r-md:14px;--r-lg:22px;--r-xl:32px;
-  --sh-sm:0 2px 4px rgba(0,0,0,.07);--sh-md:0 2px 2px rgba(0, 0, 0, 0.177);--sh-lg:0 16px 48px rgba(0,0,0,.14);
+  --sh-sm:0 2px 8px rgba(0,0,0,.08);--sh-md:0 6px 24px rgba(0,0,0,.12);--sh-lg:0 16px 48px rgba(0,0,0,.16);
   --ease:cubic-bezier(.4,0,.2,1);--nav-h:68px
 }
 body{font-family:var(--font-b);background:var(--white);color:var(--ink);overflow-x:clip;-webkit-font-smoothing:antialiased}
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:var(--gray-100)}
-::-webkit-scrollbar-thumb{background:var(--yellow-dk);border-radius:99px}
+/* Native browser scrollbars used throughout */
 
-/* ═══ NAV ═══ */
+/* ══ NAV ══════════════════════════════════════════════ */
 nav#topnav{
   position:sticky;top:0;z-index:900;height:var(--nav-h);
   display:flex;align-items:center;justify-content:space-between;
   padding:0 2rem;
-  background:rgb(255, 255, 255);
-  border-bottom:1px solid rgba(0,0,0,.06);transition:box-shadow .3s var(--ease);
+  background:rgba(255,255,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,0,0,.07);transition:box-shadow .3s var(--ease)
 }
 nav#topnav.scrolled{box-shadow:var(--sh-md)}
 .nav-left{display:flex;align-items:center;gap:2.2rem}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-.nav-logo-mark{width:38px;height:38px;background:var(--yellow);border-radius:10px;display:flex;align-items:center;justify-content:center}
-.nav-logo-mark svg{width:20px;height:20px;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;fill:none}
+.nav-logo-mark{width:38px;height:38px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.nav-logo-mark svg{width:20px;height:20px;stroke:var(--white);stroke-width:2.2;stroke-linecap:round;fill:none}
 .nav-logo-text{font-family:var(--font-d);font-size:1.2rem;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1}
 .nav-logo-text span{color:var(--gray-500);font-weight:400;font-family:var(--font-b);font-size:.7rem;display:block;letter-spacing:.04em;margin-top:2px}
 .nav-links{display:flex;gap:1.8rem;list-style:none}
 .nav-links a{text-decoration:none;font-size:.875rem;font-weight:400;color:var(--ink);letter-spacing:.01em;transition:color .2s;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--yellow);border-radius:2px;transition:width .25s var(--ease)}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--green);border-radius:2px;transition:width .25s var(--ease)}
 .nav-links a:hover::after{width:100%}
 
 /* Desktop search */
@@ -87,50 +54,40 @@ nav#topnav.scrolled{box-shadow:var(--sh-md)}
   font-family:var(--font-b);font-size:.82rem;color:var(--ink);outline:none;
   transition:all .25s var(--ease)
 }
-.nav-search-input:focus{width:290px;border-color:var(--yellow);background:var(--white);box-shadow:0 0 0 3px rgba(255,214,0,.15)}
+.nav-search-input:focus{width:290px;border-color:var(--green);background:var(--white);box-shadow:0 0 0 3px rgba(30,57,50,.14)}
 .nav-search-input::placeholder{color:var(--gray-300)}
 .nav-search-icon{position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none;display:flex;align-items:center}
 .nav-search-icon svg{width:15px;height:15px;stroke:var(--gray-300);stroke-width:2;stroke-linecap:round;fill:none;transition:stroke .2s}
-.nav-search-input:focus~.nav-search-icon svg{stroke:var(--yellow-dk)}
+.nav-search-input:focus~.nav-search-icon svg{stroke:var(--green-dk)}
 
-/* Dropdown — wrapper clips radius, inner div scrolls */
 .search-dropdown{
   position:absolute;top:calc(100% + 8px);left:0;min-width:320px;right:0;
   background:var(--white);border:1.5px solid rgba(0,0,0,.08);border-radius:var(--r-lg);
-  box-shadow:var(--sh-lg);display:none;flex-direction:column;z-index:1000;
-  overflow:hidden
+  box-shadow:var(--sh-lg);display:none;flex-direction:column;z-index:1000;overflow:hidden
 }
 .search-dropdown.active{display:flex}
-.sd-header{
-  padding:.5rem 1rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--gray-500);background:var(--gray-100);flex-shrink:0;border-bottom:1px solid rgba(0,0,0,.05)
-}
-.sd-list{
-  overflow-y:auto;max-height:320px;
-  scrollbar-width:thin;scrollbar-color:var(--yellow-dk) var(--gray-100)
-}
-.sd-list::-webkit-scrollbar{width:4px}
-.sd-list::-webkit-scrollbar-track{background:var(--gray-100)}
-.sd-list::-webkit-scrollbar-thumb{background:var(--yellow-dk);border-radius:4px}
+.sd-header{padding:.5rem 1rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);background:var(--gray-100);flex-shrink:0;border-bottom:1px solid rgba(0,0,0,.05)}
+.sd-list{overflow-y:auto;max-height:320px}
+
 .sd-item{display:flex;align-items:center;gap:10px;padding:.65rem 1rem;cursor:pointer;transition:background .15s;border-bottom:1px solid rgba(0,0,0,.04)}
 .sd-item:last-child{border-bottom:none}
-.sd-item:hover{background:var(--yellow-lt)}
-.sd-item-img{width:44px;height:44px;border-radius:8px;object-fit:cover;flex-shrink:0}
+.sd-item:hover{background:var(--green-lt)}
+.sd-item-img{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0}
 .sd-item-info{flex:1;min-width:0}
 .sd-item-name{font-size:.85rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sd-item-cat{font-size:.68rem;color:var(--gray-500);text-transform:capitalize;margin-top:1px}
 .sd-item-price{font-family:var(--font-d);font-size:.9rem;font-weight:700;color:var(--ink);flex-shrink:0}
 .sd-empty{padding:1.4rem 1rem;text-align:center;color:var(--gray-500);font-size:.85rem}
-mark.hl{background:var(--yellow);border-radius:2px;padding:0 2px;font-style:normal}
+mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;color:var(--ink)}
 
 .nav-right{display:flex;align-items:center;gap:.75rem}
 .nav-cart{
   display:flex;align-items:center;gap:8px;
-  background:var(--yellow);border:none;border-radius:50px;padding:.6rem 1.3rem;
-  font-family:var(--font-b);font-size:.875rem;font-weight:600;color:var(--ink);
+  background:var(--green);border:none;border-radius:50px;padding:.6rem 1.3rem;
+  font-family:var(--font-b);font-size:.875rem;font-weight:600;color:var(--white);
   cursor:pointer;transition:all .2s var(--ease);position:relative;white-space:nowrap
 }
-.nav-cart:hover{background:var(--yellow-dk);transform:translateY(-1px);box-shadow:0 4px 18px rgba(255,214,0,.45)}
+.nav-cart:hover{background:var(--green-dk);transform:translateY(-1px);box-shadow:0 4px 18px rgba(20,82,66,.3)}
 .cart-badge{
   background:var(--red);color:#fff;border-radius:50%;width:18px;height:18px;
   font-size:.68rem;font-weight:700;display:flex;align-items:center;justify-content:center;
@@ -144,16 +101,13 @@ mark.hl{background:var(--yellow);border-radius:2px;padding:0 2px;font-style:norm
 /* Mobile nav */
 .mob-nav{
   display:none;position:fixed;inset:0;background:var(--white);z-index:950;
-  flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;padding:2rem;
-  overflow-y:auto
+  flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;padding:2rem;overflow-y:auto
 }
 .mob-nav.open{display:flex}
-.mob-nav-links a{font-family:var(--font-d);font-size:2.4rem;font-weight:700;color:var(--ink);text-decoration:none;display:block;text-align:center;margin-bottom:1.2rem;transition:color .2s}
-.mob-nav-links a:hover{color:var(--gray-500)}
+.mob-nav-links a{font-family:var(--font-d);font-size:2.2rem;font-weight:700;color:var(--ink);text-decoration:none;display:block;text-align:center;margin-bottom:1rem;transition:color .2s}
+.mob-nav-links a:hover{color:var(--green-mid)}
 .mob-close{position:absolute;top:1.4rem;right:1.8rem;background:none;border:none;cursor:pointer;color:var(--gray-700);display:flex;align-items:center}
 .mob-close svg{width:22px;height:22px;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;fill:none}
-
-/* Mobile search block */
 .mob-search-block{width:100%;max-width:360px}
 .mob-search-wrap{position:relative}
 .mob-search-input{
@@ -161,175 +115,375 @@ mark.hl{background:var(--yellow);border-radius:2px;padding:0 2px;font-style:norm
   border-radius:50px;padding:0 44px 0 18px;
   font-family:var(--font-b);font-size:.9rem;color:var(--ink);outline:none;transition:border-color .2s
 }
-.mob-search-input:focus{border-color:var(--yellow);background:var(--white)}
+.mob-search-input:focus{border-color:var(--green);background:var(--white)}
 .mob-search-input::placeholder{color:var(--gray-300)}
 .mob-search-icon{position:absolute;right:15px;top:50%;transform:translateY(-50%);pointer-events:none;display:flex;align-items:center}
 .mob-search-icon svg{width:17px;height:17px;stroke:var(--gray-300);stroke-width:2;stroke-linecap:round;fill:none}
-
-/* Mobile dropdown — inline below input */
-.mob-search-dropdown{
-  width:100%;margin-top:8px;
-  background:var(--white);border:1.5px solid rgba(0,0,0,.08);border-radius:var(--r-lg);
-  box-shadow:var(--sh-md);display:none;flex-direction:column;overflow:hidden
-}
+.mob-search-dropdown{width:100%;margin-top:8px;background:var(--white);border:1.5px solid rgba(0,0,0,.08);border-radius:var(--r-lg);box-shadow:var(--sh-md);display:none;flex-direction:column;overflow:hidden}
 .mob-search-dropdown.active{display:flex}
-.mob-sd-header{
-  padding:.5rem 1rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--gray-500);background:var(--gray-100);flex-shrink:0;border-bottom:1px solid rgba(0,0,0,.05)
-}
-.mob-sd-list{
-  overflow-y:auto;max-height:260px;
-  scrollbar-width:thin;scrollbar-color:var(--yellow-dk) var(--gray-100)
-}
-.mob-sd-list::-webkit-scrollbar{width:4px}
-.mob-sd-list::-webkit-scrollbar-track{background:var(--gray-100)}
-.mob-sd-list::-webkit-scrollbar-thumb{background:var(--yellow-dk);border-radius:4px}
+.mob-sd-header{padding:.5rem 1rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);background:var(--gray-100);flex-shrink:0;border-bottom:1px solid rgba(0,0,0,.05)}
+.mob-sd-list{overflow-y:auto;max-height:260px}
 
-/* ═══ HERO ═══ */
-.hero{
-  position:relative;height:calc(100vh - var(--nav-h));min-height:560px;
-  display:flex;align-items:center;overflow:hidden
-}
+
+/* ══ HERO ══════════════════════════════════════════════ */
+.hero{position:relative;height:calc(100vh - var(--nav-h));min-height:560px;display:flex;align-items:center;overflow:hidden}
 .hero-vid-wrap{position:absolute;inset:0;z-index:0}
 .hero-vid-wrap video,.hero-vid-wrap .hero-fb{width:100%;height:100%;object-fit:cover;object-position:center}
-.hero-vid-wrap::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.12) 100%)
-}
+.hero-vid-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.12) 100%)}
 .hero-inner{position:relative;z-index:1;width:100%;max-width:1260px;margin:0 auto;padding:0 2.5rem}
-.hero-h1{
-  font-family:var(--font-d);font-size:clamp(2.8rem,7vw,4.2rem);font-weight:700;
-  color:var(--white);line-height:1.02;letter-spacing:-.03em;max-width:680px;margin-bottom:1.2rem
-}
-.hero-h1 em{color:var(--yellow);font-style:normal}
+.hero-h1{font-family:var(--font-d);font-size:clamp(2.8rem,7vw,4.2rem);font-weight:700;color:var(--white);line-height:1.02;letter-spacing:-.03em;max-width:680px;margin-bottom:1.2rem}
+.hero-h1 em{color:var(--green-vivid);font-style:normal}
 .hero-sub{color:rgba(255,255,255,.75);font-size:1.05rem;max-width:480px;line-height:1.7;margin-bottom:2.2rem}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-y{display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--ink);border:none;border-radius:50px;padding:.9rem 2rem;font-family:var(--font-b);font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s var(--ease)}
-.btn-y:hover{background:var(--yellow-dk);transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,214,0,.4)}
+.btn-y{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:var(--white);border:none;border-radius:50px;padding:.9rem 2rem;font-family:var(--font-b);font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s var(--ease)}
+.btn-y:hover{background:var(--green-dk);transform:translateY(-2px);box-shadow:0 8px 28px rgba(20,82,66,.3)}
 .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,.9);border:1.5px solid rgba(255,255,255,.35);border-radius:50px;padding:.9rem 2rem;font-family:var(--font-b);font-size:.95rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s var(--ease)}
-.btn-ghost:hover{border-color:var(--yellow);color:var(--yellow)}
+.btn-ghost:hover{border-color:var(--green-vivid);color:var(--green-vivid)}
 
-/* ═══ MENU ═══ */
+/* ══ MENU ══════════════════════════════════════════════ */
 .menu-header{max-width:1300px;margin:0 auto;padding:3rem 2.5rem 1.5rem}
 .sec-lbl{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-500);margin-bottom:.5rem}
 .sec-h2{font-family:var(--font-d);font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;color:var(--ink)}
 #menu{display:grid;grid-template-columns:220px 1fr;max-width:1300px;margin:0 auto;padding:0 1.5rem;min-height:80vh}
 .menu-sidebar{position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));overflow-y:auto;padding:2.5rem 0 2.5rem .5rem;scrollbar-width:none}
-.menu-sidebar::-webkit-scrollbar{display:none}
+
 .sb-head{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-300);padding:0 1rem 1rem}
 .sb-nav{list-style:none}
 .sb-item{display:flex;align-items:center;padding:.7rem 1rem;border-radius:var(--r-md);cursor:pointer;transition:all .2s var(--ease);text-decoration:none;color:var(--gray-700);font-size:.875rem;font-weight:500;margin-bottom:2px}
-.sb-item:hover{background:var(--yellow-lt);color:var(--ink)}
-.sb-item.active{background:var(--yellow);color:var(--ink);font-weight:700}
+.sb-item:hover{background:var(--green-lt);color:var(--ink)}
+.sb-item.active{background:var(--green);color:var(--white);font-weight:700}
 .menu-content{padding:3rem 0 4rem 2.5rem}
-.menu-section{margin-bottom:4.5rem;scroll-margin-top:calc(var(--nav-h) + 24px)}
-.sec-head{display:flex;align-items:flex-end;margin-bottom:1.6rem;padding-bottom:1rem;border-bottom:2px solid var(--gray-100)}
-.sec-cat-lbl{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-500);display:flex;align-items:center;gap:6px;margin-bottom:.3rem}
-.sec-cat-lbl::before{content:'';width:16px;height:2px;background:var(--yellow);border-radius:2px}
-.sec-title{font-family:var(--font-d);font-size:1.7rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
-.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1.2rem}
-.prod-card{background:var(--white);border:1px solid var(--gray-100);border-radius: 1px;overflow:hidden;cursor:pointer;transition:all .25s var(--ease);display:flex;flex-direction:column}
-.prod-img-wrap{overflow:hidden;aspect-ratio:4/3}
-.prod-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s var(--ease)}
-.prod-card:hover .prod-img{transform:scale(1.05)}
-.prod-body{padding:1.1rem 1.2rem 1.3rem;flex:1;display:flex;flex-direction:column}
-.prod-cat{font-size:.65rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gray-500);margin-bottom:.3rem}
-.prod-name{font-family:var(--font-d);font-size:1.4rem;font-weight:600;color:var(--ink);line-height:1.25;margin-bottom:.4rem}
-.prod-desc{font-size:1rem;color:var(--gray-500);line-height:1.3;margin-bottom:1rem;flex:1}
-.prod-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
-.prod-price{font-family:var(--font-d);font-size:1.25rem;font-weight:700;color:var(--ink)}
-.add-btn{width:36px;height:36px;border-radius:50px;background:var(--yellow);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s var(--ease);flex-shrink:0}
-.add-btn:hover{background:var(--yellow-dk);transform:scale(1.1)}
-.add-btn svg{width:18px;height:18px;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;fill:none}
+.menu-section{margin-bottom:4rem;scroll-margin-top:calc(var(--nav-h) + 24px)}
+.sec-head{margin-bottom:2rem;padding-bottom:1rem;border-bottom:1.5px solid var(--gray-100)}
+.sec-cat-lbl{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green-mid);display:flex;align-items:center;gap:6px;margin-bottom:.3rem}
+.sec-cat-lbl::before{content:'';width:14px;height:2px;background:var(--green-mid);border-radius:2px}
+.sec-title{font-family:var(--font-d);font-size:1.6rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
 
-/* ═══ PRODUCT DETAIL PAGE ═══ */
+/* ── MENU CARDS: circular image, name, price ── */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:2.5rem 2rem}
+.prod-card{
+  background:transparent;border:none;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:.8rem;
+  transition:transform .25s var(--ease)
+}
+.prod-card:hover{transform:translateY(-5px)}
+/* Perfect circle */
+.prod-img-wrap{
+  width:100%;aspect-ratio:1/1;
+  border-radius:50%;overflow:hidden;
+  background:var(--gray-100);
+  box-shadow:0 4px 18px rgba(0,0,0,.10);
+  transition:box-shadow .3s var(--ease)
+}
+.prod-card:hover .prod-img-wrap{box-shadow:0 10px 30px rgba(30,57,50,.2)}
+.prod-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s var(--ease)}
+.prod-card:hover .prod-img{transform:scale(1.08)}
+.prod-info{width:100%}
+.prod-name{font-family:var(--font-d);font-size:.95rem;font-weight:700;color:var(--ink);line-height:1.25;margin-bottom:.2rem}
+.prod-price{font-size:.8rem;font-weight:700;color:var(--green-mid)}
+
+/* ══ PRODUCT DETAIL PAGE ════════════════════════════════ */
 .pdp-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
-  z-index:950;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)
+  position:fixed;inset:0;background:rgba(0,0,0,.5);
+  z-index:950;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)
 }
 .pdp-overlay.open{opacity:1;pointer-events:all}
+
+/* Slides up from bottom, full screen */
 .pdp{
   position:fixed;inset:0;z-index:960;
   display:flex;flex-direction:column;
   background:var(--white);
   transform:translateY(100%);
-  transition:transform .42s cubic-bezier(.32,0,.15,1);
-  overflow:hidden
+  transition:transform .4s cubic-bezier(.32,0,.15,1)
 }
 .pdp.open{transform:translateY(0)}
 
-/* PDP top bar */
+/* ── STICKY "BACK TO MENU" BAR ── */
 .pdp-topbar{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 2rem;height:58px;border-bottom:1px solid var(--gray-100);
-  background:var(--white);flex-shrink:0
+  flex-shrink:0;
+  display:flex;align-items:center;
+  background:var(--green);
+  padding:.7rem 1.6rem;
+  border-bottom:1px solid rgba(255,255,255,.1)
 }
 .pdp-back{
-  display:flex;align-items:center;gap:8px;background:none;border:none;
-  font-family:var(--font-b);font-size:.88rem;font-weight:600;color:var(--gray-700);
-  cursor:pointer;transition:color .2s;padding:6px 0
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.15);border:none;border-radius:50px;
+  padding:.45rem 1rem .45rem .7rem;
+  font-family:var(--font-b);font-size:.82rem;font-weight:600;
+  color:var(--white);cursor:pointer;transition:background .2s
 }
-.pdp-back:hover{color:var(--ink)}
-.pdp-back svg{width:16px;height:16px;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;fill:none}
-.pdp-breadcrumb{font-size:.78rem;color:var(--gray-500)}
-.pdp-breadcrumb span{color:var(--ink);font-weight:600}
+.pdp-back:hover{background:rgba(255,255,255,.28)}
+.pdp-back svg{width:15px;height:15px;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;fill:none}
 
-/* PDP body scrolls, inner grid is two-col */
-.pdp-body{
-  flex:1;overflow-y:auto;
-  scrollbar-width:thin;scrollbar-color:var(--yellow-dk) var(--gray-100)
+/* ── SINGLE SCROLL AREA — everything below topbar scrolls ── */
+.pdp-scroll{flex:1;overflow-y:auto;background:var(--white)}
+
+/* ── HERO BAND — full-bleed green, inner wrapper aligns with content ── */
+.pdp-hero{background:var(--green);padding:2.5rem 2rem}
+.pdp-hero-inner{
+  max-width:900px;margin:0 auto;
+  display:flex;flex-direction:row;align-items:center;gap:2.8rem
 }
-.pdp-body::-webkit-scrollbar{width:5px}
-.pdp-body::-webkit-scrollbar-track{background:var(--gray-100)}
-.pdp-body::-webkit-scrollbar-thumb{background:var(--yellow-dk);border-radius:4px}
-.pdp-inner{display:grid;grid-template-columns:1fr 1fr;max-width:1200px;margin:0 auto;min-height:100%}
-
-/* LEFT — sticky image */
-.pdp-img-col{
-  position:sticky;top:0;align-self:start;
-  height:calc(100vh - 58px);overflow:hidden;background:#111
+.pdp-hero-img-wrap{
+  flex-shrink:0;width:200px;height:200px;border-radius:50%;
+  overflow:hidden;
+  box-shadow:0 8px 40px rgba(0,0,0,.4),0 0 0 5px rgba(255,255,255,.12)
 }
-.pdp-img-col img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
-.pdp-img-col img:hover{transform:scale(1.03)}
+.pdp-hero-img{width:100%;height:100%;object-fit:cover;display:block}
+.pdp-hero-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:.75rem}
 
-/* RIGHT — details */
-.pdp-detail-col{padding:3rem 3rem 0 2.5rem;display:flex;flex-direction:column}
-.pdp-cat-lbl{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-500);margin-bottom:.6rem;display:flex;align-items:center;gap:6px}
-.pdp-cat-lbl::before{content:'';width:16px;height:2px;background:var(--yellow);border-radius:2px}
-.pdp-name{font-family:var(--font-d);font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:700;color:var(--ink);letter-spacing:-.03em;line-height:1.1;margin-bottom:.8rem}
-.pdp-price{font-family:var(--font-d);font-size:2rem;font-weight:800;color:var(--ink);margin-bottom:1.2rem;letter-spacing:-.03em}
-.pdp-price-lbl{font-size:1rem;font-weight:400;color:var(--gray-500);margin-left:4px}
-.pdp-desc{font-size:1rem;color:var(--gray-500);line-height:1.75;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1.5px solid var(--gray-100)}
-.pdp-opts{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:1.5rem}
-.opt-title{font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gray-500);margin-bottom:.6rem;display:flex;align-items:center;justify-content:space-between}
-.opt-req{font-size:.6rem;background:var(--yellow-lt);color:var(--yellow-dk);padding:2px 8px;border-radius:50px;font-weight:700;letter-spacing:.04em}
-.chips{display:flex;flex-wrap:wrap;gap:.4rem}
-.chip{background:var(--gray-100);border:1.5px solid transparent;border-radius:50px;padding:7px 15px;font-size:.82rem;font-weight:500;color:var(--gray-700);cursor:pointer;transition:all .18s var(--ease);user-select:none;white-space:nowrap}
-.chip:hover{border-color:var(--yellow);background:var(--yellow-lt);color:var(--ink)}
-.chip.sel{background:var(--yellow);border-color:var(--yellow);color:var(--ink);font-weight:700}
-.spec-note{width:100%;background:var(--gray-100);border:1.5px solid transparent;border-radius:var(--r-md);padding:12px 14px;font-family:var(--font-b);font-size:.88rem;color:var(--ink);resize:none;outline:none;transition:border-color .2s;margin-bottom:1.5rem}
-.spec-note:focus{border-color:var(--yellow);background:var(--white)}
+.pdp-breadcrumb{
+  font-size:.68rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px
+}
+.pdp-breadcrumb svg{width:11px;height:11px;stroke:rgba(255,255,255,.4);stroke-width:2;stroke-linecap:round;fill:none}
+.pdp-name{
+  font-family:var(--font-d);font-size:clamp(1.6rem,3.5vw,2.2rem);
+  font-weight:700;color:var(--white);line-height:1.1;letter-spacing:-.02em
+}
+.pdp-meta{font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.75}
+.pdp-price-tag{
+  display:inline-flex;align-items:center;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);
+  border-radius:50px;padding:7px 20px;
+  font-size:1rem;font-weight:800;color:var(--white);letter-spacing:.01em;align-self:flex-start
+}
+
+/* ── CUSTOMISE BODY — white, inside pdp-scroll ── */
+.pdp-body{background:var(--white)}
+
+/* Inner container — two columns: options left, notes right */
+.pdp-custom-wrap{
+  max-width:900px;margin:0 auto;
+  padding:2rem 2rem 2.5rem;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 3rem
+}
+/* Section headers span only their column, handled inside the columns */
+.pdp-col-left{display:flex;flex-direction:column;gap:1.6rem}
+.pdp-col-right{display:flex;flex-direction:column;gap:1rem}
+
+.opt-section-title{
+  font-family:var(--font-d);font-size:1.05rem;font-weight:700;color:var(--ink);
+  padding-bottom:.55rem;
+  border-bottom:2px solid var(--green);
+  margin-bottom:.2rem
+}
+.opt-group{display:flex;flex-direction:column;gap:.6rem}
+.opt-group-label{
+  font-size:.65rem;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--green-mid);margin-bottom:-.2rem
+}
+/* Checkbox-style rows */
+.opt-row{
+  display:flex;align-items:center;gap:.75rem;
+  background:var(--gray-100);border-radius:12px;
+  padding:.8rem 1rem;cursor:pointer;
+  border:1.5px solid transparent;transition:all .18s var(--ease)
+}
+.opt-row:hover{border-color:var(--green-mid);background:var(--green-lt)}
+.opt-row.sel{border-color:var(--green);background:var(--green-lt)}
+.opt-row-label{font-size:.88rem;color:var(--ink);font-weight:500;flex:1;line-height:1.3}
+.opt-row-price{font-size:.75rem;color:var(--gray-500);flex-shrink:0}
+.opt-checkbox{
+  width:22px;height:22px;border-radius:6px;border:2px solid var(--gray-300);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:all .18s var(--ease);background:var(--white)
+}
+.opt-row.sel .opt-checkbox{background:var(--green);border-color:var(--green)}
+.opt-checkbox svg{width:12px;height:12px;stroke:var(--white);stroke-width:2.8;
+  stroke-linecap:round;stroke-linejoin:round;fill:none;display:none}
+.opt-row.sel .opt-checkbox svg{display:block}
+/* Plus-circle for extras */
+.opt-plus{
+  width:26px;height:26px;border-radius:50%;border:2px solid var(--green-mid);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:all .18s var(--ease);background:var(--white)
+}
+.opt-row.sel .opt-plus{background:var(--green);border-color:var(--green)}
+.opt-plus svg{width:13px;height:13px;stroke:var(--green-mid);stroke-width:2.5;stroke-linecap:round;fill:none;transition:stroke .18s}
+.opt-row.sel .opt-plus svg{stroke:var(--white)}
+
+/* Right column — instructions */
+.spec-note-wrap{display:flex;flex-direction:column;gap:.5rem}
+.spec-note-lbl{
+  font-family:var(--font-d);font-size:1.05rem;font-weight:700;color:var(--ink);
+  padding-bottom:.55rem;
+  border-bottom:2px solid var(--green);
+  margin-bottom:.3rem
+}
+.spec-note{
+  width:100%;flex:1;min-height:180px;
+  background:var(--gray-100);border:1.5px solid transparent;
+  border-radius:14px;padding:14px 16px;
+  font-family:var(--font-b);font-size:.9rem;color:var(--ink);
+  resize:none;outline:none;transition:border-color .2s;line-height:1.6
+}
+.spec-note:focus{border-color:var(--green);background:var(--white)}
 .spec-note::placeholder{color:var(--gray-300)}
+.spec-note-hint{font-size:.72rem;color:var(--gray-300);line-height:1.5}
 
-/* Add-to-cart sticky bar at bottom of right col */
-.pdp-actions{
-  position:sticky;bottom:0;
-  display:flex;align-items:center;gap:1rem;
-  background:var(--white);
-  border-top:1.5px solid var(--gray-100);
-  padding:1.2rem 3rem 2rem 2.5rem;
-  margin:0 -3rem 0 -2.5rem
+/* ── STICKY BOTTOM BAR ── */
+.pdp-footer{
+  flex-shrink:0;
+  background:var(--green);
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:1rem 2rem 1.2rem
 }
-.qty-ctl{display:flex;align-items:center;gap:10px;background:var(--gray-100);border-radius:50px;padding:4px;flex-shrink:0}
-.qty-btn{width:34px;height:34px;border-radius:50%;background:var(--white);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:var(--sh-sm);transition:all .15s}
-.qty-btn:hover{background:var(--yellow)}
-.qty-btn svg{width:14px;height:14px;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;fill:none}
-.qty-n{font-family:var(--font-d);font-size:1.1rem;font-weight:700;min-width:22px;text-align:center}
-.btn-add-cart{flex:1;background:var(--yellow);border:none;border-radius:50px;padding:.9rem 1.5rem;font-family:var(--font-b);font-size:.95rem;font-weight:700;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:all .2s var(--ease)}
-.btn-add-cart:hover{background:var(--yellow-dk);box-shadow:0 4px 20px rgba(255,214,0,.45)}
-.btn-add-cart-price{opacity:.7;font-size:.88rem;font-weight:600}
+.pdp-footer-inner{
+  max-width:900px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:1.2rem
+}
+/* Left: product name + price */
+.pdp-foot-info{min-width:0;flex:1}
+.pdp-foot-name{
+  font-family:var(--font-d);font-size:1rem;font-weight:700;
+  color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  margin-bottom:.15rem
+}
+.pdp-foot-price{
+  font-size:1.25rem;font-weight:800;color:var(--white);letter-spacing:-.01em
+}
+/* Right: qty controls + add button */
+.pdp-foot-right{display:flex;align-items:center;gap:.8rem;flex-shrink:0}
+.pdp-qty-ctl{
+  display:flex;align-items:center;gap:0;
+  background:rgba(255,255,255,.14);border-radius:50px;
+  border:1px solid rgba(255,255,255,.2);overflow:hidden
+}
+.pdp-qty-btn{
+  width:40px;height:40px;border:none;background:transparent;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background .15s;flex-shrink:0
+}
+.pdp-qty-btn:hover{background:rgba(255,255,255,.15)}
+.pdp-qty-btn:active{background:rgba(255,255,255,.25)}
+.pdp-qty-btn svg{width:14px;height:14px;stroke:var(--white);stroke-width:2.5;stroke-linecap:round;fill:none}
+.pdp-qty-n{
+  font-family:var(--font-d);font-size:1rem;font-weight:700;
+  min-width:32px;text-align:center;color:var(--white)
+}
+.pdp-add-final{
+  display:flex;align-items:center;gap:.6rem;
+  background:var(--white);border:none;border-radius:50px;
+  padding:.75rem 1.5rem;
+  font-family:var(--font-b);font-size:.92rem;font-weight:700;
+  color:var(--green);cursor:pointer;transition:all .2s var(--ease);
+  white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.25)
+}
+.pdp-add-final:hover{background:var(--green-lt);transform:translateY(-1px);box-shadow:0 6px 24px rgba(0,0,0,.3)}
+.pdp-add-final svg{width:16px;height:16px;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.pdp-add-price{opacity:.7;font-size:.82rem;font-weight:600}
 
-/* ═══ CART DRAWER ═══ */
+
+/* ══ ACCORDION INFO SECTION — light, professional ══════════ */
+.pdp-info-outer{
+  max-width:900px;margin:0 auto;
+  padding:0 2rem 3rem
+}
+/* Title above accordion */
+.pdp-info-heading{
+  margin-bottom:1.2rem
+}
+
+.pdp-info-heading-title{font-family:var(--font-d);font-size:1.2rem;font-weight:700;color:var(--ink)}
+.pdp-info-heading-sub{font-size:.76rem;color:var(--gray-500);margin-top:.15rem}
+
+/* Accordion card */
+.pdp-info-section{
+  border-radius:0;overflow:hidden;background:var(--white)
+}
+/* Accordion items */
+.acc-item{border-bottom:1px solid var(--gray-100)}
+.acc-item:last-child{border-bottom:none}
+.acc-trigger{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 1.4rem;background:none;border:none;cursor:pointer;
+  transition:background .18s var(--ease);text-align:left
+}
+.acc-trigger:hover{background:var(--gray-100)}
+.acc-item.open>.acc-trigger{background:var(--green-lt)}
+.acc-trigger-left{display:flex;align-items:center;gap:.85rem}
+
+.acc-trigger-label{font-family:var(--font-b);font-size:.9rem;font-weight:600;color:var(--ink)}
+/* Plus / minus sign on the right */
+.acc-sign{
+  width:28px;height:28px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;border:1.5px solid var(--gray-100);
+  background:var(--white);transition:all .22s var(--ease)
+}
+.acc-sign-plus,.acc-sign-minus{
+  position:absolute;
+  width:12px;height:12px;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .2s, transform .2s
+}
+.acc-sign{position:relative}
+.acc-sign-plus{opacity:1;transform:rotate(0deg)}
+.acc-sign-minus{opacity:0;transform:rotate(-90deg)}
+.acc-item.open .acc-sign{background:var(--green);border-color:var(--green)}
+.acc-item.open .acc-sign-plus{opacity:0;transform:rotate(90deg)}
+.acc-item.open .acc-sign-minus{opacity:1;transform:rotate(0deg)}
+.acc-sign svg{width:12px;height:12px;stroke:var(--gray-500);stroke-width:2.5;stroke-linecap:round;fill:none}
+.acc-item.open .acc-sign-plus svg,.acc-item.open .acc-sign-minus svg{stroke:var(--white)}
+.acc-item:not(.open) .acc-sign-minus svg{stroke:var(--gray-500)}
+
+/* Body */
+.acc-body{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1)}
+.acc-item.open .acc-body{max-height:800px}
+.acc-content{padding:.4rem 1.4rem 1.5rem;font-size:.86rem;color:var(--gray-700);line-height:1.75}
+
+/* Calorie badge */
+.nutr-cal-badge{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--green-lt);border-radius:14px;
+  padding:1rem 1.5rem;margin-bottom:1rem;
+  border:1.5px solid rgba(30,57,50,.1)
+}
+.nutr-cal-num{font-family:var(--font-d);font-size:2rem;font-weight:800;color:var(--green);line-height:1}
+.nutr-cal-lbl{font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--green-mid);margin-top:.2rem}
+/* Disclaimer */
+.nutr-disclaimer{
+  font-size:.74rem;color:var(--gray-300);line-height:1.55;
+  margin-top:1rem;padding-top:.8rem;
+  border-top:1px solid var(--gray-100)
+}
+/* Calorie badge */
+.nutr-cal-badge{
+  display:flex;align-items:center;gap:1rem;
+  background:var(--green-lt);border-radius:14px;
+  padding:1rem 1.4rem;margin-bottom:1rem;
+  border:1.5px solid rgba(30,57,50,.1)
+}
+.nutr-cal-num{font-family:var(--font-d);font-size:2rem;font-weight:800;color:var(--green);line-height:1}
+.nutr-cal-lbl{font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--green-mid);margin-top:.2rem}
+/* Nutrition disclaimer */
+.nutr-disclaimer{
+  font-size:.74rem;color:var(--gray-300);line-height:1.55;
+  margin-top:1rem;padding-top:.8rem;
+  border-top:1px solid var(--gray-100)
+}
+/* Nutrition table */
+.nutr-table{width:100%;border-collapse:collapse;margin-top:.5rem;font-size:.84rem}
+.nutr-table tr{border-bottom:1px solid var(--gray-100)}
+.nutr-table tr:last-child{border-bottom:none}
+.nutr-table td{padding:.55rem 0;color:var(--gray-700)}
+.nutr-table td:last-child{text-align:right;color:var(--ink);font-weight:600}
+.nutr-table .nutr-total td{color:var(--ink);font-weight:700;font-size:.9rem;border-top:2px solid var(--green-lt);padding-top:.75rem}
+/* Allergen tags */
+.acc-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
+.acc-tag{background:var(--gray-100);border-radius:50px;padding:4px 12px;font-size:.75rem;color:var(--gray-700);border:1px solid rgba(0,0,0,.06)}
+.acc-tag.alert{background:#FFF0EE;border-color:#FFBFB5;color:#C0392B}
+/* Best with */
+.best-with-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem .8rem;margin-top:.5rem}
+.best-chip{display:flex;align-items:center;gap:.5rem;font-size:.84rem;color:var(--gray-700)}
+.best-chip::before{content:'✓';color:var(--green-mid);font-size:.85rem;font-weight:700;flex-shrink:0}
+
+/* ══ CART DRAWER ═══════════════════════════════════════ */
 .cart-ov{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(4px);z-index:1100;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
 .cart-ov.open{opacity:1;pointer-events:all}
 .cart-drawer{position:fixed;top:0;right:-480px;width:420px;max-width:100vw;height:100vh;background:var(--white);z-index:1101;display:flex;flex-direction:column;box-shadow:-8px 0 40px rgba(0,0,0,.12);transition:right .38s var(--ease);border-left:1px solid var(--gray-100)}
@@ -339,19 +493,18 @@ mark.hl{background:var(--yellow);border-radius:2px;padding:0 2px;font-style:norm
 .icon-btn{background:var(--gray-100);border:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
 .icon-btn:hover{background:var(--gray-300)}
 .icon-btn svg{width:16px;height:16px;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;fill:none}
-.cart-scroll{flex:1;overflow-y:auto;padding:1rem 1.6rem;scrollbar-width:thin;scrollbar-color:var(--yellow-dk) var(--gray-100)}
-.cart-scroll::-webkit-scrollbar{width:4px}
-.cart-scroll::-webkit-scrollbar-thumb{background:var(--yellow-dk);border-radius:4px}
+.cart-scroll{flex:1;overflow-y:auto;padding:1rem 1.6rem}
+
 .cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;gap:.8rem;color:var(--gray-500)}
 .cart-empty-title{font-family:var(--font-d);font-size:1.2rem;font-weight:600;color:var(--ink)}
 .cart-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--gray-100);align-items:flex-start}
-.ci-img{width:64px;height:64px;border-radius:12px;object-fit:cover;flex-shrink:0;border:1px solid var(--gray-100)}
+.ci-img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1px solid var(--gray-100)}
 .ci-info{flex:1;min-width:0}
 .ci-name{font-family:var(--font-d);font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ci-opts{font-size:.72rem;color:var(--gray-500);margin-bottom:6px;line-height:1.45}
 .ci-ctrls{display:flex;align-items:center;gap:8px}
 .cq-btn{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--gray-300);background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;flex-shrink:0}
-.cq-btn:hover{border-color:var(--yellow);background:var(--yellow-lt)}
+.cq-btn:hover{border-color:var(--green);background:var(--green-lt)}
 .cq-btn svg{width:12px;height:12px;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;fill:none}
 .cq-n{font-size:.85rem;font-weight:700;min-width:16px;text-align:center}
 .rm-btn{background:none;border:none;color:var(--gray-300);font-size:.7rem;cursor:pointer;margin-left:4px;text-decoration:underline;transition:color .2s;font-family:var(--font-b)}
@@ -363,7 +516,7 @@ mark.hl{background:var(--yellow);border-radius:2px;padding:0 2px;font-style:norm
 .btn-ckout{width:100%;background:var(--ink);color:var(--white);border:none;border-radius:14px;padding:1rem;font-family:var(--font-b);font-size:.95rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s var(--ease)}
 .btn-ckout:hover{background:var(--gray-700);transform:translateY(-1px);box-shadow:var(--sh-md)}
 
-/* ═══ CHECKOUT ═══ */
+/* ══ CHECKOUT ══════════════════════════════════════════ */
 .ck-bd{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);z-index:1200;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
 .ck-bd.open{opacity:1;pointer-events:all}
 .ck-box{background:var(--white);border-radius:var(--r-xl);width:100%;max-width:600px;max-height:92vh;display:flex;flex-direction:column;box-shadow:0 32px 80px rgba(0,0,0,.2);transform:translateY(20px);transition:transform .3s var(--ease);overflow:hidden}
@@ -372,44 +525,41 @@ mark.hl{background:var(--yellow);border-radius:2px;padding:0 2px;font-style:norm
 .ck-title{font-family:var(--font-d);font-size:1.4rem;font-weight:700;color:var(--ink)}
 .ck-pips{display:flex;gap:5px;margin-top:6px}
 .pip{height:4px;border-radius:2px;transition:all .3s var(--ease)}
-.pip.done{background:var(--yellow-dk);width:20px}
-.pip.active{background:var(--yellow);width:30px}
+.pip.done{background:var(--green-dk);width:20px}
+.pip.active{background:var(--green);width:30px}
 .pip.future{background:var(--gray-100);width:14px}
-.ck-scroll{flex:1;overflow-y:auto;padding:1.6rem 1.8rem;scrollbar-width:thin;scrollbar-color:var(--yellow-dk) var(--gray-100)}
-.ck-scroll::-webkit-scrollbar{width:4px}
-.ck-scroll::-webkit-scrollbar-thumb{background:var(--yellow-dk);border-radius:4px}
+.ck-scroll{flex:1;overflow-y:auto;padding:1.6rem 1.8rem}
+
 .ck-step{display:none}.ck-step.active{display:block}
 .ck-success{display:none;text-align:center;padding:2rem 1rem}.ck-success.active{display:block}
-.success-circle{width:80px;height:80px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.4rem;animation:sBounce .5s cubic-bezier(.34,1.56,.64,1)}
+.success-circle{width:80px;height:80px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.4rem;animation:sBounce .5s cubic-bezier(.34,1.56,.64,1)}
 @keyframes sBounce{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
-.success-circle svg{width:36px;height:36px;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.success-circle svg{width:36px;height:36px;stroke:var(--white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}
 .suc-h{font-family:var(--font-d);font-size:2rem;font-weight:800;margin-bottom:.5rem}
 .suc-sub{font-size:.9rem;color:var(--gray-500);max-width:340px;margin:0 auto 1.5rem;line-height:1.6}
-.order-ref{display:inline-block;background:var(--yellow-lt);border:2px solid var(--yellow);border-radius:12px;padding:8px 20px;font-family:var(--font-d);font-size:1.1rem;font-weight:800;color:var(--ink);margin-bottom:2rem;letter-spacing:.05em}
+.order-ref{display:inline-block;background:var(--green-lt);border:2px solid var(--green-mid);border-radius:12px;padding:8px 20px;font-family:var(--font-d);font-size:1.1rem;font-weight:800;color:var(--green);margin-bottom:2rem;letter-spacing:.05em}
 .fg{display:flex;flex-direction:column;gap:5px;margin-bottom:1rem}
 .fg2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .flbl{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500)}
 .finput{background:var(--gray-100);border:1.5px solid transparent;border-radius:var(--r-md);padding:10px 13px;font-family:var(--font-b);font-size:.9rem;color:var(--ink);outline:none;transition:all .2s;width:100%}
-.finput:focus{border-color:var(--yellow);background:var(--white)}
+.finput:focus{border-color:var(--green);background:var(--white)}
 .finput::placeholder{color:var(--gray-300)}
 .deliv-choice{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.4rem}
 .d-opt{border:2px solid var(--gray-100);border-radius:var(--r-md);padding:1rem;cursor:pointer;text-align:center;transition:all .2s var(--ease)}
-.d-opt:hover{border-color:var(--yellow-dk)}
-.d-opt.sel{border-color:var(--yellow);background:var(--yellow-lt)}
+.d-opt:hover{border-color:var(--green-mid)}
+.d-opt.sel{border-color:var(--green);background:var(--green-lt)}
 .d-icon{font-size:1.6rem;margin-bottom:4px}
 .d-name{font-weight:700;font-size:.88rem;margin-bottom:2px}
 .d-fee{font-size:.73rem;color:var(--gray-500)}
 .pay-opts{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.4rem}
 .p-opt{display:flex;align-items:center;gap:12px;border:1.5px solid var(--gray-100);border-radius:var(--r-md);padding:.9rem 1rem;cursor:pointer;transition:all .2s}
-.p-opt:hover{border-color:var(--yellow-dk)}
-.p-opt.sel{border-color:var(--yellow);background:var(--yellow-lt)}
+.p-opt:hover{border-color:var(--green-mid)}
+.p-opt.sel{border-color:var(--green);background:var(--green-lt)}
 .radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--gray-300);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .2s}
-.p-opt.sel .radio{border-color:var(--yellow-dk)}
-.radio-dot{width:8px;height:8px;border-radius:50%;background:var(--yellow-dk);display:none}
+.p-opt.sel .radio{border-color:var(--green-dk)}
+.radio-dot{width:8px;height:8px;border-radius:50%;background:var(--green-dk);display:none}
 .p-opt.sel .radio-dot{display:block}
-.p-icon{font-size:1.3rem}
-.p-name{font-weight:600;font-size:.88rem}
-.p-desc{font-size:.72rem;color:var(--gray-500)}
+.p-icon{font-size:1.3rem}.p-name{font-weight:600;font-size:.88rem}.p-desc{font-size:.72rem;color:var(--gray-500)}
 .mini-sum{background:var(--gray-100);border-radius:var(--r-md);padding:1rem 1.2rem;margin-bottom:1.4rem}
 .mini-sum-ttl{font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gray-500);margin-bottom:.7rem}
 .mini-row{display:flex;justify-content:space-between;font-size:.83rem;color:var(--gray-700);margin-bottom:4px}
@@ -418,23 +568,12 @@ mark.hl{background:var(--yellow);border-radius:2px;padding:0 2px;font-style:norm
 .btn-back{background:var(--gray-100);border:none;border-radius:12px;padding:.85rem 1.4rem;font-family:var(--font-b);font-size:.88rem;font-weight:600;color:var(--gray-700);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
 .btn-back:hover{background:var(--gray-300)}
 .btn-back svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;fill:none}
-.btn-next{flex:1;background:var(--yellow);border:none;border-radius:12px;padding:.85rem 1.4rem;font-family:var(--font-b);font-size:.95rem;font-weight:700;color:var(--ink);cursor:pointer;transition:all .2s var(--ease);display:flex;align-items:center;justify-content:center;gap:6px}
-.btn-next:hover{background:var(--yellow-dk)}
-.btn-next svg{width:16px;height:16px;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.btn-next{flex:1;background:var(--green);border:none;border-radius:12px;padding:.85rem 1.4rem;font-family:var(--font-b);font-size:.95rem;font-weight:700;color:var(--white);cursor:pointer;transition:all .2s var(--ease);display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-next:hover{background:var(--green-dk)}
+.btn-next svg{width:16px;height:16px;stroke:var(--white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}
 .btn-place{background:var(--ink);color:var(--white)}.btn-place:hover{background:var(--gray-700)}
 
-/* ═══ WHY US ═══ */
-.feat-sec{background:var(--gray-100);padding:5rem 2.5rem}
-.feat-inner{max-width:1200px;margin:0 auto}
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
-.feat-card{background:var(--white);border-radius:var(--r-lg);padding:1.8rem;transition:all .25s var(--ease);border:1px solid transparent}
-.feat-card:hover{transform:translateY(-3px);box-shadow:var(--sh-md);border-color:var(--yellow)}
-.feat-icon{width:52px;height:52px;background:var(--yellow);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem}
-.feat-icon svg{width:26px;height:26px;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
-.feat-name{font-family:var(--font-d);font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
-.feat-desc{font-size:.82rem;color:var(--gray-500);line-height:1.6}
-
-/* ═══ APP PROMO ═══ */
+/* ══ APP PROMO ═════════════════════════════════════════ */
 .app-promo{background:var(--white);padding:6rem 2.5rem;border-top:1px solid var(--gray-100)}
 .app-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
 .app-h{font-family:var(--font-d);font-size:clamp(2.2rem,4.5vw,2.8rem);font-weight:800;letter-spacing:-.03em;margin-bottom:1.2rem}
@@ -442,106 +581,133 @@ mark.hl{background:var(--yellow);border-radius:2px;padding:0 2px;font-style:norm
 .phone-frame img{width:100%;height:100%;object-fit:cover}
 .phone-notch{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:120px;height:18px;background:#111;border-radius:30px;z-index:2}
 
-/* ═══ FOOTER ═══ */
+/* ══ FOOTER ════════════════════════════════════════════ */
 footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
 .ft-inner{max-width:1200px;margin:0 auto}
 .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
-.ft-logo{font-family:var(--font-d);font-size:1.8rem;font-weight:800;color:var(--yellow);margin-bottom:.8rem}
-.ft-desc{font-size:1.1rem;color:var(--gray-500);line-height:1.7;max-width:280px}
-.ft-col-ttl{font-size:.9rem;font-weight:500;color:var(--gray-300);margin-bottom:1.2rem}
+.ft-logo{font-family:var(--font-d);font-size:1.8rem;font-weight:800;color:var(--green-vivid);margin-bottom:.8rem}
+.ft-desc{font-size:.84rem;color:var(--gray-500);line-height:1.7;max-width:280px}
+.ft-col-ttl{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-300);margin-bottom:1.2rem}
 .ft-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
-.ft-links a{text-decoration:none;font-size:1.5rem;color:#F4F3EF}
-.ft-links a:hover{color:var(--yellow)}
+.ft-links a{text-decoration:none;font-size:.84rem;color:#F4F3EF}
+.ft-links a:hover{color:var(--green-vivid)}
 .ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .ft-copy{font-size:.78rem;color:var(--gray-500)}
 .ft-social{display:flex;gap:.6rem}
 .soc-btn{width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;text-decoration:none}
-.soc-btn:hover{background:var(--yellow);border-color:var(--yellow)}
-.soc-btn:hover svg{stroke:var(--ink)}
+.soc-btn:hover{background:var(--green-mid);border-color:var(--green-mid)}
+.soc-btn:hover svg{stroke:var(--white)}
 .soc-btn svg{width:16px;height:16px;stroke:var(--gray-500);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none}
 .notices-bar{background:rgba(255,255,255,.06);border-radius:14px;padding:1.2rem 2rem;margin:2rem 0;font-size:.8rem;line-height:1.8;color:#F4F3EF}
 
-/* ═══ BACK TO TOP ═══ */
-.back-top{position:fixed;bottom:2rem;right:2rem;z-index:800;width:44px;height:44px;border-radius:50%;background:var(--yellow);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(255,214,0,.45);opacity:0;pointer-events:none;transform:translateY(8px);transition:all .3s var(--ease)}
+/* ══ BACK TO TOP ═══════════════════════════════════════ */
+.back-top{position:fixed;bottom:2rem;right:2rem;z-index:800;width:44px;height:44px;border-radius:50%;background:var(--green);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(20,82,66,.35);opacity:0;pointer-events:none;transform:translateY(8px);transition:all .3s var(--ease)}
 .back-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
-.back-top:hover{background:var(--yellow-dk);transform:translateY(-2px)}
-.back-top svg{width:18px;height:18px;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.back-top:hover{background:var(--green-dk);transform:translateY(-2px)}
+.back-top svg{width:18px;height:18px;stroke:var(--white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}
 
-/* ═══ TOAST ═══ */
+/* ══ TOAST ═════════════════════════════════════════════ */
 .toasts{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none}
-.toast{background:var(--ink);color:var(--white);border-radius:50px;padding:10px 20px;font-size:.83rem;font-weight:600;white-space:nowrap;box-shadow:var(--sh-lg);border-left:4px solid var(--yellow);animation:tslide .3s var(--ease) forwards;display:flex;align-items:center;gap:8px}
+.toast{background:var(--ink);color:var(--white);border-radius:50px;padding:10px 20px;font-size:.83rem;font-weight:600;white-space:nowrap;box-shadow:var(--sh-lg);border-left:4px solid var(--green-mid);animation:tslide .3s var(--ease) forwards;display:flex;align-items:center;gap:8px}
 @keyframes tslide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* ═══ RESPONSIVE ═══ */
+/* ══ RESPONSIVE ════════════════════════════════════════ */
 @media(max-width:1024px){
   #menu{grid-template-columns:190px 1fr}
   .nav-search-input{width:170px}
   .nav-search-input:focus{width:230px}
-  .pdp-detail-col{padding:2.5rem 2rem 0}
-  .pdp-actions{margin:0 -2rem 0 -2rem;padding:1.2rem 2rem 2rem}
 }
 @media(max-width:900px){
   .nav-links,.nav-search-wrap{display:none}
   .hamburger{display:flex}
-  /* PDP single column on tablet/mobile */
-  .pdp-inner{grid-template-columns:1fr}
-  .pdp-img-col{position:relative;height:56vw;min-height:240px;max-height:420px}
-  .pdp-detail-col{padding:2rem 1.5rem 0}
-  .pdp-actions{margin:0 -1.5rem 0 -1.5rem;padding:1rem 1.5rem 2.5rem}
+  .pdp-custom-wrap{grid-template-columns:1fr;padding:1.5rem 1.4rem 2rem}
+  .pdp-hero{padding:2rem 1.5rem}
+  .pdp-hero-inner{gap:2rem}
+  .pdp-hero-img-wrap{width:160px;height:160px}
 }
 @media(max-width:768px){
+  /* Hide hero on mobile — menu loads immediately */
+  .hero{display:none}
+  /* Hide Get the App on mobile */
+  .app-promo{display:none}
   #menu{grid-template-columns:1fr;padding:0}
-  .menu-sidebar{position:sticky;top:var(--nav-h);height:auto;overflow-x:auto;overflow-y:hidden;border-bottom:2px solid var(--gray-100);padding:1rem 1.2rem;background:var(--white);z-index:10;scrollbar-width:none}
-  .menu-sidebar::-webkit-scrollbar{display:none}
+  .menu-sidebar{
+    position:sticky;top:var(--nav-h);height:auto;
+    overflow-x:auto;overflow-y:hidden;
+    border-bottom:2px solid var(--gray-100);
+    padding:1rem 1.2rem;background:var(--white);z-index:10;scrollbar-width:none
+  }
+  
   .sb-nav{display:flex;flex-direction:row;gap:6px;white-space:nowrap}
   .sb-item{white-space:nowrap;padding:8px 14px;flex-shrink:0}
   .sb-head{display:none}
-  .menu-content{padding:1.5rem 1.2rem 3rem}
-  .feat-sec,.app-promo{padding:3.5rem 1.2rem}
+  .menu-content{padding:1.5rem 1rem 3rem}
+  .menu-header{padding:1.5rem 1rem .8rem}
+  nav#topnav{padding:0 1rem}
   .ft-top{grid-template-columns:1fr 1fr;gap:2rem}
-  .hero-inner{padding:0 1.2rem}
-  nav#topnav{padding:0 1.2rem}
-  .app-inner{grid-template-columns:1fr}
-  .menu-header{padding:2rem 1.2rem 1rem}
-  .back-top{bottom:2rem;right:1.2rem}
-  .pdp-topbar{padding:0 1.2rem}
+  footer{padding:3rem 1rem 1.5rem}
+  .back-top{bottom:1.5rem;right:1rem}
+  /* PDP mobile — hero stacks to column, content centred */
+  .pdp-hero{padding:1.8rem 1.2rem}
+  .pdp-hero-inner{
+    flex-direction:column;align-items:center;text-align:center;gap:1.2rem
+  }
+  .pdp-hero-info{align-items:center}
+  .pdp-breadcrumb{justify-content:center}
+  .pdp-price-tag{align-self:center}
+  .pdp-hero-img-wrap{width:140px;height:140px}
+  .pdp-name{font-size:1.35rem}
+  .pdp-meta{font-size:.84rem;text-align:center}
+  .pdp-custom-wrap{padding:1.2rem 1rem 1.5rem;grid-template-columns:1fr}
+  .pdp-footer{padding:.9rem 1rem 1rem}
+  .pdp-foot-name{font-size:.88rem}
+  .pdp-foot-price{font-size:1.1rem}
+  .pdp-add-final{padding:.65rem 1.1rem;font-size:.85rem}
+  .pdp-qty-btn{width:36px;height:36px}
+  .pdp-info-outer{padding:0 1rem 2rem}
+  .acc-trigger{padding:.9rem 1rem}
+  .acc-content{padding:.3rem 1rem 1.2rem}
 }
-@media(max-width:480px){
+@media(max-width:600px){
+  .prod-grid{grid-template-columns:repeat(3,1fr);gap:1.8rem 1rem}
+  /* PDP footer — tighter on small phones */
+  .pdp-footer-inner{gap:.6rem}
+  .pdp-foot-name{font-size:.8rem}
+  .pdp-foot-price{font-size:1rem}
+  .pdp-add-final span:first-of-type{display:none} /* hide "Add to Order" text, keep price */
+}
+@media(max-width:420px){
+  .prod-grid{grid-template-columns:repeat(2,1fr);gap:1.6rem .8rem}
   .fg2{grid-template-columns:1fr}
   .deliv-choice{grid-template-columns:1fr}
   .ft-top{grid-template-columns:1fr}
-  footer{padding:3rem 1.2rem 1.5rem}
-  .prod-grid{grid-template-columns:1fr}
   .ck-actions{flex-direction:column-reverse}
   .btn-back{justify-content:center}
-  .hero-h1{font-size:2.3rem}
-  .pdp-name{font-size:1.6rem}
-  .pdp-price{font-size:1.6rem}
   .search-dropdown{min-width:0}
+  .pdp-hero-img-wrap{width:120px;height:120px}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ══ NAV ══════════════════════════════════════════════ -->
 <nav id="topnav">
   <div class="nav-left">
     <a href="#" class="nav-logo">
-      <img src="images/canva.jpg" style="height: 35px;"/>
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M5 10h14M7 14h10M9 18h6"/></svg>
+      </div>
+      <div class="nav-logo-text">Food By K<span>Premium Fast Food</span></div>
     </a>
     <ul class="nav-links">
       <li><a href="#menu">Menu</a></li>
-      <li><a href="#why-us">Why Us</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
-
   <div style="display:flex;align-items:center;gap:.75rem">
     <div class="nav-search-wrap" id="navSearchWrap">
       <input type="text" class="nav-search-input" id="navSearchInput" placeholder="Search menu…" autocomplete="off" aria-label="Search menu">
-      <div class="nav-search-icon">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      </div>
+      <div class="nav-search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
       <div class="search-dropdown" id="searchDropdown">
         <div class="sd-header" id="sdHeader"></div>
         <div class="sd-list" id="sdList"></div>
@@ -558,7 +724,7 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
   </div>
 </nav>
 
-<!-- MOBILE NAV -->
+<!-- ══ MOBILE NAV ════════════════════════════════════════ -->
 <div class="mob-nav" id="mobNav">
   <button class="mob-close" onclick="closeMob()">
     <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -575,12 +741,11 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
   </div>
   <div class="mob-nav-links">
     <a href="#menu" onclick="closeMob()">Menu</a>
-    <a href="#why-us" onclick="closeMob()">Why Us</a>
     <a href="#contact" onclick="closeMob()">Contact</a>
   </div>
 </div>
 
-<!-- HERO -->
+<!-- ══ HERO (desktop only) ══════════════════════════════ -->
 <section class="hero" id="home">
   <div class="hero-vid-wrap">
     <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1600&q=80">
@@ -589,8 +754,8 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
     </video>
   </div>
   <div class="hero-inner">
-    <h1 class="hero-h1">Bold Flavours.<br><em>Real Food.</em></h1>
-    <p class="hero-sub">Premium fast food crafted with the finest ingredients. Ribs, burgers, wraps, fried chicken and more — made to satisfy, delivered to your door.</p>
+    <h1 class="hero-h1">Bold Flavours.<br><em>Real Food.</em><br>Zero Compromise.</h1>
+    <p class="hero-sub">Premium fast food crafted with the finest ingredients. Ribs, burgers, wraps and fried chicken — made to satisfy, delivered to your door.</p>
     <div class="hero-btns">
       <a href="#menu" class="btn-y">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -604,7 +769,7 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
   </div>
 </section>
 
-<!-- MENU -->
+<!-- ══ MENU ══════════════════════════════════════════════ -->
 <div class="menu-header">
   <div class="sec-lbl">Signature Selection</div>
   <h2 class="sec-h2">Our Menu</h2>
@@ -617,21 +782,7 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
   <main class="menu-content" id="menuContent"></main>
 </div>
 
-<!-- WHY US -->
-<section class="feat-sec" id="why-us">
-  <div class="feat-inner">
-    <div class="sec-lbl">Why Food By K</div>
-    <h2 class="sec-h2" style="margin-bottom:2.8rem">A Cut Above the Rest</h2>
-    <div class="feat-grid">
-      <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="feat-name">Made to Order</div><div class="feat-desc">Every item is freshly prepared when you order. No batch cooking, no reheating. Real food made right, every single time.</div></div>
-      <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="feat-name">Premium Ingredients</div><div class="feat-desc">We source the best meats, fresh produce, and house-made sauces so every bite delivers maximum flavour.</div></div>
-      <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div><div class="feat-name">Fast Delivery</div><div class="feat-desc">Our delivery network gets your food to you hot and on time. Order placed — food on its way. Simple as that.</div></div>
-      <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div><div class="feat-name">Custom Flavours</div><div class="feat-desc">Choose your sauces, spice levels, and extras. Your meal, crafted exactly how you want it every time.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- APP PROMO -->
+<!-- ══ GET THE APP (hidden on mobile) ═══════════════════ -->
 <section class="app-promo">
   <div class="app-inner">
     <div>
@@ -643,485 +794,41 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
         Download on Play Store
       </a>
     </div>
-    <div><div class="phone-frame"><img src="images/Screenshot 2026-02-23 174841.png" alt="Food By K App" loading="lazy"><div class="phone-notch"></div></div></div>
+    <div>
+      <div class="phone-frame">
+        <img src="images/Screenshot 2026-02-23 174841.png" alt="Food By K App" loading="lazy">
+        <div class="phone-notch"></div>
+      </div>
+    </div>
   </div>
 </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-class FFXPRestaurantFeature extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
-  }
-
-  connectedCallback() {
-    this.shadowRoot.innerHTML = `
-    <style>
-      @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Book.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        /* Circular Std - Medium (500) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-        }
-
-        /* Circular Std - Bold (700) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-        }
-
-      :host {
-        display: block;
-        font-family: 'Circular Std', sans-serif;
-        --ffxp-cream: #dcd9c8;
-      }
-
-      .ffxp-section {
-        width: 100%;
-      }
-
-      /* =========================
-         HERO SECTION
-      ========================== */
-
-      .ffxp-hero {
-        position: relative;
-        background: url('https://images.pexels.com/photos/4294500/pexels-photo-4294500.jpeg') center/cover no-repeat;
-        padding: 120px 0;
-      }
-
-      .ffxp-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0,0,0,0.35);
-      }
-
-      .ffxp-hero-inner {
-        position: relative;
-        z-index: 2;
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 60px;
-        padding: 0 20px;
-        box-sizing: border-box;
-      }
-
-      .ffxp-hero-left {
-        flex: 1;
-        color: white;
-      }
-
-      .ffxp-hero-left h1 {
-        font-size: 84px;
-        line-height: 1.05;
-        font-weight: 700;
-        margin: 0 0 25px 0;
-      }
-
-      .ffxp-hero-left p {
-        font-size: 17px;
-        line-height: 1.6;
-        max-width: 520px;
-        margin-bottom: 30px;
-      }
-
-      .ffxp-cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 14px;
-        color: white;
-        text-decoration: none;
-        font-size: 15px;
-      }
-
-      .ffxp-cta-circle {
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        border: 1px solid white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.3s ease;
-      }
-
-      .ffxp-cta:hover .ffxp-cta-circle {
-        background: white;
-        color: black;
-      }
-
-      /* HERO VIDEO */
-
-      .ffxp-hero-video {
-        flex: 0 0 420px;
-        height: 500px;
-        overflow: hidden;
-        background: #000;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.35);
-      }
-
-      .ffxp-hero-video video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      /* =========================
-         CARD SECTION
-      ========================== */
-
-      .ffxp-cards-section {
-        background: #f4f4f4;
-        padding: 120px 0 140px;
-      }
-
-      .ffxp-cards-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 60px;
-        padding: 0 20px;
-      }
-
-      .ffxp-card {
-        position: relative;
-      }
-
-      /* IMAGE (Top Layer) */
-      .ffxp-card-image {
-        width: 100%;
-        height: 320px;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        z-index: 2;
-      }
-
-      /* BACKGROUND BOX (260px behind image, -25px left) */
-      .ffxp-card-box {
-        background: var(--ffxp-cream);
-        padding: 40px 30px 30px;
-        position: relative;
-        z-index: 1;
-
-        margin-top: -260px;   /* 260px behind image */
-        margin-left: -25px;   /* shift left */
-        margin-right: 25px;
-        padding-top: 300px;   /* space for image overlap */
-      }
-
-      .ffxp-card-box h3 {
-        margin: 0;
-        font-size: 20px;
-        line-height: 1.5;
-        font-weight: 500;
-        color: #1a1a1a;
-      }
-
-      /* =========================
-         RESPONSIVE
-      ========================== */
-
-      @media (max-width: 1100px) {
-
-        .ffxp-hero-inner {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .ffxp-hero-left h1 {
-          font-size: 48px;
-        }
-
-        .ffxp-hero-video {
-          width: 100%;
-          height: 400px;
-        }
-
-        .ffxp-cards-inner {
-          grid-template-columns: 1fr;
-          gap: 80px;
-        }
-
-        .ffxp-card-box {
-          margin-left: 0;
-          margin-right: 0;
-          margin-top: -260px;
-        }
-      }
-
-    </style>
-
-    <!-- HERO -->
-    <section class="ffxp-section ffxp-hero">
-      <div class="ffxp-overlay"></div>
-
-      <div class="ffxp-hero-inner">
-        <div class="ffxp-hero-left">
-          <h1>10 Questions for Our First Global Flavor Creators</h1>
-          <p>
-            Meet the chefs redefining fast food culture. From global street markets 
-            to modern kitchens, they’re exploring bold flavors and telling the 
-            story behind every bite.
-          </p>
-
-          <a href="#" class="ffxp-cta">
-            <div class="ffxp-cta-circle">→</div>
-            <span>Learn More</span>
-          </a>
-        </div>
-
-        <div class="ffxp-hero-video">
-          <video autoplay muted loop playsinline>
-            <source src="https://www.pexels.com/download/video/8523312/" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </section>
-
-    <!-- CARDS -->
-    <section class="ffxp-section ffxp-cards-section">
-      <div class="ffxp-cards-inner">
-
-        <div class="ffxp-card">
-          <div class="ffxp-card-image"
-            style="background-image:url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0');">
-          </div>
-          <div class="ffxp-card-box">
-            <h3>Our Commitment to Fresh & Ethical Ingredients ›</h3>
-          </div>
-        </div>
-
-        <div class="ffxp-card">
-          <div class="ffxp-card-image"
-            style="background-image:url('https://images.unsplash.com/photo-1541167760496-1628856ab772');">
-          </div>
-          <div class="ffxp-card-box">
-            <h3>Introducing Our Signature Flame-Grilled Classic ›</h3>
-          </div>
-        </div>
-
-        <div class="ffxp-card">
-          <div class="ffxp-card-image"
-            style="background-image:url('https://images.unsplash.com/photo-1550547660-d9450f859349');">
-          </div>
-          <div class="ffxp-card-box">
-            <h3>Celebrating Global Street Food Inspirations ›</h3>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    `;
-  }
-}
-
-customElements.define("ffxp-restaurant-feature", FFXPRestaurantFeature);
-</script>
-
-<ffxp-restaurant-feature></ffxp-restaurant-feature>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- FOOTER -->
+<!-- ══ FOOTER ════════════════════════════════════════════ -->
 <footer id="contact">
   <div class="ft-inner">
     <div class="ft-top">
       <div>
         <div class="ft-logo">Food By K</div>
-        <p class="ft-desc">Premium fast food made with passion and precision. Bold flavours, quality ingredients, fast delivery — this is Food By K.</p>
-        <div style="margin-top:2rem;font-size:1rem;line-height:1.6;color:var(--white)"><strong>8513 Goshawk Street, Lenasia South<br>Johannesburg, 1829</strong></div>
-        <div style="margin-top:1.5rem;border-radius:12px;overflow:hidden">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3460.5966453181816!2d30.999616015507705!3d-29.84650538195462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7a9c1483c6bc1%3A0x6b801a2d12658b16!2sBerea%2C%20Durban%2C%204001!5e0!3m2!1sen!2sza!4v1677000000000!5m2!1sen!2sza" width="100%" height="180" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p class="ft-desc">Premium fast food made with passion and precision. Bold flavours, quality ingredients, fast delivery.</p>
+        <div style="margin-top:1.5rem;font-size:.95rem;line-height:1.7;color:var(--white)"><strong>8513 Goshawk Street, Lenasia South<br>Johannesburg, 1829</strong></div>
+        <div style="margin-top:1.2rem;border-radius:12px;overflow:hidden">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3460.5966453181816!2d30.999616015507705!3d-29.84650538195462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7a9c1483c6bc1%3A0x6b801a2d12658b16!2sBerea%2C%20Durban%2C%204001!5e0!3m2!1sen!2sza!4v1677000000000!5m2!1sen!2sza" width="100%" height="160" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
-      <div><div class="ft-col-ttl">Menu</div><ul class="ft-links"><li><a href="#menu">Ribs</a></li><li><a href="#menu">Burgers</a></li><li><a href="#menu">Wraps</a></li><li><a href="#menu">Chicken</a></li><li><a href="#menu">Sides &amp; Drinks</a></li></ul></div>
-      <div><div class="ft-col-ttl">Info</div><ul class="ft-links"><li><a href="#">About Us</a></li><li><a href="#">Delivery Zones</a></li><li><a href="#">Catering</a></li><li><a href="#">Allergen Info</a></li></ul></div>
-      <div><div class="ft-col-ttl">Contact</div><ul class="ft-links"><li><a href="tel:0814478395">(081) 447 8395</a></li><li><a href="mailto:info@foodbyk.co.za">info@foodbyk.co.za</a></li><li><a href="#">Track My Order</a></li></ul></div>
+      <div>
+        <div class="ft-col-ttl">Menu</div>
+        <ul class="ft-links"><li><a href="#menu">Ribs</a></li><li><a href="#menu">Burgers</a></li><li><a href="#menu">Wraps</a></li><li><a href="#menu">Chicken</a></li><li><a href="#menu">Sides &amp; Drinks</a></li></ul>
+      </div>
+      <div>
+        <div class="ft-col-ttl">Company</div>
+        <ul class="ft-links"><li><a href="about.html">About Us</a></li><li><a href="careers.html">Careers</a></li><li><a href="roadmap.html">Roadmap</a></li><li><a href="#">Allergen Info</a></li></ul>
+      </div>
+      <div>
+        <div class="ft-col-ttl">Contact</div>
+        <ul class="ft-links"><li><a href="tel:0814478395">(081) 447 8395</a></li><li><a href="/cdn-cgi/l/email-protection#670e0901082701080803051e0c490408491d06"><span class="__cf_email__" data-cfemail="eb82858d84ab8d84848f899280c58884c5918a">[email&#160;protected]</span></a></li><li><a href="contact.html">Contact Page</a></li></ul>
+      </div>
     </div>
-    <div class="notices-bar">🕐 <strong>Hours:</strong> Monday – Sunday · 10:00 – 22:00 &nbsp;|&nbsp; 📍 <strong>Address:</strong> 8513 Goshawk Street, Lenasia South, Johannesburg, 1829 &nbsp;|&nbsp; 📞 <strong>Call:</strong> (081) 447 8395</div>
+    <div class="notices-bar">🕐 <strong>Hours:</strong> Mon – Sun · 10:00 – 22:00 &nbsp;|&nbsp; 📍 <strong>Address:</strong> 8513 Goshawk Street, Lenasia South, Johannesburg, 1829 &nbsp;|&nbsp; 📞 <strong>Call:</strong> (081) 447 8395</div>
     <div class="ft-bot">
       <div class="ft-copy">© 2026 Food By K. All rights reserved.</div>
       <div class="ft-social">
@@ -1133,49 +840,162 @@ customElements.define("ffxp-restaurant-feature", FFXPRestaurantFeature);
   </div>
 </footer>
 
-<!-- PRODUCT DETAIL PAGE -->
+<!-- ══ PRODUCT DETAIL PAGE ════════════════════════════════ -->
 <div class="pdp-overlay" id="pdpOverlay" onclick="closePDP()"></div>
 <div class="pdp" id="pdp" role="dialog" aria-modal="true" aria-labelledby="pdpName">
+
+  <!-- Sticky "Back to Menu" bar — always visible at top -->
   <div class="pdp-topbar">
     <button class="pdp-back" onclick="closePDP()">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       Back to Menu
     </button>
-    <div class="pdp-breadcrumb" id="pdpBreadcrumb"></div>
   </div>
-  <div class="pdp-body">
-    <div class="pdp-inner">
-      <div class="pdp-img-col">
-        <img id="pdpImg" src="" alt="">
-      </div>
-      <div class="pdp-detail-col">
-        <div class="pdp-cat-lbl" id="pdpCat"></div>
-        <div class="pdp-name" id="pdpName"></div>
-        <div class="pdp-price" id="pdpPrice"></div>
-        <div class="pdp-desc" id="pdpDesc"></div>
-        <div class="pdp-opts" id="pdpOpts"></div>
-        <textarea class="spec-note" id="pdpNote" rows="2" placeholder="Special requests or notes…"></textarea>
-        <div class="pdp-actions">
-          <div class="qty-ctl">
-            <button class="qty-btn" onclick="cQty(-1)" aria-label="Decrease quantity"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-            <span class="qty-n" id="qtyN">1</span>
-            <button class="qty-btn" onclick="cQty(1)" aria-label="Increase quantity"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+
+  <!-- Single scroll container — hero + customise + accordion all scroll together -->
+  <div class="pdp-scroll" id="pdpScroll">
+
+    <!-- Hero: full-bleed green, image left, info right, inner wrapper aligns with content -->
+    <div class="pdp-hero" id="pdpHero">
+      <div class="pdp-hero-inner">
+        <div class="pdp-hero-img-wrap">
+          <img class="pdp-hero-img" id="pdpImg" src="" alt="">
+        </div>
+        <div class="pdp-hero-info">
+          <div class="pdp-breadcrumb">
+            <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+            Menu / <span id="pdpCatLabel"></span>
           </div>
-          <button class="btn-add-cart" onclick="addToCart()">
-            Add to Cart
-            <span class="btn-add-cart-price" id="pdpSub">R0</span>
+          <div class="pdp-name" id="pdpName"></div>
+          <div class="pdp-meta" id="pdpMeta"></div>
+          <div class="pdp-price-tag" id="pdpPriceTag"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customise body: two columns, max-width aligns with hero-inner -->
+    <div class="pdp-body">
+      <div class="pdp-custom-wrap">
+
+        <!-- LEFT COLUMN: options -->
+        <div class="pdp-col-left" id="pdpColLeft">
+          <!-- filled by JS -->
+        </div>
+
+        <!-- RIGHT COLUMN: special instructions -->
+        <div class="pdp-col-right">
+          <div class="spec-note-wrap">
+            <div class="spec-note-lbl">Special Instructions</div>
+            <textarea class="spec-note" id="pdpNote" rows="6" placeholder="Allergies, extra sauce, no onions, any special requests…"></textarea>
+            <div class="spec-note-hint">We'll do our best to accommodate your request.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Product info accordion — light, max-width aligns with content -->
+    <div class="pdp-info-outer">
+
+      <!-- Section heading above accordion -->
+      <div class="pdp-info-heading">
+      <div>
+          <div class="pdp-info-heading-title">Product Information</div>
+          <div class="pdp-info-heading-sub" id="pdpInfoName"></div>
+        </div>
+      </div>
+
+      <!-- Accordion card -->
+      <div class="pdp-info-section" id="pdpInfoSection">
+
+        <!-- Ingredients & Allergens -->
+        <div class="acc-item" id="accIngredients">
+          <button class="acc-trigger" onclick="toggleAcc('accIngredients')">
+            <div class="acc-trigger-left">
+            <span class="acc-trigger-label">Ingredients &amp; Allergens</span>
+            </div>
+            <div class="acc-sign">
+              <div class="acc-sign-plus"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+              <div class="acc-sign-minus"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content" id="accIngrContent"></div>
+          </div>
+        </div>
+
+        <!-- Nutrition -->
+        <div class="acc-item" id="accNutrition">
+          <button class="acc-trigger" onclick="toggleAcc('accNutrition')">
+            <div class="acc-trigger-left">
+            <span class="acc-trigger-label">Nutrition</span>
+            </div>
+            <div class="acc-sign">
+              <div class="acc-sign-plus"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+              <div class="acc-sign-minus"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content" id="accNutrContent"></div>
+          </div>
+        </div>
+
+        <!-- Best with / when -->
+        <div class="acc-item" id="accBestWith">
+          <button class="acc-trigger" onclick="toggleAcc('accBestWith')">
+            <div class="acc-trigger-left">
+            <span class="acc-trigger-label">Best Enjoyed With / When</span>
+            </div>
+            <div class="acc-sign">
+              <div class="acc-sign-plus"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+              <div class="acc-sign-minus"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content" id="accBestContent"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end .pdp-scroll -->
+
+  <!-- Sticky bottom bar: product info left · qty + add to cart right -->
+  <div class="pdp-footer">
+    <div class="pdp-footer-inner">
+      <div class="pdp-foot-info">
+        <div class="pdp-foot-name" id="pdpFootName"></div>
+        <div class="pdp-foot-price" id="pdpFootPrice"></div>
+      </div>
+      <div class="pdp-foot-right">
+        <div class="pdp-qty-ctl">
+          <button class="pdp-qty-btn" onclick="cQty(-1)" aria-label="Decrease quantity">
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <span class="pdp-qty-n" id="qtyN">1</span>
+          <button class="pdp-qty-btn" onclick="cQty(1)" aria-label="Increase quantity">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
         </div>
+        <button class="pdp-add-final" onclick="addToCart()">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Add to Order
+          <span class="pdp-add-price" id="pdpSub">R0</span>
+        </button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CART DRAWER -->
+<!-- ══ CART DRAWER ════════════════════════════════════════ -->
 <div class="cart-ov" id="cartOv" onclick="closeCart()"></div>
 <div class="cart-drawer" id="cartDrawer" role="dialog" aria-label="Your cart">
   <div class="cart-dh">
-    <div class="cart-dtitle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Your Order</div>
+    <div class="cart-dtitle">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      Your Order
+    </div>
     <button class="icon-btn" onclick="closeCart()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   </div>
   <div class="cart-scroll" id="cartList"></div>
@@ -1183,11 +1003,14 @@ customElements.define("ffxp-restaurant-feature", FFXPRestaurantFeature);
     <div class="cart-row"><span>Subtotal</span><span id="cSub">R0</span></div>
     <div class="cart-row"><span>Delivery</span><span id="cDel">R25</span></div>
     <div class="cart-grand"><span>Total</span><span id="cGrand">R0</span></div>
-    <button class="btn-ckout" onclick="openCheckout()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Proceed to Checkout</button>
+    <button class="btn-ckout" onclick="openCheckout()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Proceed to Checkout
+    </button>
   </div>
 </div>
 
-<!-- CHECKOUT -->
+<!-- ══ CHECKOUT ══════════════════════════════════════════ -->
 <div class="ck-bd" id="ckBd">
   <div class="ck-box" role="dialog" aria-modal="true">
     <div class="ck-hd">
@@ -1196,22 +1019,40 @@ customElements.define("ffxp-restaurant-feature", FFXPRestaurantFeature);
     </div>
     <div class="ck-scroll" id="ckScroll">
       <div class="ck-step active" id="ckS1">
-        <div class="fg2"><div class="fg"><label class="flbl">First Name</label><input class="finput" id="fName" type="text" placeholder="First name"></div><div class="fg"><label class="flbl">Last Name</label><input class="finput" id="lName" type="text" placeholder="Last name"></div></div>
+        <div class="fg2">
+          <div class="fg"><label class="flbl">First Name</label><input class="finput" id="fName" type="text" placeholder="First name"></div>
+          <div class="fg"><label class="flbl">Last Name</label><input class="finput" id="lName" type="text" placeholder="Last name"></div>
+        </div>
         <div class="fg"><label class="flbl">Phone Number</label><input class="finput" id="fPhone" type="tel" placeholder="+27 000 000 0000"></div>
         <div class="fg"><label class="flbl">Email Address</label><input class="finput" id="fEmail" type="email" placeholder="your@email.com"></div>
         <div class="flbl" style="margin-bottom:10px">Delivery Method</div>
-        <div class="deliv-choice"><div class="d-opt sel" id="dOpt1" onclick="setDeliv('delivery')"><div class="d-icon">🚗</div><div class="d-name">Delivery</div><div class="d-fee">R25 fee</div></div><div class="d-opt" id="dOpt2" onclick="setDeliv('pickup')"><div class="d-icon">🏪</div><div class="d-name">Pickup</div><div class="d-fee">Free</div></div></div>
+        <div class="deliv-choice">
+          <div class="d-opt sel" id="dOpt1" onclick="setDeliv('delivery')"><div class="d-icon">🚗</div><div class="d-name">Delivery</div><div class="d-fee">R25 fee</div></div>
+          <div class="d-opt" id="dOpt2" onclick="setDeliv('pickup')"><div class="d-icon">🏪</div><div class="d-name">Pickup</div><div class="d-fee">Free</div></div>
+        </div>
         <div class="ck-actions"><button class="btn-next" onclick="ckNext()">Continue<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
       </div>
       <div class="ck-step" id="ckS2">
         <div id="addrSec">
           <div class="fg"><label class="flbl">Street Address</label><input class="finput" id="fAddr" type="text" placeholder="8513 Goshawk Street"></div>
-          <div class="fg2"><div class="fg"><label class="flbl">Suburb</label><input class="finput" id="fSuburb" type="text" placeholder="Lenasia South"></div><div class="fg"><label class="flbl">City</label><input class="finput" id="fCity" type="text" placeholder="Johannesburg"></div></div>
+          <div class="fg2">
+            <div class="fg"><label class="flbl">Suburb</label><input class="finput" id="fSuburb" type="text" placeholder="Lenasia South"></div>
+            <div class="fg"><label class="flbl">City</label><input class="finput" id="fCity" type="text" placeholder="Johannesburg"></div>
+          </div>
           <div class="fg" style="margin-top:1rem"><label class="flbl">Postal Code</label><input class="finput" id="fPostal" type="text" placeholder="1829"></div>
           <div class="fg"><label class="flbl">Delivery Notes</label><input class="finput" id="fNotes" type="text" placeholder="Gate code, floor, landmark…"></div>
         </div>
-        <div id="pickupSec" style="display:none"><div style="background:var(--gray-100);border-radius:16px;padding:1.8rem;text-align:center"><div style="font-size:2.5rem;margin-bottom:.8rem">🏪</div><div style="font-family:var(--font-d);font-size:1.1rem;font-weight:700;margin-bottom:.4rem">Food By K Store</div><div style="font-size:.85rem;color:var(--gray-500);line-height:1.7">8513 Goshawk Street, Lenasia South<br>Johannesburg, 1829<br>Open: Mon–Sun · 10:00 – 22:00</div></div></div>
-        <div class="ck-actions"><button class="btn-back" onclick="ckPrev()"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button><button class="btn-next" onclick="ckNext()">Continue<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+        <div id="pickupSec" style="display:none">
+          <div style="background:var(--gray-100);border-radius:16px;padding:1.8rem;text-align:center">
+            <div style="font-size:2.5rem;margin-bottom:.8rem">🏪</div>
+            <div style="font-family:var(--font-d);font-size:1.1rem;font-weight:700;margin-bottom:.4rem">Food By K Store</div>
+            <div style="font-size:.85rem;color:var(--gray-500);line-height:1.7">8513 Goshawk Street, Lenasia South<br>Johannesburg, 1829<br>Open: Mon–Sun · 10:00 – 22:00</div>
+          </div>
+        </div>
+        <div class="ck-actions">
+          <button class="btn-back" onclick="ckPrev()"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
+          <button class="btn-next" onclick="ckNext()">Continue<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
       </div>
       <div class="ck-step" id="ckS3">
         <div class="mini-sum"><div class="mini-sum-ttl">Order Summary</div><div id="miniItems"></div><div class="mini-total"><span>Total</span><span id="miniTot"></span></div></div>
@@ -1219,9 +1060,12 @@ customElements.define("ffxp-restaurant-feature", FFXPRestaurantFeature);
         <div class="pay-opts">
           <div class="p-opt sel" onclick="selPay(this,'cash')"><div class="radio"><div class="radio-dot"></div></div><div class="p-icon">💵</div><div><div class="p-name">Cash on Delivery</div><div class="p-desc">Pay cash when your order arrives</div></div></div>
           <div class="p-opt" onclick="selPay(this,'card')"><div class="radio"><div class="radio-dot"></div></div><div class="p-icon">💳</div><div><div class="p-name">Card on Delivery</div><div class="p-desc">Swipe or tap when the driver arrives</div></div></div>
-          <div class="p-opt" onclick="selPay(this,'eft')"><div class="radio"><div class="radio-dot"></div></div><div class="p-icon">📱</div><div><div class="p-name">EFT / Bank Transfer</div><div class="p-desc">Send proof of payment via WhatsApp</div></div></div>
+          <div class="p-opt" onclick="selPay(this,'eft')"><div class="radio"><div class="radio-dot"></div></div><div class="p-icon">📱</div><div><div class="p-name">EFT / Bank Transfer</div><div class="p-desc">Proof of payment via email</div></div></div>
         </div>
-        <div class="ck-actions"><button class="btn-back" onclick="ckPrev()"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button><button class="btn-next btn-place" onclick="placeOrder()">Place Order 🎉</button></div>
+        <div class="ck-actions">
+          <button class="btn-back" onclick="ckPrev()"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
+          <button class="btn-next btn-place" onclick="placeOrder()">Place Order 🎉</button>
+        </div>
       </div>
       <div class="ck-success" id="ckSucc">
         <div class="success-circle"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -1239,8 +1083,11 @@ customElements.define("ffxp-restaurant-feature", FFXPRestaurantFeature);
 </button>
 <div class="toasts" id="toasts"></div>
 
-<script>
-/* ── DATA ───────────────────────────────── */
+<!-- ══════════════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════════════ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ── DATA ─────────────────────────────────────────────── */
 const CATS=[
   {id:'ribs',    label:'Ribs'},
   {id:'burgers', label:'Burgers'},
@@ -1250,158 +1097,525 @@ const CATS=[
   {id:'drinks',  label:'Drinks'},
 ];
 const ITEMS=[
-  {id:1,cat:'ribs',name:'Baby Back Ribs — Full Rack',price:220,img:'https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80',desc:'Slow-cooked fall-off-the-bone pork ribs glazed in our signature BBQ sauce. Paired with your choice of sides.',opts:{'Sauce':['Signature BBQ','Honey Mustard','Peri-Peri','Garlic Butter'],'Sides':['Coleslaw','Loaded Fries','Corn on the Cob','Garden Salad'],'Spice Level':['Mild','Medium','Hot','Xtra Hot']}},
-  {id:2,cat:'ribs',name:'Baby Back Ribs — Half Rack',price:130,img:'https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80',desc:'Half rack of our legendary slow-cooked pork ribs. Perfect for one. Tender, smoky, deeply satisfying.',opts:{'Sauce':['Signature BBQ','Honey Mustard','Peri-Peri'],'Sides':['Coleslaw','Loaded Fries','Corn on the Cob'],'Spice Level':['Mild','Medium','Hot','Xtra Hot']}},
-  {id:3,cat:'ribs',name:'Smoked Beef Short Ribs',price:260,img:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=900&q=80',desc:'Thick-cut beef short ribs smoked low and slow over wood chips. Colossal in size, incredible in flavour.',opts:{'Sauce':['Smoky Chipotle','Classic BBQ','Peri-Peri'],'Spice Level':['Mild','Medium','Hot']}},
-  {id:4,cat:'burgers',name:'Classic Beef Smash Burger',price:95,img:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80',desc:'Two smashed beef patties, American cheese, pickles, caramelised onions, and legendary K-sauce on a toasted brioche bun.',opts:{'Patties':['Single','Double','Triple'],'Cheese':['American','Cheddar','Pepper Jack','None'],'Extras':['Bacon +R15','Avocado +R15','Extra Sauce'],'Spice Level':['Mild','Medium','Hot']}},
-  {id:5,cat:'burgers',name:'BBQ Bacon Burger',price:115,img:'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=900&q=80',desc:'Beef patty, crispy bacon, BBQ sauce, pickled jalapeños, cheddar cheese, fresh lettuce and ripe tomato.',opts:{'Patties':['Single','Double'],'Spice Level':['Mild','Medium','Hot']}},
-  {id:6,cat:'burgers',name:'Mushroom & Swiss Burger',price:110,img:'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=900&q=80',desc:'Beef patty, sautéed garlic mushrooms, melted Swiss cheese, truffle mayo, fresh greens on a sesame bun.',opts:{'Patties':['Single','Double'],'Extras':['Extra Mushrooms','Extra Cheese']}},
-  {id:7,cat:'burgers',name:'The K Special Burger',price:145,img:'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=900&q=80',desc:'Our signature loaded tower — double patty, crispy bacon, fried egg, cheese, caramelised onions, and secret K-sauce.',opts:{'Spice Level':['Mild','Medium','Hot','Xtra Hot'],'Extras':['Extra Bacon +R15','Avocado +R15']}},
-  {id:8,cat:'wraps',name:'Grilled Steak Wrap',price:105,img:'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=900&q=80',desc:'Tender ribeye steak strips, peri-peri drizzle, mixed greens, garlic cream sauce in a warm toasted flour tortilla.',opts:{'Sauce':['Peri-Peri','Garlic Butter','BBQ','Chilli'],'Extras':['Extra Steak +R20','Add Cheese','Jalapeños'],'Spice Level':['Mild','Medium','Hot','Xtra Hot']}},
-  {id:9,cat:'wraps',name:'Crispy Chicken Wrap',price:90,img:'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=900&q=80',desc:'Golden crispy fried chicken strips, creamy coleslaw, pickles, sweet sriracha honey drizzle, wrapped tight.',opts:{'Sauce':['Sriracha Honey','BBQ','Peri-Peri','Plain'],'Spice Level':['Mild','Medium','Hot']}},
-  {id:10,cat:'wraps',name:'BBQ Sausage Wrap',price:80,img:'https://images.unsplash.com/photo-1555072956-7758afb20e8f?w=900&q=80',desc:'Chargrilled beef sausage, caramelised onions, tangy BBQ sauce, and crunchy pickles in a warm tortilla.',opts:{'Sauce':['BBQ','Mustard','Peri-Peri'],'Spice Level':['Mild','Medium','Hot']}},
-  {id:11,cat:'chicken',name:'Crispy Fried Chicken — 3pcs',price:85,img:'https://images.unsplash.com/photo-1562967914-608f82629710?w=900&q=80',desc:'Three pieces of our golden, juicy, perfectly crispy-coated fried chicken. Seasoned to absolute perfection.',opts:{'Flavour':['Original','Peri-Peri','Honey BBQ','Lemon Herb'],'Sides':['Fries','Coleslaw','Corn'],'Spice Level':['Mild','Medium','Hot','Xtra Hot']}},
-  {id:12,cat:'chicken',name:'Fried Chicken — 6pcs Bucket',price:155,img:'https://images.unsplash.com/photo-1606728035253-49e8a23146de?w=900&q=80',desc:"Six pieces of our legendary fried chicken. Great for sharing — if you're actually willing to share.",opts:{'Flavour':['Original','Peri-Peri','Honey BBQ','Lemon Herb'],'Spice Level':['Mild','Medium','Hot','Xtra Hot']}},
-  {id:13,cat:'chicken',name:'Grilled Chicken Strips',price:90,img:'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=900&q=80',desc:'Marinated chicken breast strips grilled to juicy perfection. Served with your choice of dipping sauce.',opts:{'Marinade':['Peri-Peri','Garlic Herb','Honey Mustard','Plain'],'Dip':['BBQ','Garlic Mayo','Sweet Chilli']}},
-  {id:14,cat:'sides',name:'Loaded Cheese Fries',price:60,img:'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=900&q=80',desc:'Crispy golden fries smothered in house-made cheese sauce, pickled jalapeños, and crispy bacon bits.',opts:{'Extras':['Extra Bacon +R10','Sour Cream','Guacamole +R15']}},
-  {id:15,cat:'sides',name:'Classic Fries',price:35,img:'https://images.unsplash.com/photo-1576107232684-1279f390859f?w=900&q=80',desc:'Perfectly golden, lightly salted hand-cut fries. Simple, flawless, criminally addictive.',opts:{'Size':['Regular','Large','XL'],'Seasoning':['Classic Salt','Paprika','Peri-Peri Salt']}},
-  {id:16,cat:'sides',name:'Grilled Sausages — 2pcs',price:75,img:'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=900&q=80',desc:'Thick, juicy pure beef sausages charred on the grill, served with caramelised onions and your choice of sauce.',opts:{'Sauce':['Mustard','BBQ','Peri-Peri','Tomato'],'Extras':['Caramelised Onions','Cheese Sauce']}},
-  {id:17,cat:'sides',name:'Onion Rings',price:40,img:'https://images.unsplash.com/photo-1639024471283-03518883512d?w=900&q=80',desc:'Beer-battered golden onion rings. Crispy on the outside, sweet and tender within.',opts:{'Dip':['Ranch','BBQ','Sweet Chilli','Garlic Mayo']}},
-  {id:18,cat:'drinks',name:'Craft Lemonade',price:30,img:'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=900&q=80',desc:'Hand-squeezed fresh lemonade with garden mint and a touch of honey. Refreshing, premium, utterly delicious.',opts:{'Size':['Regular','Large'],'Flavour':['Classic','Strawberry','Mango','Mint']}},
-  {id:19,cat:'drinks',name:'Thick Milkshake',price:55,img:'https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=900&q=80',desc:'Thick, creamy hand-blended milkshakes made with premium ice cream. Rich, indulgent, absolutely worth it.',opts:{'Flavour':['Chocolate','Vanilla','Strawberry','Salted Caramel','Peanut Butter'],'Size':['Regular','Large']}},
-  {id:20,cat:'drinks',name:'Soft Drinks',price:20,img:'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80',desc:'Ice-cold canned soft drinks to pair perfectly with your meal.',opts:{'Choice':['Coca-Cola','Sprite','Fanta Orange','Fanta Grape','Cream Soda','Still Water']}},
-  {id:21,cat:'drinks',name:'Fresh Fruit Juice',price:35,img:'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=900&q=80',desc:'100% natural fresh-pressed fruit juice. No added sugar, no preservatives — just pure fruit.',opts:{'Flavour':['Orange','Apple','Watermelon','Mixed Tropical'],'Size':['Small','Large']}},
+  {id:1,cat:'ribs',name:'Baby Back Ribs — Full Rack',price:220,
+   img:'https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80',
+   desc:'Slow-cooked fall-off-the-bone pork ribs glazed in our signature BBQ sauce. Paired with your choice of sides.',
+   opts:[
+     {type:'select',label:'Sauce',choices:['Signature BBQ','Honey Mustard','Peri-Peri','Garlic Butter']},
+     {type:'select',label:'Side',choices:['Coleslaw','Loaded Fries','Corn on the Cob','Garden Salad']},
+     {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot','Xtra Hot']},
+   ]},
+  {id:2,cat:'ribs',name:'Baby Back Ribs — Half Rack',price:130,
+   img:'https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80',
+   desc:'Half rack of our legendary slow-cooked pork ribs. Perfect for one.',
+   opts:[
+     {type:'select',label:'Sauce',choices:['Signature BBQ','Honey Mustard','Peri-Peri']},
+     {type:'select',label:'Side',choices:['Coleslaw','Loaded Fries','Corn on the Cob']},
+     {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot','Xtra Hot']},
+   ]},
+  {id:3,cat:'ribs',name:'Smoked Beef Short Ribs',price:260,
+   img:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=900&q=80',
+   desc:'Thick-cut beef short ribs smoked low and slow over wood chips.',
+   opts:[
+     {type:'select',label:'Sauce',choices:['Smoky Chipotle','Classic BBQ','Peri-Peri']},
+     {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot']},
+   ]},
+  {id:4,cat:'burgers',name:'Classic Beef Smash Burger',price:95,
+   img:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80',
+   desc:'Two smashed beef patties, American cheese, pickles, caramelised onions, K-sauce on a toasted brioche bun.',
+   opts:[
+     {type:'select',label:'Patties',choices:['Single','Double','Triple']},
+     {type:'select',label:'Cheese',choices:['American','Cheddar','Pepper Jack','None']},
+     {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot']},
+     {type:'add',label:'Extras',choices:['Bacon +R15','Avocado +R15','Extra Sauce']},
+   ]},
+  {id:5,cat:'burgers',name:'BBQ Bacon Burger',price:115,
+   img:'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=900&q=80',
+   desc:'Beef patty, crispy bacon, BBQ sauce, pickled jalapeños, cheddar, fresh lettuce and ripe tomato.',
+   opts:[
+     {type:'select',label:'Patties',choices:['Single','Double']},
+     {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot']},
+   ]},
+  {id:6,cat:'burgers',name:'Mushroom & Swiss Burger',price:110,
+   img:'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=900&q=80',
+   desc:'Beef patty, sautéed garlic mushrooms, melted Swiss cheese, truffle mayo, fresh greens.',
+   opts:[
+     {type:'select',label:'Patties',choices:['Single','Double']},
+     {type:'add',label:'Extras',choices:['Extra Mushrooms','Extra Cheese']},
+   ]},
+  {id:7,cat:'burgers',name:'The K Special Burger',price:145,
+   img:'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=900&q=80',
+   desc:'Double patty, crispy bacon, fried egg, cheese, caramelised onions, secret K-sauce.',
+   opts:[
+     {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot','Xtra Hot']},
+     {type:'add',label:'Extras',choices:['Extra Bacon +R15','Avocado +R15']},
+   ]},
+  {id:8,cat:'wraps',name:'Grilled Steak Wrap',price:105,
+   img:'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=900&q=80',
+   desc:'Tender ribeye steak strips, peri-peri drizzle, mixed greens, garlic cream sauce in a toasted flour tortilla.',
+   opts:[
+     {type:'select',label:'Sauce',choices:['Peri-Peri','Garlic Butter','BBQ','Chilli']},
+     {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot','Xtra Hot']},
+     {type:'add',label:'Extras',choices:['Extra Steak +R20','Add Cheese','Jalapeños']},
+   ]},
+  {id:9,cat:'wraps',name:'Crispy Chicken Wrap',price:90,
+   img:'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=900&q=80',
+   desc:'Golden crispy chicken strips, creamy coleslaw, pickles, sweet sriracha honey drizzle.',
+   opts:[
+     {type:'select',label:'Sauce',choices:['Sriracha Honey','BBQ','Peri-Peri','Plain']},
+     {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot']},
+   ]},
+  {id:10,cat:'wraps',name:'BBQ Sausage Wrap',price:80,
+   img:'https://images.unsplash.com/photo-1555072956-7758afb20e8f?w=900&q=80',
+   desc:'Chargrilled beef sausage, caramelised onions, tangy BBQ sauce, crunchy pickles in a warm tortilla.',
+   opts:[
+     {type:'select',label:'Sauce',choices:['BBQ','Mustard','Peri-Peri']},
+     {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot']},
+   ]},
+  {id:11,cat:'chicken',name:'Crispy Fried Chicken — 3pcs',price:85,
+   img:'https://images.unsplash.com/photo-1562967914-608f82629710?w=900&q=80',
+   desc:'Three pieces of our golden, juicy, perfectly crispy-coated fried chicken.',
+   opts:[
+     {type:'select',label:'Flavour',choices:['Original','Peri-Peri','Honey BBQ','Lemon Herb']},
+     {type:'select',label:'Side',choices:['Fries','Coleslaw','Corn']},
+     {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot','Xtra Hot']},
+   ]},
+  {id:12,cat:'chicken',name:'Fried Chicken — 6pcs Bucket',price:155,
+   img:'https://images.unsplash.com/photo-1606728035253-49e8a23146de?w=900&q=80',
+   desc:'Six pieces of our legendary fried chicken. Great for sharing.',
+   opts:[
+     {type:'select',label:'Flavour',choices:['Original','Peri-Peri','Honey BBQ','Lemon Herb']},
+     {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot','Xtra Hot']},
+   ]},
+  {id:13,cat:'chicken',name:'Grilled Chicken Strips',price:90,
+   img:'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=900&q=80',
+   desc:'Marinated chicken breast strips grilled to juicy perfection. Served with dipping sauce.',
+   opts:[
+     {type:'select',label:'Marinade',choices:['Peri-Peri','Garlic Herb','Honey Mustard','Plain']},
+     {type:'select',label:'Dip',choices:['BBQ','Garlic Mayo','Sweet Chilli']},
+   ]},
+  {id:14,cat:'sides',name:'Loaded Cheese Fries',price:60,
+   img:'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=900&q=80',
+   desc:'Crispy golden fries smothered in house-made cheese sauce, jalapeños, and crispy bacon bits.',
+   opts:[
+     {type:'add',label:'Extras',choices:['Extra Bacon +R10','Sour Cream','Guacamole +R15']},
+   ]},
+  {id:15,cat:'sides',name:'Classic Fries',price:35,
+   img:'https://images.unsplash.com/photo-1576107232684-1279f390859f?w=900&q=80',
+   desc:'Perfectly golden, lightly salted hand-cut fries.',
+   opts:[
+     {type:'select',label:'Size',choices:['Regular','Large','XL']},
+     {type:'select',label:'Seasoning',choices:['Classic Salt','Paprika','Peri-Peri Salt']},
+   ]},
+  {id:16,cat:'sides',name:'Grilled Sausages — 2pcs',price:75,
+   img:'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=900&q=80',
+   desc:'Thick, juicy pure beef sausages charred on the grill.',
+   opts:[
+     {type:'select',label:'Sauce',choices:['Mustard','BBQ','Peri-Peri','Tomato']},
+     {type:'add',label:'Extras',choices:['Caramelised Onions','Cheese Sauce']},
+   ]},
+  {id:17,cat:'sides',name:'Onion Rings',price:40,
+   img:'https://images.unsplash.com/photo-1639024471283-03518883512d?w=900&q=80',
+   desc:'Beer-battered golden onion rings. Crispy on the outside, sweet within.',
+   opts:[
+     {type:'select',label:'Dip',choices:['Ranch','BBQ','Sweet Chilli','Garlic Mayo']},
+   ]},
+  {id:18,cat:'drinks',name:'Craft Lemonade',price:30,
+   img:'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=900&q=80',
+   desc:'Hand-squeezed fresh lemonade with garden mint and a touch of honey.',
+   opts:[
+     {type:'select',label:'Size',choices:['Regular','Large']},
+     {type:'select',label:'Flavour',choices:['Classic','Strawberry','Mango','Mint']},
+   ]},
+  {id:19,cat:'drinks',name:'Thick Milkshake',price:55,
+   img:'https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=900&q=80',
+   desc:'Thick, creamy hand-blended milkshakes made with premium ice cream.',
+   opts:[
+     {type:'select',label:'Flavour',choices:['Chocolate','Vanilla','Strawberry','Salted Caramel','Peanut Butter']},
+     {type:'select',label:'Size',choices:['Regular','Large']},
+   ]},
+  {id:20,cat:'drinks',name:'Soft Drinks',price:20,
+   img:'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=900&q=80',
+   desc:'Ice-cold canned soft drinks.',
+   opts:[
+     {type:'select',label:'Choice',choices:['Coca-Cola','Sprite','Fanta Orange','Fanta Grape','Cream Soda','Still Water']},
+   ]},
+  {id:21,cat:'drinks',name:'Fresh Fruit Juice',price:35,
+   img:'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=900&q=80',
+   desc:'100% natural fresh-pressed fruit juice. No added sugar, no preservatives.',
+   opts:[
+     {type:'select',label:'Flavour',choices:['Orange','Apple','Watermelon','Mixed Tropical']},
+     {type:'select',label:'Size',choices:['Small','Large']},
+   ]},
 ];
 
-/* ── STATE ──────────────────────────────── */
-let cart=[],curItem=null,curQty=1,curSel={},ckStep=1,delivMethod='delivery',payMethod='cash';
 
-/* ── HELPERS ────────────────────────────── */
+/* ── PRODUCT INFO DATA ─────────────────────────────────── */
+const ITEM_INFO = {
+  1: { // Baby Back Ribs Full Rack
+    ingredients: 'Pork baby back ribs, brown sugar, paprika, garlic powder, onion powder, black pepper, salt, apple cider vinegar, Worcestershire sauce, tomato paste, honey.',
+    allergens: ['Gluten (Worcestershire sauce)', 'Soy', 'Sulphites'],
+    nutrition: [{label:'Calories',val:'820 kcal'},{label:'Protein',val:'68g'},{label:'Total Fat',val:'42g'},{label:'Saturated Fat',val:'15g'},{label:'Carbohydrates',val:'38g'},{label:'Sugar',val:'22g'},{label:'Sodium',val:'980mg'}],
+    bestWith: ['A cold craft lemonade', 'Loaded Cheese Fries on the side', 'After a long day — ultimate comfort', 'Sharing with family on weekends', 'Paired with Coleslaw to balance richness'],
+  },
+  2: { // Baby Back Ribs Half Rack
+    ingredients: 'Pork baby back ribs, brown sugar, paprika, garlic powder, onion powder, black pepper, salt, apple cider vinegar, Worcestershire sauce, tomato paste, honey.',
+    allergens: ['Gluten', 'Soy', 'Sulphites'],
+    nutrition: [{label:'Calories',val:'480 kcal'},{label:'Protein',val:'38g'},{label:'Total Fat',val:'24g'},{label:'Saturated Fat',val:'8g'},{label:'Carbohydrates',val:'20g'},{label:'Sugar',val:'12g'},{label:'Sodium',val:'560mg'}],
+    bestWith: ['Classic Fries', 'A cold Soft Drink', 'Quick lunch or solo dinner'],
+  },
+  3: { // Beef Short Ribs
+    ingredients: 'Beef short ribs, smoked paprika, garlic, onion, black pepper, sea salt, brown sugar, apple wood chips for smoking, tomato base sauce.',
+    allergens: ['Soy (sauce)'],
+    nutrition: [{label:'Calories',val:'940 kcal'},{label:'Protein',val:'72g'},{label:'Total Fat',val:'58g'},{label:'Saturated Fat',val:'22g'},{label:'Carbohydrates',val:'18g'},{label:'Sugar',val:'10g'},{label:'Sodium',val:'1100mg'}],
+    bestWith: ['Craft Lemonade to cut through the richness', 'Corn on the Cob', 'Special occasions and celebrations'],
+  },
+  4: { // Classic Beef Smash Burger
+    ingredients: 'Beef patty (80/20 blend), brioche bun, American cheese, gherkins, caramelised onions, lettuce, tomato, K-sauce (mayo, ketchup, mustard, relish).',
+    allergens: ['Gluten (bun)', 'Dairy (cheese)', 'Eggs (mayo)', 'Mustard'],
+    nutrition: [{label:'Calories',val:'680 kcal'},{label:'Protein',val:'42g'},{label:'Total Fat',val:'36g'},{label:'Saturated Fat',val:'14g'},{label:'Carbohydrates',val:'52g'},{label:'Sugar',val:'8g'},{label:'Sodium',val:'820mg'}],
+    bestWith: ['Classic Fries or Loaded Fries', 'A Thick Milkshake', 'Game day or weekend treat', 'Paired with Onion Rings'],
+  },
+  5: { // BBQ Bacon Burger
+    ingredients: 'Beef patty, brioche bun, streaky bacon, cheddar cheese, BBQ sauce, pickled jalapeños, fresh lettuce, ripe tomato.',
+    allergens: ['Gluten (bun)', 'Dairy', 'Eggs', 'Mustard (BBQ sauce)'],
+    nutrition: [{label:'Calories',val:'760 kcal'},{label:'Protein',val:'48g'},{label:'Total Fat',val:'42g'},{label:'Saturated Fat',val:'16g'},{label:'Carbohydrates',val:'56g'},{label:'Sugar',val:'12g'},{label:'Sodium',val:'960mg'}],
+    bestWith: ['Classic Fries', 'Craft Lemonade', 'When you want something bold and smoky'],
+  },
+  6: { // Mushroom Swiss Burger
+    ingredients: 'Beef patty, brioche bun, sautéed garlic mushrooms, Swiss cheese, truffle mayo, mixed greens, tomato.',
+    allergens: ['Gluten (bun)', 'Dairy (cheese)', 'Eggs (mayo)'],
+    nutrition: [{label:'Calories',val:'640 kcal'},{label:'Protein',val:'38g'},{label:'Total Fat',val:'34g'},{label:'Saturated Fat',val:'13g'},{label:'Carbohydrates',val:'48g'},{label:'Sugar',val:'5g'},{label:'Sodium',val:'700mg'}],
+    bestWith: ['A light side salad', 'Fresh Fruit Juice', 'Date night or a more refined burger craving'],
+  },
+  7: { // K Special Burger
+    ingredients: 'Double beef patty (80/20), brioche bun, streaky bacon, fried egg, cheddar cheese, caramelised onions, special K-sauce.',
+    allergens: ['Gluten (bun)', 'Dairy', 'Eggs', 'Mustard'],
+    nutrition: [{label:'Calories',val:'920 kcal'},{label:'Protein',val:'62g'},{label:'Total Fat',val:'54g'},{label:'Saturated Fat',val:'20g'},{label:'Carbohydrates',val:'58g'},{label:'Sugar',val:'10g'},{label:'Sodium',val:'1080mg'}],
+    bestWith: ['Loaded Cheese Fries', 'A Thick Milkshake', 'When you are seriously hungry', 'The ultimate Food By K experience'],
+  },
+  8: { // Grilled Steak Wrap
+    ingredients: 'Ribeye steak strips, flour tortilla, peri-peri sauce, mixed greens, garlic cream sauce, fresh herbs.',
+    allergens: ['Gluten (tortilla)', 'Dairy (cream sauce)', 'Eggs'],
+    nutrition: [{label:'Calories',val:'580 kcal'},{label:'Protein',val:'44g'},{label:'Total Fat',val:'26g'},{label:'Saturated Fat',val:'10g'},{label:'Carbohydrates',val:'46g'},{label:'Sugar',val:'4g'},{label:'Sodium',val:'740mg'}],
+    bestWith: ['Classic Fries', 'Craft Lemonade', 'Lunch on the go', 'After gym — high protein meal'],
+  },
+  9: { // Crispy Chicken Wrap
+    ingredients: 'Chicken breast, flour tortilla, seasoned breadcrumbs, coleslaw (cabbage, carrot, mayo), pickles, sriracha honey drizzle.',
+    allergens: ['Gluten (tortilla + crumbs)', 'Eggs (mayo)', 'Mustard'],
+    nutrition: [{label:'Calories',val:'520 kcal'},{label:'Protein',val:'36g'},{label:'Total Fat',val:'22g'},{label:'Saturated Fat',val:'6g'},{label:'Carbohydrates',val:'50g'},{label:'Sugar',val:'8g'},{label:'Sodium',val:'680mg'}],
+    bestWith: ['Classic Fries', 'Still Water or Fresh Juice', 'Quick satisfying lunch', 'Kids and adults alike'],
+  },
+  10: { // BBQ Sausage Wrap
+    ingredients: 'Pure beef sausage, flour tortilla, caramelised onions, BBQ sauce, dill pickles.',
+    allergens: ['Gluten (tortilla + sausage casing)', 'Mustard (BBQ sauce)', 'Sulphites'],
+    nutrition: [{label:'Calories',val:'480 kcal'},{label:'Protein',val:'28g'},{label:'Total Fat',val:'24g'},{label:'Saturated Fat',val:'9g'},{label:'Carbohydrates',val:'44g'},{label:'Sugar',val:'10g'},{label:'Sodium',val:'720mg'}],
+    bestWith: ['Classic Fries', 'Soft Drink', 'A no-fuss, filling meal any time'],
+  },
+  11: { // Crispy Chicken 3pcs
+    ingredients: 'Chicken pieces (drumstick, thigh, wing), seasoned flour coating (flour, paprika, garlic, black pepper, salt), buttermilk marinade, vegetable oil for frying.',
+    allergens: ['Gluten (flour)', 'Dairy (buttermilk)'],
+    nutrition: [{label:'Calories',val:'620 kcal'},{label:'Protein',val:'46g'},{label:'Total Fat',val:'32g'},{label:'Saturated Fat',val:'8g'},{label:'Carbohydrates',val:'38g'},{label:'Sugar',val:'1g'},{label:'Sodium',val:'780mg'}],
+    bestWith: ['Coleslaw to balance the crunch', 'Craft Lemonade', 'Family dinner or share box', 'Game day snacking'],
+  },
+  12: { // 6pcs Bucket
+    ingredients: 'Chicken pieces, seasoned flour coating (flour, paprika, garlic, black pepper, salt), buttermilk marinade, vegetable oil for frying.',
+    allergens: ['Gluten (flour)', 'Dairy (buttermilk)'],
+    nutrition: [{label:'Calories',val:'1240 kcal (full bucket)'},{label:'Protein',val:'92g'},{label:'Total Fat',val:'64g'},{label:'Saturated Fat',val:'16g'},{label:'Carbohydrates',val:'76g'},{label:'Sugar',val:'2g'},{label:'Sodium',val:'1560mg'}],
+    bestWith: ['Sharing with 2–3 people', 'Loaded Fries on the side', 'A Thick Milkshake or Soft Drink', 'Family gatherings or a big appetite'],
+  },
+  13: { // Grilled Chicken Strips
+    ingredients: 'Chicken breast, peri-peri marinade (chilli, garlic, lemon, olive oil, herbs), served with dipping sauce of choice.',
+    allergens: ['None (plain) — check chosen dip'],
+    nutrition: [{label:'Calories',val:'320 kcal'},{label:'Protein',val:'52g'},{label:'Total Fat',val:'10g'},{label:'Saturated Fat',val:'2g'},{label:'Carbohydrates',val:'6g'},{label:'Sugar',val:'2g'},{label:'Sodium',val:'480mg'}],
+    bestWith: ['Garden Salad for a light meal', 'Post-workout high-protein option', 'Fresh Fruit Juice', 'As a starter before ribs or a burger'],
+  },
+  14: { // Loaded Cheese Fries
+    ingredients: 'Hand-cut potatoes, vegetable oil, house-made cheese sauce (cheddar, cream, butter, flour), pickled jalapeños, crispy bacon bits, seasoning.',
+    allergens: ['Gluten (flour in sauce)', 'Dairy (cheese sauce)', 'Pork (bacon)'],
+    nutrition: [{label:'Calories',val:'640 kcal'},{label:'Protein',val:'18g'},{label:'Total Fat',val:'36g'},{label:'Saturated Fat',val:'14g'},{label:'Carbohydrates',val:'68g'},{label:'Sugar',val:'4g'},{label:'Sodium',val:'920mg'}],
+    bestWith: ['Any burger', 'Fried Chicken', 'While watching sport', 'Sharing between two'],
+  },
+  15: { // Classic Fries
+    ingredients: 'Hand-cut potatoes, vegetable oil, sea salt (or chosen seasoning).',
+    allergens: ['None (plain) — may contain traces of gluten'],
+    nutrition: [{label:'Calories',val:'320 kcal'},{label:'Protein',val:'4g'},{label:'Total Fat',val:'14g'},{label:'Saturated Fat',val:'2g'},{label:'Carbohydrates',val:'46g'},{label:'Sugar',val:'1g'},{label:'Sodium',val:'380mg'}],
+    bestWith: ['Every burger and wrap', 'Dipping in K-sauce or garlic mayo', 'Any time of day'],
+  },
+  16: { // Grilled Sausages
+    ingredients: 'Pure beef sausages (beef, pork fat, salt, black pepper, coriander, nutmeg, natural casing), char-grilled.',
+    allergens: ['Gluten (casing binder)', 'Sulphites'],
+    nutrition: [{label:'Calories',val:'480 kcal'},{label:'Protein',val:'32g'},{label:'Total Fat',val:'36g'},{label:'Saturated Fat',val:'14g'},{label:'Carbohydrates',val:'6g'},{label:'Sugar',val:'1g'},{label:'Sodium',val:'820mg'}],
+    bestWith: ['Classic Fries and mustard', 'Onion Rings', 'A cold Soft Drink', 'Braai-style dinner at home'],
+  },
+  17: { // Onion Rings
+    ingredients: 'White onion, beer batter (flour, beer, salt, paprika), vegetable oil for frying.',
+    allergens: ['Gluten (flour + beer)', 'May contain traces of dairy'],
+    nutrition: [{label:'Calories',val:'360 kcal'},{label:'Protein',val:'6g'},{label:'Total Fat',val:'18g'},{label:'Saturated Fat',val:'3g'},{label:'Carbohydrates',val:'46g'},{label:'Sugar',val:'6g'},{label:'Sodium',val:'480mg'}],
+    bestWith: ['Burgers as a side swap', 'Ranch or garlic mayo dip', 'Sharing as a starter', 'Cold drinks on a hot day'],
+  },
+  18: { // Craft Lemonade
+    ingredients: 'Fresh-squeezed lemons, filtered water, honey, fresh mint, ice.',
+    allergens: ['None'],
+    nutrition: [{label:'Calories',val:'120 kcal'},{label:'Total Sugar',val:'28g'},{label:'Vitamin C',val:'High'},{label:'Sodium',val:'10mg'}],
+    bestWith: ['Ribs — cuts through the richness', 'Any meal on a hot day', 'Kids and adults', 'Spicy dishes to cool down'],
+  },
+  19: { // Thick Milkshake
+    ingredients: 'Premium ice cream (dairy, eggs, sugar), full-cream milk, flavour-specific additions (cocoa, strawberry, vanilla, caramel, peanut butter).',
+    allergens: ['Dairy (milk + ice cream)', 'Eggs', 'Peanuts (peanut butter flavour)', 'Gluten (traces)'],
+    nutrition: [{label:'Calories',val:'580 kcal'},{label:'Protein',val:'12g'},{label:'Total Fat',val:'22g'},{label:'Saturated Fat',val:'14g'},{label:'Sugar',val:'68g'},{label:'Sodium',val:'220mg'}],
+    bestWith: ['Burgers — the classic combo', 'After a meal as dessert', 'Kids love it', 'Weekend treat'],
+  },
+  20: { // Soft Drinks
+    ingredients: 'Carbonated water, sugar/sweetener, natural and artificial flavours, colour, preservatives. (Varies by brand — Coca-Cola, Sprite, Fanta, Cream Soda)',
+    allergens: ['None (check specific product)'],
+    nutrition: [{label:'Calories',val:'~140 kcal (330ml can)'},{label:'Sugar',val:'~35g'},{label:'Sodium',val:'~40mg'}],
+    bestWith: ['Every meal', 'Fried Chicken', 'Burgers and fries', 'Anytime you need refreshment'],
+  },
+  21: { // Fresh Fruit Juice
+    ingredients: 'Freshly pressed seasonal fruit — orange, apple, watermelon or tropical blend. No added sugar, no preservatives.',
+    allergens: ['None'],
+    nutrition: [{label:'Calories',val:'~140 kcal (350ml)'},{label:'Total Sugar',val:'~30g (natural)'},{label:'Vitamin C',val:'High'},{label:'Fibre',val:'~1g'},{label:'Sodium',val:'~5mg'}],
+    bestWith: ['Grilled Chicken for a healthy meal', 'Breakfast or early lunch', 'Post-workout with Chicken Strips', 'Anytime you want something natural'],
+  },
+};
+
+/* ── STATE ─────────────────────────────────────────────── */
+let cart=[], curItem=null, curQty=1, curSel={}, curAdd=new Set();
+let ckStep=1, delivMethod='delivery', payMethod='cash';
+
+/* ── HELPERS ───────────────────────────────────────────── */
 function h(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function escRe(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
-function highlight(text,q){
-  if(!q)return h(text);
-  return h(text).replace(new RegExp('('+escRe(q)+')','gi'),'<mark class="hl">$1</mark>');
-}
+function highlight(text,q){if(!q)return h(text);return h(text).replace(new RegExp('('+escRe(q)+')','gi'),'<mark class="hl">$1</mark>')}
 
-/* ── INIT ───────────────────────────────── */
+/* ── INIT ──────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded',()=>{
   buildSidebar(); buildMenu(); initScrollSpy(); initNavScroll(); initSearch(); initBackTop();
   updateCartUI(); setDeliv('delivery');
 });
 
-/* ── SIDEBAR ────────────────────────────── */
+/* ── SIDEBAR ───────────────────────────────────────────── */
 function buildSidebar(){
-  document.getElementById('sbNav').innerHTML=CATS.map(c=>`
-    <li><a class="sb-item" data-cat="${c.id}" href="#cat-${c.id}" onclick="sbClick(event,'${c.id}')">${c.label}</a></li>
-  `).join('');
+  document.getElementById('sbNav').innerHTML=CATS.map(c=>
+    `<li><a class="sb-item" data-cat="${c.id}" href="#cat-${c.id}" onclick="sbClick(event,'${c.id}')">${c.label}</a></li>`
+  ).join('');
 }
 function sbClick(e,id){e.preventDefault();document.getElementById('cat-'+id)?.scrollIntoView({behavior:'smooth',block:'start'});}
 
-/* ── MENU ───────────────────────────────── */
+/* ── MENU BUILD ────────────────────────────────────────── */
 function buildMenu(){
   document.getElementById('menuContent').innerHTML=CATS.map(c=>{
     const items=ITEMS.filter(i=>i.cat===c.id);
     return`<section class="menu-section" id="cat-${c.id}">
-      <div class="sec-head"><div><div class="sec-cat-lbl">${c.label}</div><div class="sec-title">${c.label}</div></div></div>
+      <div class="sec-head">
+        <div class="sec-cat-lbl">${c.label}</div>
+        <div class="sec-title">${c.label}</div>
+      </div>
       <div class="prod-grid">${items.map(cardHTML).join('')}</div>
     </section>`;
   }).join('');
 }
 function cardHTML(item){
-  return`<div class="prod-card" onclick="openPDP(${item.id})">
+  return`<div class="prod-card" onclick="openPDP(${item.id})" role="button" tabindex="0" aria-label="${h(item.name)}, R${item.price}">
     <div class="prod-img-wrap"><img class="prod-img" src="${item.img}" alt="${h(item.name)}" loading="lazy"></div>
-    <div class="prod-body">
-      <div class="prod-cat">${item.cat}</div>
+    <div class="prod-info">
       <div class="prod-name">${h(item.name)}</div>
-      <div class="prod-desc">${h(item.desc)}</div>
-      <div class="prod-footer">
-        <div class="prod-price">R${item.price}</div>
-        <button class="add-btn" onclick="openPDP(${item.id});event.stopPropagation()" aria-label="View ${h(item.name)}">
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-      </div>
+      <div class="prod-price">R${item.price}</div>
     </div>
   </div>`;
 }
 
-/* ── PRODUCT DETAIL PAGE ────────────────── */
+/* ── PRODUCT DETAIL PAGE ───────────────────────────────── */
 function openPDP(id){
-  const item=ITEMS.find(i=>i.id===id);if(!item)return;
-  curItem=item;curQty=1;curSel={};
+  const item=ITEMS.find(i=>i.id===id); if(!item) return;
+  curItem=item; curQty=1; curSel={}; curAdd=new Set();
+
   const cat=CATS.find(c=>c.id===item.cat);
+
+  /* Hero */
   document.getElementById('pdpImg').src=item.img;
   document.getElementById('pdpImg').alt=item.name;
-  document.getElementById('pdpCat').textContent=cat?.label||item.cat;
   document.getElementById('pdpName').textContent=item.name;
-  document.getElementById('pdpPrice').innerHTML=`R${item.price}<span class="pdp-price-lbl">base price</span>`;
-  document.getElementById('pdpDesc').textContent=item.desc;
+  document.getElementById('pdpCatLabel').textContent=cat?.label||item.cat;
+  document.getElementById('pdpMeta').textContent=item.desc;
+  document.getElementById('pdpPriceTag').textContent=`R${item.price}`;
+
+  /* Footer bar */
+  document.getElementById('pdpFootName').textContent=item.name;
+  document.getElementById('pdpFootPrice').textContent=`R${item.price}`;
+
+  /* Note field */
   document.getElementById('pdpNote').value='';
+
+  /* Qty reset */
+  curQty=1;
   document.getElementById('qtyN').textContent=1;
-  document.getElementById('pdpBreadcrumb').innerHTML=`Menu &rsaquo; <span>${h(cat?.label||item.cat)}</span>`;
-
-  const optsEl=document.getElementById('pdpOpts');optsEl.innerHTML='';
-  Object.entries(item.opts||{}).forEach(([g,choices])=>{
-    if(!choices.length)return;
-    curSel[g]=choices[0];
-    const grp=document.createElement('div');
-    grp.innerHTML=`<div class="opt-title">${h(g)}<span class="opt-req">Required</span></div><div class="chips" id="pch_${g.replace(/\W/g,'_')}"></div>`;
-    optsEl.appendChild(grp);
-    const chipsEl=grp.querySelector('.chips');
-    choices.forEach((ch,i)=>{
-      const el=document.createElement('div');
-      el.className='chip'+(i===0?' sel':'');
-      el.textContent=ch;
-      el.addEventListener('click',()=>{chipsEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('sel'));el.classList.add('sel');curSel[g]=ch;});
-      chipsEl.appendChild(el);
-    });
-  });
-
   updSub();
-  document.querySelector('.pdp-body').scrollTop=0;
+
+  /* Build left column: all option groups */
+  const colLeft=document.getElementById('pdpColLeft');
+  colLeft.innerHTML='';
+
+  if(item.opts && item.opts.length){
+    const selOpts=item.opts.filter(o=>o.type==='select');
+    const addOpts=item.opts.filter(o=>o.type==='add');
+
+    if(selOpts.length){
+      const titleEl=document.createElement('div');
+      titleEl.className='opt-section-title';titleEl.textContent='Customise Your Order';
+      colLeft.appendChild(titleEl);
+
+      selOpts.forEach(opt=>{
+        curSel[opt.label]=opt.choices[0];
+        const grpEl=document.createElement('div');
+        grpEl.className='opt-group';
+        grpEl.innerHTML=`<div class="opt-group-label">${h(opt.label)}</div>
+          ${opt.choices.map((ch,i)=>`
+            <div class="opt-row${i===0?' sel':''}" onclick="selOpt(this,'${escJs(opt.label)}','${escJs(ch)}')">
+              <span class="opt-row-label">${h(ch)}</span>
+              <div class="opt-checkbox">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>`).join('')}`;
+        colLeft.appendChild(grpEl);
+      });
+    }
+
+    if(addOpts.length){
+      const titleEl=document.createElement('div');
+      titleEl.className='opt-section-title';titleEl.textContent='Extras & Add-ons';
+      colLeft.appendChild(titleEl);
+
+      addOpts.forEach(opt=>{
+        const grpEl=document.createElement('div');
+        grpEl.className='opt-group';
+        grpEl.innerHTML=`<div class="opt-group-label">${h(opt.label)}</div>
+          ${opt.choices.map(ch=>`
+            <div class="opt-row" onclick="toggleAdd(this,'${escJs(ch)}')">
+              <span class="opt-row-label">${h(ch)}</span>
+              <div class="opt-plus">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
+            </div>`).join('')}`;
+        colLeft.appendChild(grpEl);
+      });
+    }
+  } else {
+    colLeft.innerHTML=`<div style="color:var(--gray-500);font-size:.9rem;padding-top:.5rem">No customisation options for this item.</div>`;
+  }
+
+  /* Populate accordion info section */
+  const info = ITEM_INFO[id];
+  document.getElementById('pdpInfoName').textContent = item.name;
+  if(info){
+    // Ingredients
+    const allergenTags = info.allergens.map(a=>
+      `<span class="acc-tag${a.toLowerCase().includes('none')?'':' alert'}">${h(a)}</span>`
+    ).join('');
+    document.getElementById('accIngrContent').innerHTML=
+      `<p style="margin-bottom:.8rem">${h(info.ingredients)}</p>
+       <div style="font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.4rem">Allergens</div>
+       <div class="acc-tags">${allergenTags}</div>`;
+    // Nutrition
+    const calRow = info.nutrition.find(r=>r.label==='Calories');
+    const calBadge = calRow ? `<div class="nutr-cal-badge"><span class="nutr-cal-num">${h(calRow.val)}</span><span class="nutr-cal-lbl">per serving</span></div>` : '';
+    const rows = info.nutrition.map((r,i)=>
+      `<tr${i===0?' class="nutr-total"':''}><td>${h(r.label)}</td><td>${h(r.val)}</td></tr>`
+    ).join('');
+    document.getElementById('accNutrContent').innerHTML=
+      `${calBadge}<table class="nutr-table">${rows}</table>
+       <p class="nutr-disclaimer">Nutrition information is calculated based on our standard recipes. Because our products may be customised, exact information may vary.</p>`;
+    // Best with
+    const bwItems = info.bestWith.map(b=>`<div class="best-chip">${h(b)}</div>`).join('');
+    document.getElementById('accBestContent').innerHTML=
+      `<div class="best-with-grid">${bwItems}</div>`;
+  }
+
+  /* Scroll body to top */
+  document.getElementById('pdpScroll').scrollTop=0;
+
+  /* Open */
   document.getElementById('pdpOverlay').classList.add('open');
   document.getElementById('pdp').classList.add('open');
   document.body.style.overflow='hidden';
 }
+
+function escJs(t){return String(t).replace(/'/g,"\\'").replace(/\\/g,'\\\\')}
+
+function selOpt(el,group,choice){
+  /* Deselect siblings in same group */
+  const grp=el.closest('.opt-group');
+  grp.querySelectorAll('.opt-row').forEach(r=>r.classList.remove('sel'));
+  el.classList.add('sel');
+  curSel[group]=choice;
+}
+
+function toggleAdd(el,choice){
+  el.classList.toggle('sel');
+  if(el.classList.contains('sel')) curAdd.add(choice);
+  else curAdd.delete(choice);
+}
+
 function closePDP(){
   document.getElementById('pdpOverlay').classList.remove('open');
   document.getElementById('pdp').classList.remove('open');
   document.body.style.overflow='';
+  // Close all accordion items
+  document.querySelectorAll('.acc-item').forEach(i=>i.classList.remove('open'));
 }
-function cQty(d){curQty=Math.max(1,curQty+d);document.getElementById('qtyN').textContent=curQty;updSub();}
-function updSub(){if(curItem)document.getElementById('pdpSub').textContent=`R${curItem.price*curQty}`;}
+
+function toggleAcc(id){
+  const item=document.getElementById(id);
+  const isOpen=item.classList.contains('open');
+  // Close all, then open the clicked one if it was closed
+  document.querySelectorAll('.acc-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+function cQty(d){
+  curQty=Math.max(1,curQty+d);
+  document.getElementById('qtyN').textContent=curQty;
+  updSub();
+}
+function updSub(){
+  if(curItem){
+    const total=curItem.price*curQty;
+    document.getElementById('pdpSub').textContent=`R${total}`;
+    document.getElementById('pdpFootPrice').textContent=`R${total}`;
+  }
+}
+
 function addToCart(){
-  if(!curItem)return;
+  if(!curItem) return;
   const note=document.getElementById('pdpNote').value.trim();
-  const opts=Object.entries(curSel).map(([k,v])=>`${k}: ${v}`).join(' · ');
+  const selParts=Object.entries(curSel).map(([k,v])=>`${k}: ${v}`);
+  const addParts=[...curAdd];
+  const opts=[...selParts,...addParts].join(' · ');
   const key=`${curItem.id}|${opts}|${note}`;
   const ex=cart.find(c=>c.key===key);
-  if(ex){ex.qty+=curQty;}else{cart.push({key,id:curItem.id,name:curItem.name,img:curItem.img,price:curItem.price,qty:curQty,opts,note});}
-  updateCartUI();closePDP();
-  const b=document.getElementById('cartBadge');b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');
+  if(ex){ex.qty+=curQty;}
+  else{cart.push({key,id:curItem.id,name:curItem.name,img:curItem.img,price:curItem.price,qty:curQty,opts,note});}
+  updateCartUI();
+  closePDP();
+  const b=document.getElementById('cartBadge');
+  b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop');
   toast(`Added — ${curItem.name}`);
 }
 
-/* ── SEARCH ─────────────────────────────── */
+/* ── SEARCH ────────────────────────────────────────────── */
 let sTimer=null;
-
 function initSearch(){
   const inp=document.getElementById('navSearchInput');
   const dd=document.getElementById('searchDropdown');
-
   inp.addEventListener('input',()=>{clearTimeout(sTimer);sTimer=setTimeout(()=>runSearch(inp.value,document.getElementById('sdHeader'),document.getElementById('sdList'),dd),100);});
   inp.addEventListener('focus',()=>{if(inp.value.trim())dd.classList.add('active');});
   inp.addEventListener('keydown',(e)=>{if(e.key==='Escape'){dd.classList.remove('active');inp.value='';inp.blur();}});
   document.addEventListener('click',(e)=>{if(!e.target.closest('#navSearchWrap'))dd.classList.remove('active');});
-
   const mobInp=document.getElementById('mobSearchInput');
   const mobDd=document.getElementById('mobSearchDropdown');
-  mobInp.addEventListener('input',()=>{
-    clearTimeout(sTimer);
-    sTimer=setTimeout(()=>runSearch(mobInp.value,document.getElementById('mobSdHeader'),document.getElementById('mobSdList'),mobDd,true),100);
-  });
+  mobInp.addEventListener('input',()=>{clearTimeout(sTimer);sTimer=setTimeout(()=>runSearch(mobInp.value,document.getElementById('mobSdHeader'),document.getElementById('mobSdList'),mobDd,true),100);});
 }
-
 function runSearch(query,headerEl,listEl,dropdown,isMobile){
   const q=query.trim().toLowerCase();
   if(!q){dropdown.classList.remove('active');return;}
@@ -1409,7 +1623,7 @@ function runSearch(query,headerEl,listEl,dropdown,isMobile){
   if(!results.length){
     headerEl.textContent='No results found';
     listEl.innerHTML=`<div class="sd-empty">Nothing matched "<strong>${h(query)}</strong>"</div>`;
-  }else{
+  } else {
     headerEl.textContent=`${results.length} result${results.length!==1?'s':''} found`;
     listEl.innerHTML=results.map(item=>{
       const cat=CATS.find(c=>c.id===item.cat)?.label||item.cat;
@@ -1423,43 +1637,46 @@ function runSearch(query,headerEl,listEl,dropdown,isMobile){
   }
   dropdown.classList.add('active');
 }
+function openPDPDesk(id){document.getElementById('searchDropdown').classList.remove('active');document.getElementById('navSearchInput').value='';openPDP(id);}
+function openPDPMob(id){document.getElementById('mobSearchDropdown').classList.remove('active');document.getElementById('mobSearchInput').value='';closeMob();setTimeout(()=>openPDP(id),280);}
 
-function openPDPDesk(id){
-  document.getElementById('searchDropdown').classList.remove('active');
-  document.getElementById('navSearchInput').value='';
-  openPDP(id);
-}
-function openPDPMob(id){
-  document.getElementById('mobSearchDropdown').classList.remove('active');
-  document.getElementById('mobSearchInput').value='';
-  closeMob();
-  setTimeout(()=>openPDP(id),280);
-}
-
-/* ── SCROLL SPY ─────────────────────────── */
+/* ── SCROLL SPY ────────────────────────────────────────── */
 function initScrollSpy(){
   const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id.replace('cat-','');document.querySelectorAll('.sb-item').forEach(el=>el.classList.toggle('active',el.dataset.cat===id));}});
   },{rootMargin:'-72px 0px -60% 0px',threshold:0});
   document.querySelectorAll('.menu-section').forEach(s=>obs.observe(s));
 }
-function initNavScroll(){
-  window.addEventListener('scroll',()=>document.getElementById('topnav').classList.toggle('scrolled',scrollY>10),{passive:true});
-}
-function initBackTop(){
-  const btn=document.getElementById('backTop');
-  window.addEventListener('scroll',()=>btn.classList.toggle('show',scrollY>400),{passive:true});
-}
+function initNavScroll(){window.addEventListener('scroll',()=>document.getElementById('topnav').classList.toggle('scrolled',scrollY>10),{passive:true});}
+function initBackTop(){const btn=document.getElementById('backTop');window.addEventListener('scroll',()=>btn.classList.toggle('show',scrollY>400),{passive:true});}
 
-/* ── CART ───────────────────────────────── */
+/* ── CART ──────────────────────────────────────────────── */
 function openCart(){document.getElementById('cartDrawer').classList.add('open');document.getElementById('cartOv').classList.add('open');document.body.style.overflow='hidden';}
 function closeCart(){document.getElementById('cartDrawer').classList.remove('open');document.getElementById('cartOv').classList.remove('open');document.body.style.overflow='';}
 function updateCartUI(){document.getElementById('cartBadge').textContent=cart.reduce((s,i)=>s+i.qty,0);renderCart();renderTotals();}
 function renderCart(){
   const el=document.getElementById('cartList'),foot=document.getElementById('cartFoot');
-  if(!cart.length){el.innerHTML=`<div class="cart-empty"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#C8C8C2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><div class="cart-empty-title">Your cart is empty</div><div style="font-size:.82rem;color:var(--gray-500)">Add something delicious!</div></div>`;foot.style.display='none';return;}
+  if(!cart.length){
+    el.innerHTML=`<div class="cart-empty"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#C8C8C2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><div class="cart-empty-title">Your cart is empty</div><div style="font-size:.82rem;color:var(--gray-500)">Add something delicious!</div></div>`;
+    foot.style.display='none'; return;
+  }
   foot.style.display='block';
-  el.innerHTML=cart.map((item,i)=>`<div class="cart-item"><img class="ci-img" src="${item.img}" alt="${h(item.name)}" loading="lazy"><div class="ci-info"><div class="ci-name">${h(item.name)}</div>${item.opts?`<div class="ci-opts">${h(item.opts)}</div>`:''} ${item.note?`<div class="ci-opts" style="color:var(--yellow-dk)">📝 ${h(item.note)}</div>`:''}<div class="ci-ctrls"><button class="cq-btn" onclick="cCartQty(${i},-1)"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg></button><span class="cq-n">${item.qty}</span><button class="cq-btn" onclick="cCartQty(${i},1)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><button class="rm-btn" onclick="rmItem(${i})">Remove</button></div></div><div class="ci-price">R${item.price*item.qty}</div></div>`).join('');
+  el.innerHTML=cart.map((item,i)=>`
+    <div class="cart-item">
+      <img class="ci-img" src="${item.img}" alt="${h(item.name)}" loading="lazy">
+      <div class="ci-info">
+        <div class="ci-name">${h(item.name)}</div>
+        ${item.opts?`<div class="ci-opts">${h(item.opts)}</div>`:''}
+        ${item.note?`<div class="ci-opts" style="color:var(--green-mid)">📝 ${h(item.note)}</div>`:''}
+        <div class="ci-ctrls">
+          <button class="cq-btn" onclick="cCartQty(${i},-1)"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <span class="cq-n">${item.qty}</span>
+          <button class="cq-btn" onclick="cCartQty(${i},1)"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <button class="rm-btn" onclick="rmItem(${i})">Remove</button>
+        </div>
+      </div>
+      <div class="ci-price">R${item.price*item.qty}</div>
+    </div>`).join('');
 }
 function cCartQty(i,d){cart[i].qty=Math.max(1,cart[i].qty+d);updateCartUI();}
 function rmItem(i){cart.splice(i,1);updateCartUI();}
@@ -1468,7 +1685,7 @@ function getDel(){return delivMethod==='delivery'?25:0;}
 function getTotal(){return getSub()+getDel();}
 function renderTotals(){document.getElementById('cSub').textContent=`R${getSub()}`;document.getElementById('cDel').textContent=getDel()===0?'Free':`R${getDel()}`;document.getElementById('cGrand').textContent=`R${getTotal()}`;}
 
-/* ── CHECKOUT ───────────────────────────── */
+/* ── CHECKOUT ──────────────────────────────────────────── */
 const CK_TITLES=['Your Details','Delivery Address','Payment'];
 function openCheckout(){if(!cart.length){toast('Your cart is empty!');return;}ckStep=1;renderCkStep();document.getElementById('ckBd').classList.add('open');closeCart();document.body.style.overflow='hidden';}
 function closeCheckout(){document.getElementById('ckBd').classList.remove('open');document.body.style.overflow='';document.getElementById('ckSucc').classList.remove('active');document.querySelectorAll('.ck-step').forEach(s=>s.style.display='');ckStep=1;renderCkStep();}
@@ -1485,17 +1702,20 @@ function selPay(el,m){payMethod=m;document.querySelectorAll('.p-opt').forEach(o=
 function renderMiniSum(){const el=document.getElementById('miniItems');el.innerHTML=cart.map(i=>`<div class="mini-row"><span>${h(i.name)} ×${i.qty}</span><span>R${i.price*i.qty}</span></div>`).join('');if(getDel())el.innerHTML+=`<div class="mini-row"><span>Delivery</span><span>R${getDel()}</span></div>`;document.getElementById('miniTot').textContent=`R${getTotal()}`;}
 function placeOrder(){const ref='FBK-'+Math.floor(1000+Math.random()*9000);document.getElementById('oRef').textContent=ref;document.querySelectorAll('.ck-step').forEach(s=>s.classList.remove('active'));document.getElementById('ckSucc').classList.add('active');document.getElementById('ckTitle').textContent='Thank you!';document.getElementById('ckPips').innerHTML='';cart=[];updateCartUI();}
 
-/* ── TOAST ──────────────────────────────── */
-function toast(msg){const c=document.getElementById('toasts');const t=document.createElement('div');t.className='toast';t.innerHTML=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFD600" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>${h(msg)}`;c.appendChild(t);setTimeout(()=>t.remove(),3200);}
+/* ── TOAST ─────────────────────────────────────────────── */
+function toast(msg){const c=document.getElementById('toasts');const t=document.createElement('div');t.className='toast';t.innerHTML=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5BE09A" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>${h(msg)}`;c.appendChild(t);setTimeout(()=>t.remove(),3200);}
 
-/* ── MOBILE NAV ─────────────────────────── */
+/* ── MOBILE NAV ────────────────────────────────────────── */
 function openMob(){document.getElementById('mobNav').classList.add('open');document.body.style.overflow='hidden';}
 function closeMob(){document.getElementById('mobNav').classList.remove('open');document.getElementById('mobSearchDropdown').classList.remove('active');document.getElementById('mobSearchInput').value='';document.body.style.overflow='';}
 
-/* ── KEYBOARD ───────────────────────────── */
+/* ── KEYBOARD ──────────────────────────── */
 document.addEventListener('keydown',(e)=>{
   if(e.key==='Escape'){closePDP();closeCart();closeCheckout();closeMob();document.getElementById('searchDropdown').classList.remove('active');}
 });
 </script>
 </body>
 </html>
+
+
+
