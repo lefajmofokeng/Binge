@@ -181,6 +181,8 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,.9);border:1.5px solid rgb(255, 255, 255);border-radius:50px;padding:.9rem 2rem;font-family:var(--font-b);font-size:.95rem;font-weight:500;cursor:pointer;text-decoration:none;}
 .btn-ghost:hover{border-color:var(--green-vivid);color:var(--green-vivid)}
 
+.btn-x {display:inline-flex;align-items:center;gap:8px;background:var(--green);color:var(--white);border:none;border-radius:50px;padding:.9rem 2rem;font-family:var(--font-b);font-size:.95rem;font-weight:500;cursor:pointer;text-decoration:none;}
+
 /* ══ MENU ══════════════════════════════════════════════ */
 .menu-header{max-width:1300px;margin:0 auto;padding:3rem 2.5rem 1.5rem}
 .sec-lbl{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-500);margin-bottom:.5rem}
@@ -298,11 +300,11 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 .pdp-breadcrumb svg{width:11px;height:11px;stroke:rgba(255,255,255,.4);stroke-width:2;stroke-linecap:round;fill:none}
 .pdp-name{
   font-family:var(--font-d);font-size:clamp(1.6rem,3.5vw,2.2rem);
-  font-weight:700;color:var(--white);line-height:1.1;letter-spacing:-.02em
+  font-weight:500;color:var(--white);line-height:1.1;letter-spacing:-.02em
 }
-.pdp-meta{font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.75}
+.pdp-meta{font-size:1.3rem;color:rgba(255,255,255,.65);line-height:1.75}
 .pdp-price-tag{
-  font-size:1.35rem;font-weight:800;color:var(--white);letter-spacing:.01em;align-self:flex-start
+  font-size:1.65rem;font-weight:500;color:var(--white);letter-spacing:.01em;align-self:flex-start
 }
 
 /* ── CUSTOMISE BODY — white, inside pdp-scroll ── */
@@ -321,25 +323,25 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 .pdp-col-right{display:flex;flex-direction:column;gap:1rem}
 
 .opt-section-title{
-  font-family:var(--font-d);font-size:1.05rem;font-weight:700;color:var(--ink);
+  font-family:var(--font-d);font-size:1.1rem;font-weight:700;color:var(--ink);
   padding-bottom:.55rem;
   border-bottom:2px solid var(--green);
   margin-bottom:.2rem
 }
 .opt-group{display:flex;flex-direction:column;gap:.6rem}
 .opt-group-label{
-  font-size:.65rem;font-weight:700;letter-spacing:.09em;
-  text-transform:uppercase;color:var(--green-mid);margin-bottom:-.2rem
+  font-size:.95rem;font-weight:500;
+  color:var(--green-mid);margin-bottom:-.2rem
 }
 /* Checkbox-style rows */
 .opt-row{
   display:flex;align-items:center;gap:.75rem;
-  background:var(--gray-100);border-radius:12px;
+  border-radius:12px;
   padding:.8rem 1rem;cursor:pointer;
-  border:1.5px solid transparent;transition:all .18s var(--ease)
+  border:2px solid #cececed3;transition:all .18s var(--ease)
 }
 .opt-row:hover{border-color:var(--green-mid);background:var(--green-lt)}
-.opt-row.sel{border-color:var(--green);background:var(--green-lt)}
+.opt-row.sel{border-color:#aaaaaa71;background:var(--gray-100);}
 .opt-row-label{font-size:.88rem;color:var(--ink);font-weight:500;flex:1;line-height:1.3}
 .opt-row-price{font-size:.75rem;color:var(--gray-500);flex-shrink:0}
 .opt-checkbox{
@@ -378,7 +380,13 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 }
 .spec-note:focus{border-color:var(--green);background:var(--white)}
 .spec-note::placeholder{color:var(--gray-300)}
-.spec-note-hint{font-size:.72rem;color:var(--gray-300);line-height:1.5}
+.spec-note-hint{font-size:1rem;color:var(--gray-300);line-height:1.5}
+
+@media (max-width: 768px) {
+  .spec-note-lbl {
+    margin-top: 2rem;
+  }
+} 
 
 /* ── STICKY BOTTOM BAR ── */
 .pdp-footer{
@@ -649,10 +657,10 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
 .ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .ft-copy{font-size:.78rem;color:var(--gray-500)}
 .ft-social{display:flex;gap:.6rem}
-.soc-btn{width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;text-decoration:none}
+.soc-btn{width:36px;height:36px;border-radius:50px;border:1px solid rgb(255, 255, 255);background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;text-decoration:none}
 .soc-btn:hover{background:var(--green-mid);border-color:var(--green-mid)}
 .soc-btn:hover svg{stroke:var(--white)}
-.soc-btn svg{width:16px;height:16px;stroke:var(--gray-500);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.soc-btn svg{width:16px;height:16px;stroke:var(--gray-500);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
 .notices-bar{background:rgba(255,255,255,.06);border-radius:14px;padding:1.2rem 2rem;margin:2rem 0;font-size:.8rem;line-height:1.8;color:#F4F3EF}
 
 /* ══ BACK TO TOP ═══════════════════════════════════════ */
@@ -722,8 +730,8 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
   .pdp-add-final{padding:.65rem 1.1rem;font-size:.85rem}
   .pdp-qty-btn{width:36px;height:36px}
   .pdp-info-outer{padding:0 1rem 2rem}
-  .acc-trigger{padding:.9rem 1.4rem}
-  .acc-content{padding:.3rem 1.4rem 1.2rem}
+  .acc-trigger{padding:.9rem 0}
+  .acc-content{padding:.3rem 0 1.2rem}
 }
 @media(max-width:600px){
   .prod-grid{grid-template-columns:repeat(3,1fr);gap:1.8rem 1rem}
@@ -819,11 +827,10 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
     <p class="hero-sub">Premium fast food crafted with the finest ingredients.</p>
     <div class="hero-btns">
       <a href="#menu" class="btn-y">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         Order Now
       </a>
       <a href="#" onclick="alert('App coming soon!');return false;" class="btn-ghost">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-1.96.8-3.31.82-1.37.03-2.27-1.24-3.1-2.5-1.73-2.61-3.06-7.35-1.28-10.6.85-1.6 2.35-2.6 3.99-2.6 1.23 0 2.4.82 3.23.82.83 0 2.37-1.05 4-1.05 1.6 0 2.9.85 3.75 2.25-3.3 2-2.76 6.77.4 8.48zM15.5 3.5c.83-.83 1.4-1.95 1.25-3.1-.95.05-2.1.63-2.78 1.45-.6.7-1.12 1.82-1.25 2.9.9.05 2.05-.6 2.78-1.45z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 283"><path fill="#EA4335" d="M119.553 134.916L1.06 259.061a32.14 32.14 0 0 0 47.062 19.071l133.327-75.934l-61.896-67.282Z"/><path fill="#FBBC04" d="M239.37 113.814L181.715 80.79l-64.898 56.95l65.162 64.28l57.216-32.67a31.345 31.345 0 0 0 0-55.537h.177Z"/><path fill="#4285F4" d="M1.06 23.487A30.565 30.565 0 0 0 0 31.61v219.327a32.333 32.333 0 0 0 1.06 8.124l122.555-120.966L1.06 23.487Z"/><path fill="#34A853" d="m120.436 141.274l61.278-60.483L48.564 4.503A32.847 32.847 0 0 0 32.051 0C17.644-.028 4.978 9.534 1.06 23.399l119.376 117.875Z"/></svg>
         Download App
       </a>
     </div>
@@ -850,8 +857,8 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
       <div class="sec-lbl" style="margin-bottom:1rem">GET THE APP</div>
       <h2 class="app-h">Order on the go.<br>Faster, smarter.</h2>
       <p style="max-width:440px;font-size:1.05rem;line-height:1.7;color:var(--gray-700);margin-bottom:1.5rem">Real-time order tracking, exclusive app-only deals, saved favourites, and instant re-order. Available on Android.</p>
-      <a href="#" onclick="alert('Opening Google Play Store...');return false;" class="btn-y">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-1.96.8-3.31.82-1.37.03-2.27-1.24-3.1-2.5-1.73-2.61-3.06-7.35-1.28-10.6.85-1.6 2.35-2.6 3.99-2.6 1.23 0 2.4.82 3.23.82.83 0 2.37-1.05 4-1.05 1.6 0 2.9.85 3.75 2.25-3.3 2-2.76 6.77.4 8.48zM15.5 3.5c.83-.83 1.4-1.95 1.25-3.1-.95.05-2.1.63-2.78 1.45-.6.7-1.12 1.82-1.25 2.9.9.05 2.05-.6 2.78-1.45z"/></svg>
+      <a href="#" onclick="alert('Opening Google Play Store...');return false;" class="btn-x">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 283"><path fill="#EA4335" d="M119.553 134.916L1.06 259.061a32.14 32.14 0 0 0 47.062 19.071l133.327-75.934l-61.896-67.282Z"/><path fill="#FBBC04" d="M239.37 113.814L181.715 80.79l-64.898 56.95l65.162 64.28l57.216-32.67a31.345 31.345 0 0 0 0-55.537h.177Z"/><path fill="#4285F4" d="M1.06 23.487A30.565 30.565 0 0 0 0 31.61v219.327a32.333 32.333 0 0 0 1.06 8.124l122.555-120.966L1.06 23.487Z"/><path fill="#34A853" d="m120.436 141.274l61.278-60.483L48.564 4.503A32.847 32.847 0 0 0 32.051 0C17.644-.028 4.978 9.534 1.06 23.399l119.376 117.875Z"/></svg>
         Download on Play Store
       </a>
     </div>
@@ -869,7 +876,7 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
   <div class="ft-inner">
     <div class="ft-top">
       <div>
-        <div class="ft-logo">Food By K</div>
+        <div class="ft-logo">Chompers</div>
         <p class="ft-desc">Premium fast food made with passion and precision. Bold flavours, quality ingredients, fast delivery.</p>
         <div style="margin-top:1.5rem;font-size:.95rem;line-height:1.7;color:var(--white)"><strong>8513 Goshawk Street, Lenasia South<br>Johannesburg, 1829</strong></div>
         <div style="margin-top:1.2rem;border-radius:12px;overflow:hidden">
@@ -886,12 +893,12 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
       </div>
       <div>
         <div class="ft-col-ttl">Contact</div>
-        <ul class="ft-links"><li><a href="tel:0814478395">(081) 447 8395</a></li><li><a href="/cdn-cgi/l/email-protection#670e0901082701080803051e0c490408491d06"><span class="__cf_email__" data-cfemail="eb82858d84ab8d84848f899280c58884c5918a">[email&#160;protected]</span></a></li><li><a href="contact.html">Contact Page</a></li></ul>
+        <ul class="ft-links"><li><a href="tel:0814478395">(081) 447 8395</a></li><li><a href="#"><span class="__cf_email__" data-cfemail="eb8285">hello@chompers.com</span></a></li><li><a href="contact.html">Contact Us</a></li></ul>
       </div>
     </div>
     <div class="notices-bar">🕐 <strong>Hours:</strong> Mon – Sun · 10:00 – 22:00 &nbsp;|&nbsp; 📍 <strong>Address:</strong> 8513 Goshawk Street, Lenasia South, Johannesburg, 1829 &nbsp;|&nbsp; 📞 <strong>Call:</strong> (081) 447 8395</div>
     <div class="ft-bot">
-      <div class="ft-copy">© 2026 Food By K. All rights reserved.</div>
+      <div class="ft-copy">© 2026 Chompers. All rights reserved.</div>
       <div class="ft-social">
         <a href="#" class="soc-btn" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
         <a href="#" class="soc-btn" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -1165,7 +1172,7 @@ const CATS=[
 ];
 const ITEMS=[
   {id:1,cat:'ribs',name:'Baby Back Ribs — Full Rack',price:220,
-   img:'https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80',
+   img:'images/baby ribs.png',
    desc:'Slow-cooked fall-off-the-bone pork ribs glazed in our signature BBQ sauce. Paired with your choice of sides.',
    opts:[
      {type:'select',label:'Sauce',choices:['Signature BBQ','Honey Mustard','Peri-Peri','Garlic Butter']},
@@ -1173,7 +1180,7 @@ const ITEMS=[
      {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot','Xtra Hot']},
    ]},
   {id:2,cat:'ribs',name:'Baby Back Ribs — Half Rack',price:130,
-   img:'https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80',
+   img:'images/baby ribs - half.jpg',
    desc:'Half rack of our legendary slow-cooked pork ribs. Perfect for one.',
    opts:[
      {type:'select',label:'Sauce',choices:['Signature BBQ','Honey Mustard','Peri-Peri']},
@@ -1181,14 +1188,14 @@ const ITEMS=[
      {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot','Xtra Hot']},
    ]},
   {id:3,cat:'ribs',name:'Smoked Beef Short Ribs',price:260,
-   img:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=900&q=80',
+   img:'images/smoked beef.jpg',
    desc:'Thick-cut beef short ribs smoked low and slow over wood chips.',
    opts:[
      {type:'select',label:'Sauce',choices:['Smoky Chipotle','Classic BBQ','Peri-Peri']},
      {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot']},
    ]},
   {id:4,cat:'burgers',name:'Classic Beef Smash Burger',price:95,
-   img:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80',
+   img:'images/beef smash.jpg',
    desc:'Two smashed beef patties, American cheese, pickles, caramelised onions, K-sauce on a toasted brioche bun.',
    opts:[
      {type:'select',label:'Patties',choices:['Single','Double','Triple']},
@@ -1204,7 +1211,7 @@ const ITEMS=[
      {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot']},
    ]},
   {id:6,cat:'burgers',name:'Mushroom & Swiss Burger',price:110,
-   img:'images/fatcake.png',
+   img:'images/mushroom.jpg',
    desc:'Beef patty, sautéed garlic mushrooms, melted Swiss cheese, truffle mayo, fresh greens.',
    opts:[
      {type:'select',label:'Patties',choices:['Single','Double']},
@@ -1218,7 +1225,7 @@ const ITEMS=[
      {type:'add',label:'Extras',choices:['Extra Bacon +R15','Avocado +R15']},
    ]},
   {id:8,cat:'wraps',name:'Grilled Steak Wrap',price:105,
-   img:'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=900&q=80',
+   img:'images/beef wrap.png',
    desc:'Tender ribeye steak strips, peri-peri drizzle, mixed greens, garlic cream sauce in a toasted flour tortilla.',
    opts:[
      {type:'select',label:'Sauce',choices:['Peri-Peri','Garlic Butter','BBQ','Chilli']},
@@ -1226,7 +1233,7 @@ const ITEMS=[
      {type:'add',label:'Extras',choices:['Extra Steak +R20','Add Cheese','Jalapeños']},
    ]},
   {id:9,cat:'wraps',name:'Crispy Chicken Wrap',price:90,
-   img:'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=900&q=80',
+   img:'images/chicken wrap.png',
    desc:'Golden crispy chicken strips, creamy coleslaw, pickles, sweet sriracha honey drizzle.',
    opts:[
      {type:'select',label:'Sauce',choices:['Sriracha Honey','BBQ','Peri-Peri','Plain']},
@@ -1240,7 +1247,7 @@ const ITEMS=[
      {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot']},
    ]},
   {id:11,cat:'chicken',name:'Crispy Fried Chicken — 3pcs',price:85,
-   img:'https://images.unsplash.com/photo-1562967914-608f82629710?w=900&q=80',
+   img:'images/3pcs.png',
    desc:'Three pieces of our golden, juicy, perfectly crispy-coated fried chicken.',
    opts:[
      {type:'select',label:'Flavour',choices:['Original','Peri-Peri','Honey BBQ','Lemon Herb']},
@@ -1248,21 +1255,21 @@ const ITEMS=[
      {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot','Xtra Hot']},
    ]},
   {id:12,cat:'chicken',name:'Fried Chicken — 6pcs Bucket',price:155,
-   img:'https://images.unsplash.com/photo-1606728035253-49e8a23146de?w=900&q=80',
+   img:'images/6pcs.png',
    desc:'Six pieces of our legendary fried chicken. Great for sharing.',
    opts:[
      {type:'select',label:'Flavour',choices:['Original','Peri-Peri','Honey BBQ','Lemon Herb']},
      {type:'select',label:'Spice Level',choices:['Mild','Medium','Hot','Xtra Hot']},
    ]},
   {id:13,cat:'chicken',name:'Grilled Chicken Strips',price:90,
-   img:'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=900&q=80',
+   img:'images/strips.png',
    desc:'Marinated chicken breast strips grilled to juicy perfection. Served with dipping sauce.',
    opts:[
      {type:'select',label:'Marinade',choices:['Peri-Peri','Garlic Herb','Honey Mustard','Plain']},
      {type:'select',label:'Dip',choices:['BBQ','Garlic Mayo','Sweet Chilli']},
    ]},
   {id:14,cat:'sides',name:'Loaded Cheese Fries',price:60,
-   img:'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=900&q=80',
+   img:'images/fries.png',
    desc:'Crispy golden fries smothered in house-made cheese sauce, jalapeños, and crispy bacon bits.',
    opts:[
      {type:'add',label:'Extras',choices:['Extra Bacon +R10','Sour Cream','Guacamole +R15']},
@@ -1275,7 +1282,7 @@ const ITEMS=[
      {type:'select',label:'Seasoning',choices:['Classic Salt','Paprika','Peri-Peri Salt']},
    ]},
   {id:16,cat:'sides',name:'Grilled Sausages — 2pcs',price:75,
-   img:'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=900&q=80',
+   img:'images/sausages.png',
    desc:'Thick, juicy pure beef sausages charred on the grill.',
    opts:[
      {type:'select',label:'Sauce',choices:['Mustard','BBQ','Peri-Peri','Tomato']},
