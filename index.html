@@ -55,6 +55,22 @@
             font-style: normal;
         }
 
+        /* Flame Font */
+        @font-face {
+            font-family: 'Flame Regular';
+            src: url('fonts/Flame-Regular.otf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Flame Regular';
+            src: url('fonts/Flame-Regular.otf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
 :root{
@@ -202,6 +218,7 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 .sec-cat-lbl::before{content:'';width:14px;height:2px;background:var(--green-mid);border-radius:2px}
 .sec-title{font-family:var(--font-d);font-size:1.6rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
 
+/* ══ PRODUCT CAROUSEL ══════════════════════════════════ */
 /* ── MENU CARDS: circular image, name, price ── */
 .prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:2.5rem 2rem}
 .prod-card{
@@ -638,6 +655,284 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 .btn-next svg{width:16px;height:16px;stroke:var(--white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}
 .btn-place{background:var(--ink);color:var(--white)}.btn-place:hover{background:var(--gray-700)}
 
+/* ══ APP EXCLUSIVE DEALS ════════════════════════════════ */
+.app-excl{
+  background:var(--green);
+  padding:5rem 2.2rem 4rem;
+  position:relative;
+  overflow:hidden
+}
+/* Subtle background pattern */
+.app-excl::before{
+  content:'';position:absolute;inset:0;
+  background:var(--green);
+  pointer-events:none
+}
+.app-excl-inner{max-width:1260px;margin:0 auto;position:relative;z-index:1}
+
+/* ── Section heading ── */
+.app-excl-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:1.5rem;margin-bottom:3rem;flex-wrap:wrap
+}
+.app-excl-head-left{}
+.app-excl-label{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(91,224,154,.15);border:1px solid rgba(91,224,154,.3);
+  border-radius:50px;padding:.28rem .85rem;
+  font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green-vivid);margin-bottom:.9rem
+}
+.app-excl-label svg{width:10px;height:10px;fill:var(--green-vivid)}
+.app-excl-title{
+  font-family:var(--font-d);font-size:clamp(2rem,4vw,3rem);
+  font-weight:500;color:var(--white);
+  line-height:1.05;letter-spacing:-.03em
+}
+.app-excl-title em{color:var(--green-vivid);font-style:normal}
+.app-excl-sub{
+  font-size:.95rem;color:rgba(255,255,255,.55);
+  margin-top:.6rem;max-width:440px;line-height:1.65;
+}
+/* "App only" badge on heading right */
+.app-excl-badge{
+  display:flex;align-items:center;gap:.6rem;
+  background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);
+  border-radius:var(--r-lg);padding:.75rem 1.2rem;flex-shrink:0
+}
+.app-excl-badge svg{width:18px;height:18px;stroke:var(--green-vivid);stroke-width:2;stroke-linecap:round;fill:none}
+.app-excl-badge-txt{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.7);line-height:1.35}
+.app-excl-badge-txt strong{display:block;color:var(--white);font-size:.85rem}
+
+/* ── No-customise notice ── */
+.app-excl-notice{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.06);border-left:3px solid var(--green-vivid);
+  border-radius:0 8px 8px 0;
+  padding:.55rem 1rem;margin-bottom:2.5rem;
+  font-size:.8rem;color:rgba(255,255,255,.6);font-weight:500
+}
+.app-excl-notice svg{width:14px;height:14px;stroke:var(--green-vivid);stroke-width:2.2;stroke-linecap:round;fill:none;flex-shrink:0}
+
+/* ── Product cards carousel ── */
+.app-excl-carousel-wrap{
+  position:relative;
+  overflow:hidden
+}
+.app-excl-grid{
+  display:flex;
+  transition:transform .38s cubic-bezier(.4,0,.2,1);
+  will-change:transform
+}
+.app-deal-card{
+  flex:0 0 100%;
+  min-width:100%;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  cursor:pointer;
+  box-sizing:border-box;
+  min-height:400px
+}
+
+/* ── Exclusive deals carousel controls ── */
+.excl-carousel-controls{
+  display:flex;align-items:center;justify-content:flex-end;
+  gap:.7rem;margin-top:1.4rem
+}
+/* Progress bars instead of dots */
+.excl-carousel-dots{
+  display:flex;align-items:center;gap:6px;flex:1
+}
+.excl-carousel-dot{
+  flex:1;height:3px;border-radius:2px;
+  background:rgba(255,255,255,.18);
+  position:relative;overflow:hidden;
+  cursor:pointer
+}
+.excl-dot-fill{
+  display:block;position:absolute;top:0;left:0;
+  height:100%;width:0%;
+  background:var(--green-vivid);border-radius:2px
+}
+.excl-carousel-dot.done .excl-dot-fill{width:100%!important;transition:none!important}
+
+/* Pause / play button */
+.excl-pause-btn{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.08);
+  border:1.5px solid rgba(255,255,255,.18);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .18s var(--ease);flex-shrink:0
+}
+.excl-pause-btn:hover{background:var(--green-vivid);border-color:var(--green-vivid)}
+.excl-pause-btn:hover svg{stroke:var(--green)}
+.excl-pause-btn svg{width:14px;height:14px;stroke:rgba(255,255,255,.8);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;fill:none}
+
+.excl-carousel-counter{
+  font-size:.78rem;font-weight:600;
+  color:rgba(255,255,255,.45);min-width:2.8rem;text-align:center
+}
+.excl-carousel-btn{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.08);
+  border:1.5px solid rgba(255,255,255,.18);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .18s var(--ease);flex-shrink:0
+}
+.excl-carousel-btn:hover{background:var(--green-vivid);border-color:var(--green-vivid)}
+.excl-carousel-btn:hover svg{stroke:var(--green)}
+.excl-carousel-btn:active{transform:scale(.93)}
+.excl-carousel-btn svg{width:16px;height:16px;stroke:rgba(255,255,255,.8);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;fill:none}
+
+
+/* LEFT — bold text info */
+.app-deal-info{
+  flex:1;min-width:0;
+  padding:3.5rem 0;
+  display:flex;flex-direction:column;align-items:flex-start;gap:1rem;
+  position:relative;z-index:1
+}
+.app-deal-tag{
+  display:inline-flex;align-items:center;gap:4px;
+  width:fit-content;
+  font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--green-vivid)
+}
+.app-deal-name{
+  font-family:var(--font-d);
+  font-size:clamp(2.2rem,4.5vw,3.4rem);
+  font-weight:500;
+  color:var(--white);
+  line-height:1.05;
+  letter-spacing:-.03em;
+}
+.app-deal-desc{
+  font-size:1rem;color:rgba(255,255,255,.6);
+  line-height:1.75;max-width:400px;
+  display:block;overflow:visible
+}
+.app-deal-price{
+  font-family:var(--font-d);font-size:2.8rem;font-weight:800;
+  color:var(--white);letter-spacing:-.03em
+}
+.app-deal-price span{font-size:.9rem;font-weight:500;color:rgba(255,255,255,.4);margin-left:5px}
+.app-deal-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--green-vivid);border:none;border-radius:50px;
+  padding:.85rem 2rem;width:fit-content;
+  font-family:var(--font-b);font-size:.95rem;font-weight:700;
+  color:var(--green);cursor:pointer;transition:all .2s var(--ease);
+  box-shadow:0 8px 28px rgba(0,0,0,.25)
+}
+.app-deal-btn:hover{background:#fff;transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,0,0,.3)}
+.app-deal-btn svg{width:15px;height:15px;stroke:var(--green);stroke-width:2.5;stroke-linecap:round;fill:none}
+
+/* RIGHT — food image, fully visible, freeform */
+.app-deal-img-wrap{
+  flex-shrink:0;
+  width:50%;
+  height:400px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative
+}
+.app-deal-img-wrap::before{display:none}
+.app-deal-img{
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  display:block;
+  transition:transform .5s var(--ease)
+}
+.app-deal-card:hover .app-deal-img{transform:scale(1.04) translateY(-6px)}
+.app-deal-img-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;opacity:.4
+}
+.app-deal-img-placeholder svg{width:44px;height:44px;stroke:rgba(91,224,154,.8);stroke-width:1.5;fill:none}
+.app-deal-img-placeholder span{font-size:.65rem;color:rgba(255,255,255,.6);font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-align:center;line-height:1.5}
+
+/* ── Download modal ── */
+.app-dl-modal-ov{
+  position:fixed;inset:0;background:rgba(0,0,0,.65);
+  z-index:1100;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s var(--ease);
+  padding:1.5rem
+}
+.app-dl-modal-ov.open{opacity:1;pointer-events:all}
+.app-dl-modal{
+  background:var(--green);border:1.5px solid rgba(91,224,154,.2);
+  border-radius:var(--r-xl);max-width:420px;width:100%;
+  padding:2.5rem 2rem 2rem;
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.1rem;
+  transform:translateY(20px) scale(.97);
+  transition:transform .3s var(--ease);
+  position:relative;
+  box-shadow:0 32px 80px rgba(0,0,0,.5)
+}
+.app-dl-modal-ov.open .app-dl-modal{transform:translateY(0) scale(1)}
+.app-dl-modal-close{
+  position:absolute;top:1rem;right:1rem;
+  width:32px;height:32px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s
+}
+.app-dl-modal-close:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4)}
+.app-dl-modal-close svg{width:14px;height:14px;stroke:var(--white);stroke-width:2.5;stroke-linecap:round;fill:none}
+.app-dl-icon{
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(91,224,154,.15);border:2px solid rgba(91,224,154,.3);
+  display:flex;align-items:center;justify-content:center;
+  animation:sBounce .4s var(--ease)
+}
+.app-dl-icon svg{width:34px;height:34px;stroke:var(--green-vivid);stroke-width:1.8;stroke-linecap:round;fill:none}
+.app-dl-modal-title{font-family:var(--font-d);font-size:1.5rem;font-weight:700;color:var(--white);letter-spacing:-.02em;line-height:1.1}
+.app-dl-modal-sub{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.65;max-width:320px}
+.app-dl-modal-item{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r-md);padding:.6rem 1rem;
+  font-family:var(--font-d);font-size:.9rem;font-weight:700;color:var(--green-vivid);
+  width:100%
+}
+.app-dl-divider{font-size:.7rem;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.3);text-transform:uppercase}
+.app-dl-btns{display:flex;flex-direction:column;gap:.7rem;width:100%}
+.app-dl-store-btn{
+  display:flex;align-items:center;gap:.85rem;
+  background:var(--white);border:none;border-radius:var(--r-md);
+  padding:.85rem 1.2rem;cursor:pointer;
+  transition:all .2s var(--ease);text-decoration:none;
+  width:100%
+}
+.app-dl-store-btn:hover{background:var(--green-lt);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.app-dl-store-btn svg{width:26px;height:26px;flex-shrink:0}
+.app-dl-store-info{text-align:left}
+.app-dl-store-info small{display:block;font-size:.62rem;font-weight:600;color:var(--gray-500);letter-spacing:.05em;text-transform:uppercase}
+.app-dl-store-info strong{display:block;font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--ink)}
+
+/* ══ RESPONSIVE — app exclusive ════════════════════════ */
+@media(max-width:900px){
+  .app-excl{padding:4rem 1.5rem 3rem}
+  .app-excl-badge{display:none}
+  .app-deal-info{padding:2.5rem 2rem}
+  .app-deal-name{font-size:2rem}
+  .app-deal-price{font-size:2.2rem}
+  .app-deal-img-wrap{width:45%;height:340px}
+}
+@media(max-width:600px){
+  .app-excl{padding:3.5rem 1.2rem 2.5rem}
+  .app-deal-card{flex-direction:column !important;min-height:unset}
+  .app-deal-info{padding:2rem 1.8rem 1rem;align-items:center;text-align:center}
+  .app-deal-img-wrap{width:100%;height:260px}
+  .app-deal-name{font-size:1.8rem}
+  .app-deal-price{font-size:2rem}
+  .app-deal-btn{align-self:center}
+}
+}
+
 /* ══ APP PROMO ═════════════════════════════════════════ */
 .app-promo{background:var(--white);padding:6rem 2.5rem;border-top:1px solid var(--gray-100)}
 .app-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:center}
@@ -838,6 +1133,174 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
     </div>
   </div>
 </section>
+
+<!-- ══ APP EXCLUSIVE DEALS ════════════════════════════════ -->
+<section class="app-excl" id="appDeals">
+  <div class="app-excl-inner">
+
+    <!-- Section heading -->
+    <div class="app-excl-head">
+      <div class="app-excl-head-left">
+        <div class="app-excl-label">
+          <svg viewBox="0 0 10 10"><path d="M5 1L6.5 4H9L6.75 6L7.5 9L5 7.5L2.5 9L3.25 6L1 4H3.5Z"/></svg>
+          App Exclusive
+        </div>
+        <h2 class="app-excl-title">Deals You Can't<br><em>Get Anywhere Else.</em></h2>
+        <p class="app-excl-sub">Handcrafted combos and limited specials — available only through the Chompers app.</p>
+      </div>
+      <div class="app-excl-badge">
+        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+        <div class="app-excl-badge-txt">
+          <strong>App Only</strong>
+          Download to unlock
+        </div>
+      </div>
+    </div>
+
+    <!-- No-customise notice -->
+    <div class="app-excl-notice">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      These deals are crafted exactly as listed — no substitutions or customisations available.
+    </div>
+
+    <!-- Product cards -->
+    <div class="app-excl-carousel-wrap" id="appExclWrap">
+      <div class="app-excl-grid" id="appDealGrid">
+
+        <!-- Card 1 -->
+        <div class="app-deal-card" onclick="openAppModal('The Chompers Megabox')">
+          <div class="app-deal-info">
+            <div class="app-deal-tag">🔥 Best Seller</div>
+            <div class="app-deal-name">The Chompers Megabox</div>
+            <div class="app-deal-desc">2 Smash Burgers, 6pcs Fried Chicken, Loaded Cheese Fries, 2 Craft Lemonades — the ultimate feast for two.</div>
+            <div class="app-deal-price">R<span style="font-size:1.4rem;color:var(--white);font-weight:800">299</span> <span>per box</span></div>
+            <button class="app-deal-btn" onclick="event.stopPropagation();openAppModal('The Chompers Megabox')">
+              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+              Get on App
+            </button>
+          </div>
+          <div class="app-deal-img-wrap">
+            <img class="app-deal-img" src="images/strips.png" alt="The Chompers Megabox">
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="app-deal-card" onclick="openAppModal('Chompers Family Bucket')">
+          <div class="app-deal-info">
+            <div class="app-deal-tag">👨‍👩‍👧 Family Deal</div>
+            <div class="app-deal-name">Chompers Family Bucket</div>
+            <div class="app-deal-desc">12pcs Fried Chicken, 2 Large Fries, 4 Soft Drinks — made for the whole family to enjoy together.</div>
+            <div class="app-deal-price">R<span style="font-size:1.4rem;color:var(--white);font-weight:800">349</span> <span>per bucket</span></div>
+            <button class="app-deal-btn" onclick="event.stopPropagation();openAppModal('Chompers Family Bucket')">
+              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+              Get on App
+            </button>
+          </div>
+          <div class="app-deal-img-wrap">
+            <img class="app-deal-img" src="images/beef smash.jpg" alt="Chompers Family Bucket">
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="app-deal-card" onclick="openAppModal('Date Night Combo')">
+          <div class="app-deal-info">
+            <div class="app-deal-tag">💚 App Special</div>
+            <div class="app-deal-name">Date Night Combo</div>
+            <div class="app-deal-desc">Half Rack Baby Back Ribs, Mushroom &amp; Swiss Burger, 2 Thick Milkshakes, Onion Rings — a night to remember.</div>
+            <div class="app-deal-price">R<span style="font-size:1.4rem;color:var(--white);font-weight:800">319</span> <span>for two</span></div>
+            <button class="app-deal-btn" onclick="event.stopPropagation();openAppModal('Date Night Combo')">
+              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+              Get on App
+            </button>
+          </div>
+          <div class="app-deal-img-wrap">
+            <img class="app-deal-img" src="images/smoked beef.jpg" alt="Date Night Combo">
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="app-deal-card" onclick="openAppModal('Solo Hustle Box')">
+          <div class="app-deal-info">
+            <div class="app-deal-tag">⚡ Quick &amp; Value</div>
+            <div class="app-deal-name">Solo Hustle Box</div>
+            <div class="app-deal-desc">K Special Burger, 3pcs Fried Chicken, Classic Fries, Soft Drink — everything you need, all in one go.</div>
+            <div class="app-deal-price">R<span style="font-size:1.4rem;color:var(--white);font-weight:800">179</span> <span>per box</span></div>
+            <button class="app-deal-btn" onclick="event.stopPropagation();openAppModal('Solo Hustle Box')">
+              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+              Get on App
+            </button>
+          </div>
+          <div class="app-deal-img-wrap">
+            <img class="app-deal-img" src="images/beef wrap.png" alt="Solo Hustle Box">
+          </div>
+        </div>
+
+      </div><!-- end grid/track -->
+    </div><!-- end carousel wrap -->
+
+    <!-- Carousel controls -->
+    <div class="excl-carousel-controls">
+      <div class="excl-carousel-dots" id="exclDots">
+        <div class="excl-carousel-dot active" onclick="exclGoTo(0)"></div>
+        <div class="excl-carousel-dot" onclick="exclGoTo(1)"></div>
+        <div class="excl-carousel-dot" onclick="exclGoTo(2)"></div>
+        <div class="excl-carousel-dot" onclick="exclGoTo(3)"></div>
+      </div>
+      <button class="excl-pause-btn" id="exclPauseBtn" onclick="exclTogglePause()" aria-label="Pause">
+        <!-- Pause icon -->
+        <svg id="exclPauseIcon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+        <!-- Play icon (hidden) -->
+        <svg id="exclPlayIcon" viewBox="0 0 24 24" style="display:none"><polygon points="5,3 19,12 5,21"/></svg>
+      </button>
+      <span class="excl-carousel-counter" id="exclCounter">1 / 4</span>
+      <button class="excl-carousel-btn" onclick="exclCarouselMove(-1)" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="excl-carousel-btn" onclick="exclCarouselMove(1)" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ APP DOWNLOAD MODAL ═════════════════════════════════ -->
+<div class="app-dl-modal-ov" id="appDlModalOv">
+  <div class="app-dl-modal" role="dialog" aria-modal="true" aria-labelledby="appDlTitle">
+    <button class="app-dl-modal-close" onclick="closeAppModal()" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="app-dl-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 14.5a1.5 1.5 0 1 1 1.5-1.5A1.5 1.5 0 0 1 12 16.5zm1-5.5h-2V7h2z" stroke-width="0" fill="none"/><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+    </div>
+    <div class="app-dl-modal-title" id="appDlTitle">App Required</div>
+    <div class="app-dl-modal-sub">This exclusive deal is only available on the <strong style="color:var(--white)">Chompers app</strong>. Download it free — it only takes a minute.</div>
+    <div class="app-dl-modal-item" id="appDlItemName">The Chompers Megabox</div>
+    <div class="app-dl-divider">Download on</div>
+    <div class="app-dl-btns">
+      <a href="#" onclick="alert('Opening Google Play Store…');return false;" class="app-dl-store-btn">
+        <svg viewBox="0 0 256 283" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#EA4335" d="M119.553 134.916L1.06 259.061a32.14 32.14 0 0 0 47.062 19.071l133.327-75.934z"/>
+          <path fill="#FBBC04" d="M239.37 113.814L181.715 80.79l-64.898 56.95l65.162 64.28l57.216-32.67a31.345 31.345 0 0 0 0-55.537z"/>
+          <path fill="#4285F4" d="M1.06 23.487A30.565 30.565 0 0 0 0 31.61v219.327a32.333 32.333 0 0 0 1.06 8.124l122.555-120.966z"/>
+          <path fill="#34A853" d="m120.436 141.274l61.278-60.483L48.564 4.503A32.847 32.847 0 0 0 32.051 0C17.644-.028 4.978 9.534 1.06 23.399z"/>
+        </svg>
+        <div class="app-dl-store-info">
+          <small>Get it on</small>
+          <strong>Google Play</strong>
+        </div>
+      </a>
+      <a href="#" onclick="alert('Coming soon to the App Store!');return false;" class="app-dl-store-btn">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="26" height="26">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" fill="#555"/>
+        </svg>
+        <div class="app-dl-store-info">
+          <small>Download on the</small>
+          <strong>App Store</strong>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- ══ MENU ══════════════════════════════════════════════ -->
 <div class="menu-header">
@@ -1461,7 +1924,7 @@ function highlight(text,q){if(!q)return h(text);return h(text).replace(new RegEx
 /* ── INIT ──────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded',()=>{
   buildSidebar(); buildMenu(); initScrollSpy(); initNavScroll(); initSearch(); initBackTop();
-  updateCartUI(); setDeliv('delivery');
+  updateCartUI(); setDeliv('delivery'); initExclCarousel();
 });
 
 /* ── SIDEBAR ───────────────────────────────────────────── */
@@ -1478,7 +1941,6 @@ function buildMenu(){
     const items=ITEMS.filter(i=>i.cat===c.id);
     return`<section class="menu-section" id="cat-${c.id}">
       <div class="sec-head">
-      
         <div class="sec-title">${c.label}</div>
       </div>
       <div class="prod-grid">${items.map(cardHTML).join('')}</div>
@@ -1715,7 +2177,19 @@ function openPDPMob(id){document.getElementById('mobSearchDropdown').classList.r
 /* ── SCROLL SPY ────────────────────────────────────────── */
 function initScrollSpy(){
   const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id.replace('cat-','');document.querySelectorAll('.sb-item').forEach(el=>el.classList.toggle('active',el.dataset.cat===id));}});
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const id=e.target.id.replace('cat-','');
+        document.querySelectorAll('.sb-item').forEach(el=>{
+          const isActive=el.dataset.cat===id;
+          el.classList.toggle('active',isActive);
+          // On mobile: scroll the active pill into view inside the sticky bar
+          if(isActive && window.innerWidth<=768){
+            el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+          }
+        });
+      }
+    });
   },{rootMargin:'-72px 0px -60% 0px',threshold:0});
   document.querySelectorAll('.menu-section').forEach(s=>obs.observe(s));
 }
@@ -1780,6 +2254,161 @@ function toast(msg){const c=document.getElementById('toasts');const t=document.c
 /* ── MOBILE NAV ────────────────────────────────────────── */
 function openMob(){document.getElementById('mobNav').classList.add('open');document.body.style.overflow='hidden';}
 function closeMob(){document.getElementById('mobNav').classList.remove('open');document.getElementById('mobSearchDropdown').classList.remove('active');document.getElementById('mobSearchInput').value='';document.body.style.overflow='';}
+
+/* ── APP EXCLUSIVE MODAL ───────────────────────────────── */
+/* ── EXCLUSIVE DEALS CAROUSEL ──────────────────────────── */
+let exclIdx=0, exclPaused=false, exclTimer=null;
+const EXCL_DURATION=6000;
+
+function exclGoTo(idx, dir){
+  const track=document.getElementById('appDealGrid');
+  const wrap=document.getElementById('appExclWrap');
+  const cards=Array.from(track.querySelectorAll('.app-deal-card'));
+  const total=cards.length;
+  const prevIdx=exclIdx;
+  exclIdx=((idx%total)+total)%total;
+  const direction=(dir!==undefined)?dir:(exclIdx>=prevIdx?1:-1);
+
+  // Slide track
+  track.style.transform=`translateX(-${exclIdx*wrap.offsetWidth}px)`;
+
+  // Animate the incoming card's children after slide completes (380ms)
+  const card=cards[exclIdx];
+  const info=card.querySelector('.app-deal-info');
+  const imgWrap=card.querySelector('.app-deal-img-wrap');
+
+  // Reset to hidden start positions immediately
+  if(info){
+    info.style.transition='none';
+    info.style.opacity='0';
+    info.style.transform='translateY(30px)';
+  }
+  if(imgWrap){
+    imgWrap.style.transition='none';
+    imgWrap.style.opacity='0';
+    imgWrap.style.transform=direction>=0?'translateX(50px) scale(0.95)':'translateX(-50px) scale(0.95)';
+  }
+
+  setTimeout(()=>{
+    if(info){
+      info.style.transition='opacity 0.5s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1)';
+      info.style.opacity='1';
+      info.style.transform='translateY(0)';
+    }
+    if(imgWrap){
+      imgWrap.style.transition='opacity 0.55s ease 0.1s, transform 0.55s cubic-bezier(0.22,1,0.36,1) 0.1s';
+      imgWrap.style.opacity='1';
+      imgWrap.style.transform='translateX(0) scale(1)';
+    }
+  }, 380);
+
+  // Progress bars
+  const dots=document.querySelectorAll('#exclDots .excl-carousel-dot');
+  dots.forEach((d,i)=>{
+    const span=d.querySelector('.excl-dot-fill');
+    if(!span) return;
+    span.style.transition='none';
+    span.style.width=i<exclIdx?'100%':'0%';
+  });
+
+  // Counter
+  document.getElementById('exclCounter').textContent=`${exclIdx+1} / ${total}`;
+
+  exclStopTimers();
+  if(!exclPaused) exclStartTimers();
+}
+
+function exclCarouselMove(dir){ exclGoTo(exclIdx+dir, dir); }
+
+function exclStartTimers(){
+  const dots=document.querySelectorAll('#exclDots .excl-carousel-dot');
+  const span=dots[exclIdx]&&dots[exclIdx].querySelector('.excl-dot-fill');
+  if(span){
+    span.style.transition='none';
+    span.style.width='0%';
+    void span.offsetWidth;
+    span.style.transition=`width ${EXCL_DURATION}ms linear`;
+    span.style.width='100%';
+  }
+  exclTimer=setTimeout(()=>exclGoTo(exclIdx+1,1), EXCL_DURATION);
+}
+
+function exclStopTimers(){
+  clearTimeout(exclTimer);
+  document.querySelectorAll('#exclDots .excl-carousel-dot').forEach(d=>{
+    const span=d.querySelector('.excl-dot-fill');
+    if(!span) return;
+    const w=span.getBoundingClientRect().width;
+    const pw=d.getBoundingClientRect().width;
+    if(pw>0){ span.style.transition='none'; span.style.width=(w/pw*100)+'%'; }
+  });
+}
+
+function exclTogglePause(){
+  exclPaused=!exclPaused;
+  document.getElementById('exclPauseIcon').style.display=exclPaused?'none':'block';
+  document.getElementById('exclPlayIcon').style.display=exclPaused?'block':'none';
+  exclPaused?exclStopTimers():exclStartTimers();
+}
+
+function initExclCarousel(){
+  const track=document.getElementById('appDealGrid');
+  const wrap=document.getElementById('appExclWrap');
+
+  // Inject fill spans
+  document.querySelectorAll('#exclDots .excl-carousel-dot').forEach(d=>{
+    if(!d.querySelector('.excl-dot-fill')){
+      const s=document.createElement('span');
+      s.className='excl-dot-fill';
+      d.appendChild(s);
+    }
+  });
+
+  // Size cards
+  const setW=()=>{
+    const w=wrap.offsetWidth;
+    track.querySelectorAll('.app-deal-card').forEach(c=>c.style.width=w+'px');
+    if(exclIdx>0) track.style.transform=`translateX(-${exclIdx*w}px)`;
+  };
+  setW();
+  window.addEventListener('resize',setW,{passive:true});
+
+  // Swipe
+  let sx=0;
+  wrap.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
+  wrap.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>40) exclCarouselMove(dx<0?1:-1);
+  },{passive:true});
+
+  exclGoTo(0,1);
+}
+
+function openAppModal(itemName){
+  document.getElementById('appDlItemName').textContent=itemName||'Exclusive Deal';
+  document.getElementById('appDlModalOv').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeAppModal(){
+  document.getElementById('appDlModalOv').classList.remove('open');
+  document.body.style.overflow='';
+}
+// Close on overlay click
+document.getElementById('appDlModalOv').addEventListener('click',function(e){
+  if(e.target===this) closeAppModal();
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ── KEYBOARD ──────────────────────────── */
 document.addEventListener('keydown',e=>{
