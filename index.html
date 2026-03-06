@@ -141,7 +141,7 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 
 /* Mobile nav */
 .mob-nav{
-  display:none;position:fixed;inset:0;background:var(--white);z-index:950;
+  display:none;position:fixed;inset:0;background:var(--white);z-index:980;
   flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;padding:2rem;overflow-y:auto
 }
 .mob-nav.open{display:flex}
@@ -225,8 +225,9 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 
 /* ══ PRODUCT DETAIL PAGE ════════════════════════════════ */
 .pdp-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,.5);
-  z-index:950;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)
+  position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:rgba(0,0,0,.5);
+  z-index:950;opacity:0;pointer-events:none;transition:opacity .3s var(--ease);
+  touch-action:none
 }
 .pdp-overlay.open{opacity:1;pointer-events:all}
 
@@ -907,7 +908,7 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
 </footer>
 
 <!-- ══ PRODUCT DETAIL PAGE ════════════════════════════════ -->
-<div class="pdp-overlay" id="pdpOverlay" onclick="closePDP()"></div>
+<div class="pdp-overlay" id="pdpOverlay"></div>
 <div class="pdp" id="pdp" role="dialog" aria-modal="true" aria-labelledby="pdpName">
 
   <!-- Custom scroll arrows -->
