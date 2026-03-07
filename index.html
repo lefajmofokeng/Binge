@@ -697,20 +697,20 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 /* "App only" badge on heading right */
 .app-excl-badge{
   display:flex;align-items:center;gap:.6rem;
-  background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.07);
   border-radius:var(--r-lg);padding:.75rem 1.2rem;flex-shrink:0
 }
 .app-excl-badge svg{width:18px;height:18px;stroke:var(--green-vivid);stroke-width:2;stroke-linecap:round;fill:none}
-.app-excl-badge-txt{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.7);line-height:1.35}
+.app-excl-badge-txt{font-size:.78rem;font-weight:500;color:rgba(255,255,255,.7);line-height:1.35}
 .app-excl-badge-txt strong{display:block;color:var(--white);font-size:.85rem}
 
 /* ── No-customise notice ── */
 .app-excl-notice{
   display:inline-flex;align-items:center;gap:7px;
-  background:rgba(255,255,255,.06);border-left:3px solid var(--green-vivid);
+  background:#ffffff10;border-left:3px solid var(--green-vivid);
   border-radius:0 8px 8px 0;
   padding:.55rem 1rem;margin-bottom:2.5rem;
-  font-size:.8rem;color:rgba(255,255,255,.6);font-weight:500
+  font-size:.8rem;color:#f4f4f4;font-weight:500
 }
 .app-excl-notice svg{width:14px;height:14px;stroke:var(--green-vivid);stroke-width:2.2;stroke-linecap:round;fill:none;flex-shrink:0}
 
@@ -813,19 +813,19 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
   display:block;overflow:visible
 }
 .app-deal-price{
-  font-family:var(--font-d);font-size:2.8rem;font-weight:800;
-  color:var(--white);letter-spacing:-.03em
+  font-family:var(--font-d);font-size:2.8rem;font-weight:500;
+  color:var(--white);
 }
-.app-deal-price span{font-size:.9rem;font-weight:500;color:rgba(255,255,255,.4);margin-left:5px}
+.app-deal-price span{font-size:1rem;font-weight:500;color:rgba(255,255,255,.4);margin-left:5px}
 .app-deal-btn{
   display:inline-flex;align-items:center;gap:8px;
   background:var(--green-vivid);border:none;border-radius:50px;
   padding:.85rem 2rem;width:fit-content;
   font-family:var(--font-b);font-size:.95rem;font-weight:700;
   color:var(--green);cursor:pointer;transition:all .2s var(--ease);
-  box-shadow:0 8px 28px rgba(0,0,0,.25)
+  
 }
-.app-deal-btn:hover{background:#fff;transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,0,0,.3)}
+.app-deal-btn:hover{background:#fff;}
 .app-deal-btn svg{width:15px;height:15px;stroke:var(--green);stroke-width:2.5;stroke-linecap:round;fill:none}
 
 /* RIGHT — food image, fully visible, freeform */
@@ -848,7 +848,7 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
   display:block;
   transition:transform .5s var(--ease)
 }
-.app-deal-card:hover .app-deal-img{transform:scale(1.04) translateY(-6px)}
+
 .app-deal-img-placeholder{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:10px;opacity:.4
@@ -865,7 +865,7 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 }
 .app-dl-modal-ov.open{opacity:1;pointer-events:all}
 .app-dl-modal{
-  background:var(--green);border:1.5px solid rgba(91,224,154,.2);
+  background:var(--green);
   border-radius:var(--r-xl);max-width:420px;width:100%;
   padding:2.5rem 2rem 2rem;
   display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.1rem;
@@ -885,7 +885,7 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 .app-dl-modal-close svg{width:14px;height:14px;stroke:var(--white);stroke-width:2.5;stroke-linecap:round;fill:none}
 .app-dl-icon{
   width:72px;height:72px;border-radius:50%;
-  background:rgba(91,224,154,.15);border:2px solid rgba(91,224,154,.3);
+  background:rgba(91,224,154,.15);
   display:flex;align-items:center;justify-content:center;
   animation:sBounce .4s var(--ease)
 }
@@ -931,7 +931,7 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
   .app-deal-price{font-size:2rem}
   .app-deal-btn{align-self:center}
 }
-}
+
 
 /* ══ APP PROMO ═════════════════════════════════════════ */
 .app-promo{background:var(--white);padding:6rem 2.5rem;border-top:1px solid var(--gray-100)}
@@ -1057,7 +1057,7 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
   <div class="nav-left">
     <a href="#" class="nav-logo">
       <!-- INSERT YOUR LOGO IMAGE HERE — replace the src attribute -->
-      <img src="images/canva.jpg" alt="Food By K" class="nav-logo-img">
+      <img src="images/1.png" alt="Food By K" class="nav-logo-img">
     </a>
     <ul class="nav-links">
       <li><a href="#menu">Menu</a></li>
@@ -1146,7 +1146,6 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
           App Exclusive
         </div>
         <h2 class="app-excl-title">Deals You Can't<br><em>Get Anywhere Else.</em></h2>
-        <p class="app-excl-sub">Handcrafted combos and limited specials — available only through the Chompers app.</p>
       </div>
       <div class="app-excl-badge">
         <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
@@ -1170,61 +1169,61 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
         <!-- Card 1 -->
         <div class="app-deal-card" onclick="openAppModal('The Chompers Megabox')">
           <div class="app-deal-info">
-            <div class="app-deal-tag">🔥 Best Seller</div>
+            <div class="app-deal-tag">Best Seller</div>
             <div class="app-deal-name">The Chompers Megabox</div>
             <div class="app-deal-desc">2 Smash Burgers, 6pcs Fried Chicken, Loaded Cheese Fries, 2 Craft Lemonades — the ultimate feast for two.</div>
-            <div class="app-deal-price">R<span style="font-size:1.4rem;color:var(--white);font-weight:800">299</span> <span>per box</span></div>
+            <div class="app-deal-price">R299 <span>per box</span></div>
             <button class="app-deal-btn" onclick="event.stopPropagation();openAppModal('The Chompers Megabox')">
               <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
               Get on App
             </button>
           </div>
           <div class="app-deal-img-wrap">
-            <img class="app-deal-img" src="images/strips.png" alt="The Chompers Megabox">
+            <img class="app-deal-img" src="images/megabox.png" alt="The Chompers Megabox">
           </div>
         </div>
 
         <!-- Card 2 -->
         <div class="app-deal-card" onclick="openAppModal('Chompers Family Bucket')">
           <div class="app-deal-info">
-            <div class="app-deal-tag">👨‍👩‍👧 Family Deal</div>
+            <div class="app-deal-tag">Family Deal</div>
             <div class="app-deal-name">Chompers Family Bucket</div>
             <div class="app-deal-desc">12pcs Fried Chicken, 2 Large Fries, 4 Soft Drinks — made for the whole family to enjoy together.</div>
-            <div class="app-deal-price">R<span style="font-size:1.4rem;color:var(--white);font-weight:800">349</span> <span>per bucket</span></div>
+            <div class="app-deal-price">R349 <span>per bucket</span></div>
             <button class="app-deal-btn" onclick="event.stopPropagation();openAppModal('Chompers Family Bucket')">
               <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
               Get on App
             </button>
           </div>
           <div class="app-deal-img-wrap">
-            <img class="app-deal-img" src="images/beef smash.jpg" alt="Chompers Family Bucket">
+            <img class="app-deal-img" src="images/family.png" alt="Chompers Family Bucket">
           </div>
         </div>
 
         <!-- Card 3 -->
         <div class="app-deal-card" onclick="openAppModal('Date Night Combo')">
           <div class="app-deal-info">
-            <div class="app-deal-tag">💚 App Special</div>
+            <div class="app-deal-tag">App Special</div>
             <div class="app-deal-name">Date Night Combo</div>
             <div class="app-deal-desc">Half Rack Baby Back Ribs, Mushroom &amp; Swiss Burger, 2 Thick Milkshakes, Onion Rings — a night to remember.</div>
-            <div class="app-deal-price">R<span style="font-size:1.4rem;color:var(--white);font-weight:800">319</span> <span>for two</span></div>
+            <div class="app-deal-price">R319 <span>for two</span></div>
             <button class="app-deal-btn" onclick="event.stopPropagation();openAppModal('Date Night Combo')">
               <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
               Get on App
             </button>
           </div>
           <div class="app-deal-img-wrap">
-            <img class="app-deal-img" src="images/smoked beef.jpg" alt="Date Night Combo">
+            <img class="app-deal-img" src="images/date.png" alt="Date Night Combo">
           </div>
         </div>
 
         <!-- Card 4 -->
         <div class="app-deal-card" onclick="openAppModal('Solo Hustle Box')">
           <div class="app-deal-info">
-            <div class="app-deal-tag">⚡ Quick &amp; Value</div>
+            <div class="app-deal-tag">Quick &amp; Value</div>
             <div class="app-deal-name">Solo Hustle Box</div>
             <div class="app-deal-desc">K Special Burger, 3pcs Fried Chicken, Classic Fries, Soft Drink — everything you need, all in one go.</div>
-            <div class="app-deal-price">R<span style="font-size:1.4rem;color:var(--white);font-weight:800">179</span> <span>per box</span></div>
+            <div class="app-deal-price">R179 <span>per box</span></div>
             <button class="app-deal-btn" onclick="event.stopPropagation();openAppModal('Solo Hustle Box')">
               <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
               Get on App
@@ -1341,7 +1340,9 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
   <div class="ft-inner">
     <div class="ft-top">
       <div>
-        <div class="ft-logo">Chompers</div>
+        <div class="ft-logo">
+           <img src="images/footer.png" alt="Food By K" class="nav-logo-img" style="height: 60px;">
+        </div>
         <p class="ft-desc">Premium fast food made with passion and precision. Bold flavours, quality ingredients, fast delivery.</p>
         
       </div>
@@ -1351,16 +1352,16 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
       </div>
       <div>
         <div class="ft-col-ttl">Company</div>
-        <ul class="ft-links"><li><a href="about.html">About Us</a></li><li><a href="careers.html">Roadmap</a></li><li><a href="roadmap.html">Careers</a></li><li><a href="#">Chompers Foundation</a></li><li><a href="#">Investor Relations</a></li></ul>
+        <ul class="ft-links"><li><a href="about.html">About Us</a></li><li><a href="careers.html">Roadmap</a></li><li><a href="roadmap.html">Careers</a></li><li><a href="#">Kismet Foundation</a></li><li><a href="#">Investor Relations</a></li></ul>
       </div>
       <div>
         <div class="ft-col-ttl">Contact</div>
-        <ul class="ft-links"><li><a href="tel:0814478395">(081) 447 8395</a></li><li><a href="#"><span class="__cf_email__" data-cfemail="eb8285"><span class="__cf_email__" data-cfemail="9ef6fbf2f2f1defdf6f1f3eefbecedb0fdf1f3">[email&#160;protected]</span></span></a></li><li><a href="contact.html">Contact Us</a></li></ul>
+        <ul class="ft-links"><li><a href="tel:0814478395">(081) 447 8395</a></li><li><a href="#"><span class="__cf_email__" data-cfemail="eb8285"><span class="__cf_email__" data-cfemail="9ef6fbf2f2f1defdf6f1f3eefbecedb0fdf1f3">hello@kismet.co.za</span></span></a></li><li><a href="contact.html">Contact Us</a></li></ul>
       </div>
     </div>
-    <div class="notices-bar">🕐 <strong>Hours:</strong> Mon – Sun · 10:00 – 22:00 &nbsp;|&nbsp; 📍 <strong>Address:</strong> 8513 Goshawk Street, Lenasia South, Johannesburg, 1829 &nbsp;|&nbsp; 📞 <strong>Call:</strong> (081) 447 8395</div>
+    <div class="notices-bar"> <strong>Hours:</strong> Mon – Sun · 10:00 – 22:00 &nbsp;|&nbsp; <strong>Address:</strong> 8513 Goshawk Street, Lenasia South, Johannesburg, 1829 &nbsp;|&nbsp; <strong>Call:</strong> (081) 447 8395</div>
     <div class="ft-bot">
-      <div class="ft-copy">© 2026 Chompers. All rights reserved.</div>
+      <div class="ft-copy">Copyright © 2026 Kismet. All rights reserved.</div>
       <div class="ft-social">
         <a href="#" class="soc-btn" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
         <a href="#" class="soc-btn" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
