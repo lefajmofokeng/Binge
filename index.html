@@ -12,9 +12,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=BBH+Bartle&family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bebas+Neue&family=Big+Shoulders:opsz,wght@10..72,100..900&family=Caprasimo&family=Devonshire&family=Freckle+Face&family=Fruktur:ital@0;1&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Gorditas:wght@400;700&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kavoon&family=Londrina+Sketch&family=Manrope:wght@200..800&family=Mogra&family=Piedra&family=Plus+Jakarta+Sans:wght@200..800&family=Protest+Riot&family=Rubik+Beastly&family=Rubik+Dirt&family=Rubik+Distressed&family=Rubik+Glitch&family=Rubik+Maze&family=Rubik+Scribble&family=Rubik+Vinyl&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
 
-<script src="main.js"></script>
+
+
 
 
 
@@ -1356,7 +1356,7 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
       </div>
       <div>
         <div class="ft-col-ttl">Contact</div>
-        <ul class="ft-links"><li><a href="tel:0814478395">(081) 447 8395</a></li><li><a href="#"><span class="__cf_email__" data-cfemail="eb8285"><span class="__cf_email__" data-cfemail="9ef6fbf2f2f1defdf6f1f3eefbecedb0fdf1f3">hello@kismet.co.za</span></span></a></li><li><a href="contact.html">Contact Us</a></li></ul>
+        <ul class="ft-links"><li><a href="tel:0814478395">(081) 447 8395</a></li><li><a href="#"><span class="__cf_email__" data-cfemail="eb8285"><span class="__cf_email__" data-cfemail="9ef6fbf2f2f1defdf6f1f3eefbecedb0fdf1f3"><span class="__cf_email__" data-cfemail="6109040d0d0e210a08120c04154f020e4f1b00">[email&#160;protected]</span></span></span></a></li><li><a href="contact.html">Contact Us</a></li></ul>
       </div>
     </div>
     <div class="notices-bar"> <strong>Hours:</strong> Mon – Sun · 10:00 – 22:00 &nbsp;|&nbsp; <strong>Address:</strong> 8513 Goshawk Street, Lenasia South, Johannesburg, 1829 &nbsp;|&nbsp; <strong>Call:</strong> (081) 447 8395</div>
@@ -1620,20 +1620,98 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
 <!-- ══════════════════════════════════════════════════════
      JAVASCRIPT
 ══════════════════════════════════════════════════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script type="module">
+/* ════════════════════════════════════════════
+   CHOMPERS — FIREBASE ORDER SUBMISSION
+   Writes every order to Firestore so the
+   dashboard receives it in real-time.
+════════════════════════════════════════════ */
+import { initializeApp }
+  from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getFirestore, collection, addDoc, serverTimestamp }
+  from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
+const firebaseConfig = {
+  apiKey:            "AIzaSyBNLaEKlSSeJYBpjeTtBaWrrsycpByRoAQ",
+  authDomain:        "chompers-6a284.firebaseapp.com",
+  projectId:         "chompers-6a284",
+  storageBucket:     "chompers-6a284.firebasestorage.app",
+  messagingSenderId: "206519863154",
+  appId:             "1:206519863154:web:d9ca0779c2b0a066a07feb",
+  measurementId:     "G-ZRF561YBBF"
+};
 
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
 
+/* Override placeOrder defined in logic.js */
+window.placeOrder = async function(){
+  const firstName   = (document.getElementById('fName')?.value  || '').trim();
+  const lastName    = (document.getElementById('lName')?.value  || '').trim();
+  const phone       = (document.getElementById('fPhone')?.value || '').trim();
+  const email       = (document.getElementById('fEmail')?.value || '').trim();
+  const dm          = window.delivMethod || 'delivery';
+  const pm          = window.payMethod   || 'cash';
+  const notes       = (document.getElementById('fNotes')?.value || '').trim();
 
+  let address = 'Pickup';
+  if(dm === 'delivery'){
+    const street = (document.getElementById('fAddr')?.value   || '').trim();
+    const suburb = (document.getElementById('fSuburb')?.value || '').trim();
+    const city   = (document.getElementById('fCity')?.value   || '').trim();
+    const postal = (document.getElementById('fPostal')?.value || '').trim();
+    address = [street, suburb, city, postal].filter(Boolean).join(', ');
+  }
 
+  const payLabels = { cash:'Cash on Delivery', card:'Card on Delivery', eft:'EFT / Bank Transfer' };
+  const paymentMethod = payLabels[pm] || pm;
 
+  const cartItems = (window.cart || []).map(i => ({
+    name: i.name, price: i.price, qty: i.qty,
+    img: i.img || '', opts: i.opts || '', note: i.note || '',
+  }));
 
+  const subtotal    = cartItems.reduce((s,i) => s + i.price * i.qty, 0);
+  const deliveryFee = dm === 'delivery' ? 25 : 0;
+  const total       = subtotal + deliveryFee;
 
+  const placeBtn = document.querySelector('.btn-place');
+  if(placeBtn){ placeBtn.disabled = true; placeBtn.textContent = 'Placing order…'; }
 
+  try {
+    await addDoc(collection(db, 'orders'), {
+      customerName:   `${firstName} ${lastName}`.trim(),
+      customerPhone:  phone,
+      customerEmail:  email,
+      deliveryMethod: dm,
+      address,
+      items:          cartItems,
+      subtotal,
+      delivery:       deliveryFee,
+      total,
+      paymentMethod,
+      notes,
+      status:         'pending',
+      createdAt:      serverTimestamp(),
+    });
 
+    const ref = 'CHO-' + Math.floor(1000 + Math.random() * 9000);
+    document.getElementById('oRef').textContent = ref;
+    document.querySelectorAll('.ck-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('ckSucc').classList.add('active');
+    document.getElementById('ckTitle').textContent = 'Thank you!';
+    document.getElementById('ckPips').innerHTML = '';
+    window.cart.splice(0, window.cart.length);
+    if(typeof updateCartUI === 'function') updateCartUI();
 
-
-
+  } catch(err) {
+    console.error('Order failed:', err);
+    if(typeof toast === 'function'){
+      toast('Could not place order. Please check your connection and try again.');
+    }
+    if(placeBtn){ placeBtn.disabled = false; placeBtn.textContent = 'Place Order 🎉'; }
+  }
+};
 </script>
 </body>
 </html>

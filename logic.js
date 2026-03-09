@@ -294,6 +294,10 @@ const ITEM_INFO = {
 /* ── STATE ─────────────────────────────────────────────── */
 let cart=[], curItem=null, curQty=1, curSel={}, curAdd=new Set();
 let ckStep=1, delivMethod='delivery', payMethod='cash';
+/* Expose to Firebase module script (ES modules have separate scope) */
+window.cart = cart;
+Object.defineProperty(window,'delivMethod',{get:()=>delivMethod,set:v=>{delivMethod=v;}});
+Object.defineProperty(window,'payMethod',  {get:()=>payMethod,  set:v=>{payMethod=v;}});
 
 /* ── HELPERS ───────────────────────────────────────────── */
 function h(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
@@ -776,18 +780,6 @@ function closeAppModal(){
 document.getElementById('appDlModalOv').addEventListener('click',function(e){
   if(e.target===this) closeAppModal();
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ── KEYBOARD ──────────────────────────── */
 document.addEventListener('keydown',e=>{
