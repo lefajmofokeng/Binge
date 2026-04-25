@@ -77,8 +77,8 @@ html{scroll-behavior:smooth;font-size:16px}
   --green:#1E3932;--green-dk:#145242;--green-lt:#EAF2EE;--green-mid:#2C6B4F;--green-vivid:#5BE09A;
   --ink:#0D1F1A;--gray-700:#2E2E2C;--gray-500:#6B6B67;--gray-300:#AAAAAA;--gray-100:#F2F2F0;
   --white:#FFFFFF;--red:#2bc078;
-  --font-d:'Circular Std',serif;
-  --font-b:'Circular Std',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-d:'Sodo Sans',serif;
+  --font-b:'Sodo Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   --r-sm:8px;--r-md:14px;--r-lg:22px;--r-xl:32px;
   --sh-sm:0 2px 8px rgba(0,0,0,.08);--sh-md:0 6px 24px rgba(0,0,0,.12);--sh-lg:0 16px 48px rgba(0,0,0,.16);
   --ease:cubic-bezier(.4,0,.2,1);--nav-h:68px
@@ -141,7 +141,7 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 .nav-cart{
   display:flex;align-items:center;gap:8px;
   background:var(--green);border:none;border-radius:50px;padding:.6rem 1.3rem;
-  font-family:var(--font-b);font-size:.875rem;font-weight:600;color:var(--white);
+  font-family:var(--font-b);font-size:.875rem;font-weight:500;color:var(--white);
   cursor:pointer;transition:all .2s var(--ease);position:relative;white-space:nowrap
 }
 
@@ -183,7 +183,7 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 
 
 /* ══ HERO ══════════════════════════════════════════════ */
-.hero{position:relative;height:calc(100vh - var(--nav-h));min-height:560px;display:flex;align-items:center;overflow:hidden}
+.hero{position:relative;height:calc(100vh - var(--nav-h));min-height:560px;display:flex;align-items:center;overflow:hidden; border-radius: 0 0 50px 50px;}
 .hero-vid-wrap{position:absolute;inset:0;z-index:0}
 .hero-vid-wrap video,.hero-vid-wrap .hero-fb{width:100%;height:100%;object-fit:cover;object-position:center}
 .hero-vid-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.12) 100%)}
@@ -210,13 +210,13 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 .sb-nav{list-style:none}
 .sb-item{display:flex;align-items:center;padding:.7rem 1rem;cursor:pointer; border-radius: 50px;text-decoration:none;color:var(--gray-700);font-size:1.1rem;font-weight:500;margin-bottom:2px}
 .sb-item:hover{background:var(--green-lt);color:var(--ink)}
-.sb-item.active{background:var(--green);color:var(--white);font-weight:600}
+.sb-item.active{background:var(--green);color:var(--white);font-weight:500}
 .menu-content{padding:3rem 0 4rem 2.5rem}
 .menu-section{margin-bottom:4rem;scroll-margin-top:calc(var(--nav-h) + 24px)}
 .sec-head{margin-bottom:2rem;padding-bottom:1rem;border-bottom:1.5px solid var(--gray-100)}
-.sec-cat-lbl{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green-mid);display:flex;align-items:center;gap:6px;margin-bottom:.3rem}
+.sec-cat-lbl{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green-mid);display:flex;align-items:center;gap:6px;margin-bottom:.3rem}
 .sec-cat-lbl::before{content:'';width:14px;height:2px;background:var(--green-mid);border-radius:2px}
-.sec-title{font-family:var(--font-d);font-size:1.6rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.sec-title{font-family:var(--font-d);font-size:1.6rem;font-weight:500;color:var(--ink);letter-spacing:-.02em}
 
 /* ══ PRODUCT CAROUSEL ══════════════════════════════════ */
 /* ── MENU CARDS: circular image, name, price ── */
@@ -942,7 +942,7 @@ mark.hl{background:#B8E6CE;border-radius:2px;padding:0 2px;font-style:normal;col
 .phone-notch{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:120px;height:18px;background:#111;border-radius:30px;z-index:2}
 
 /* ══ FOOTER ════════════════════════════════════════════ */
-footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
+footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem; border-radius: 50px 50px 0 0;}
 .ft-inner{max-width:1200px;margin:0 auto}
 .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
 .ft-logo{font-family:var(--font-d);font-size:1.8rem;font-weight:800;color:var(--green-vivid);margin-bottom:.8rem}
@@ -957,7 +957,7 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
 .soc-btn{width:36px;height:36px;border-radius:50px;border:1px solid rgb(255, 255, 255);background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;text-decoration:none}
 .soc-btn:hover{background:var(--green-mid);border-color:var(--green-mid)}
 .soc-btn:hover svg{stroke:var(--white)}
-.soc-btn svg{width:16px;height:16px;stroke:var(--gray-500);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.soc-btn svg{width:16px;height:16px;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
 .notices-bar{background:rgba(255,255,255,.06);border-radius:14px;padding:1.2rem 2rem;margin:2rem 0;font-size:.8rem;line-height:1.8;color:#F4F3EF}
 
 /* ══ BACK TO TOP ═══════════════════════════════════════ */
@@ -1134,172 +1134,7 @@ footer{background:var(--ink);color:var(--white);padding:4rem 2.5rem 2rem}
   </div>
 </section>
 
-<!-- ══ APP EXCLUSIVE DEALS ════════════════════════════════ -->
-<section class="app-excl" id="appDeals">
-  <div class="app-excl-inner">
 
-    <!-- Section heading -->
-    <div class="app-excl-head">
-      <div class="app-excl-head-left">
-        <div class="app-excl-label">
-          <svg viewBox="0 0 10 10"><path d="M5 1L6.5 4H9L6.75 6L7.5 9L5 7.5L2.5 9L3.25 6L1 4H3.5Z"/></svg>
-          App Exclusive
-        </div>
-        <h2 class="app-excl-title">Deals You Can't<br><em>Get Anywhere Else.</em></h2>
-      </div>
-      <div class="app-excl-badge">
-        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
-        <div class="app-excl-badge-txt">
-          <strong>App Only</strong>
-          Download to unlock
-        </div>
-      </div>
-    </div>
-
-    <!-- No-customise notice -->
-    <div class="app-excl-notice">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      These deals are crafted exactly as listed — no substitutions or customisations available.
-    </div>
-
-    <!-- Product cards -->
-    <div class="app-excl-carousel-wrap" id="appExclWrap">
-      <div class="app-excl-grid" id="appDealGrid">
-
-        <!-- Card 1 -->
-        <div class="app-deal-card" onclick="openAppModal('The Chompers Megabox')">
-          <div class="app-deal-info">
-            <div class="app-deal-tag">Best Seller</div>
-            <div class="app-deal-name">The Chompers Megabox</div>
-            <div class="app-deal-desc">2 Smash Burgers, 6pcs Fried Chicken, Loaded Cheese Fries, 2 Craft Lemonades — the ultimate feast for two.</div>
-            <div class="app-deal-price">R299 <span>per box</span></div>
-            <button class="app-deal-btn" onclick="event.stopPropagation();openAppModal('The Chompers Megabox')">
-              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
-              Get on App
-            </button>
-          </div>
-          <div class="app-deal-img-wrap">
-            <img class="app-deal-img" src="images/megabox.png" alt="The Chompers Megabox">
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="app-deal-card" onclick="openAppModal('Chompers Family Bucket')">
-          <div class="app-deal-info">
-            <div class="app-deal-tag">Family Deal</div>
-            <div class="app-deal-name">Chompers Family Bucket</div>
-            <div class="app-deal-desc">12pcs Fried Chicken, 2 Large Fries, 4 Soft Drinks — made for the whole family to enjoy together.</div>
-            <div class="app-deal-price">R349 <span>per bucket</span></div>
-            <button class="app-deal-btn" onclick="event.stopPropagation();openAppModal('Chompers Family Bucket')">
-              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
-              Get on App
-            </button>
-          </div>
-          <div class="app-deal-img-wrap">
-            <img class="app-deal-img" src="images/family.png" alt="Chompers Family Bucket">
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="app-deal-card" onclick="openAppModal('Date Night Combo')">
-          <div class="app-deal-info">
-            <div class="app-deal-tag">App Special</div>
-            <div class="app-deal-name">Date Night Combo</div>
-            <div class="app-deal-desc">Half Rack Baby Back Ribs, Mushroom &amp; Swiss Burger, 2 Thick Milkshakes, Onion Rings — a night to remember.</div>
-            <div class="app-deal-price">R319 <span>for two</span></div>
-            <button class="app-deal-btn" onclick="event.stopPropagation();openAppModal('Date Night Combo')">
-              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
-              Get on App
-            </button>
-          </div>
-          <div class="app-deal-img-wrap">
-            <img class="app-deal-img" src="images/date.png" alt="Date Night Combo">
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="app-deal-card" onclick="openAppModal('Solo Hustle Box')">
-          <div class="app-deal-info">
-            <div class="app-deal-tag">Quick &amp; Value</div>
-            <div class="app-deal-name">Solo Hustle Box</div>
-            <div class="app-deal-desc">K Special Burger, 3pcs Fried Chicken, Classic Fries, Soft Drink — everything you need, all in one go.</div>
-            <div class="app-deal-price">R179 <span>per box</span></div>
-            <button class="app-deal-btn" onclick="event.stopPropagation();openAppModal('Solo Hustle Box')">
-              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
-              Get on App
-            </button>
-          </div>
-          <div class="app-deal-img-wrap">
-            <img class="app-deal-img" src="images/beef wrap.png" alt="Solo Hustle Box">
-          </div>
-        </div>
-
-      </div><!-- end grid/track -->
-    </div><!-- end carousel wrap -->
-
-    <!-- Carousel controls -->
-    <div class="excl-carousel-controls">
-      <div class="excl-carousel-dots" id="exclDots">
-        <div class="excl-carousel-dot active" onclick="exclGoTo(0)"></div>
-        <div class="excl-carousel-dot" onclick="exclGoTo(1)"></div>
-        <div class="excl-carousel-dot" onclick="exclGoTo(2)"></div>
-        <div class="excl-carousel-dot" onclick="exclGoTo(3)"></div>
-      </div>
-      <button class="excl-pause-btn" id="exclPauseBtn" onclick="exclTogglePause()" aria-label="Pause">
-        <!-- Pause icon -->
-        <svg id="exclPauseIcon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
-        <!-- Play icon (hidden) -->
-        <svg id="exclPlayIcon" viewBox="0 0 24 24" style="display:none"><polygon points="5,3 19,12 5,21"/></svg>
-      </button>
-      <span class="excl-carousel-counter" id="exclCounter">1 / 4</span>
-      <button class="excl-carousel-btn" onclick="exclCarouselMove(-1)" aria-label="Previous">
-        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <button class="excl-carousel-btn" onclick="exclCarouselMove(1)" aria-label="Next">
-        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- ══ APP DOWNLOAD MODAL ═════════════════════════════════ -->
-<div class="app-dl-modal-ov" id="appDlModalOv">
-  <div class="app-dl-modal" role="dialog" aria-modal="true" aria-labelledby="appDlTitle">
-    <button class="app-dl-modal-close" onclick="closeAppModal()" aria-label="Close">
-      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <div class="app-dl-icon">
-      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 14.5a1.5 1.5 0 1 1 1.5-1.5A1.5 1.5 0 0 1 12 16.5zm1-5.5h-2V7h2z" stroke-width="0" fill="none"/><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-    </div>
-    <div class="app-dl-modal-title" id="appDlTitle">App Required</div>
-    <div class="app-dl-modal-sub">This exclusive deal is only available on the <strong style="color:var(--white)">Chompers app</strong>. Download it free — it only takes a minute.</div>
-    <div class="app-dl-modal-item" id="appDlItemName">The Chompers Megabox</div>
-    <div class="app-dl-divider">Download on</div>
-    <div class="app-dl-btns">
-      <a href="#" onclick="alert('Opening Google Play Store…');return false;" class="app-dl-store-btn">
-        <svg viewBox="0 0 256 283" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#EA4335" d="M119.553 134.916L1.06 259.061a32.14 32.14 0 0 0 47.062 19.071l133.327-75.934z"/>
-          <path fill="#FBBC04" d="M239.37 113.814L181.715 80.79l-64.898 56.95l65.162 64.28l57.216-32.67a31.345 31.345 0 0 0 0-55.537z"/>
-          <path fill="#4285F4" d="M1.06 23.487A30.565 30.565 0 0 0 0 31.61v219.327a32.333 32.333 0 0 0 1.06 8.124l122.555-120.966z"/>
-          <path fill="#34A853" d="m120.436 141.274l61.278-60.483L48.564 4.503A32.847 32.847 0 0 0 32.051 0C17.644-.028 4.978 9.534 1.06 23.399z"/>
-        </svg>
-        <div class="app-dl-store-info">
-          <small>Get it on</small>
-          <strong>Google Play</strong>
-        </div>
-      </a>
-      <a href="#" onclick="alert('Coming soon to the App Store!');return false;" class="app-dl-store-btn">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="26" height="26">
-          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" fill="#555"/>
-        </svg>
-        <div class="app-dl-store-info">
-          <small>Download on the</small>
-          <strong>App Store</strong>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
 
 <!-- ══ MENU ══════════════════════════════════════════════ -->
 <div class="menu-header">
