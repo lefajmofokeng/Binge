@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kismet Foundation | Nourishing Our Communities</title>
+  <style>
+    /* --- Premium Typography --- */
+    @font-face {
+      font-family: 'Sodo Sans';
+      src: url('fonts/SoDoSans-Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'Sodo Sans';
+      src: url('fonts/SoDoSans-Bold.ttf') format('truetype');
+      font-weight: 700;
+    }
+    @font-face {
+      font-family: 'Lander';
+      src: local('Georgia'), serif;
+      font-weight: 700;
+    }
+
+    :root {
+      --color-forest: #1e3932;
+      --color-cream: #dcd9c8;
+      --color-bg: #f7f7f6;
+      --color-gold: #cba35c;
+      --color-white: #ffffff;
+      --font-header: 'Lander', serif;
+      --font-body: 'Sodo Sans', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-forest);
+      font-family: var(--font-body);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* --- Editorial Layout Sections --- */
+
+    /* 1. Split Hero with Imagery */
+    .kf-hero {
+      padding: 160px 0 100px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .kf-hero-text {
+      z-index: 2;
+    }
+
+    .kf-hero-title {
+      font-family: var(--font-header);
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      line-height: 0.85;
+      margin-bottom: 30px;
+    }
+
+    .kf-hero-img-wrap {
+      position: relative;
+    }
+
+    .kf-hero-img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      filter: sepia(20%);
+    }
+
+    /* 2. Narrative Section with Floating Visuals */
+    .kf-narrative {
+      padding: 120px 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 80px;
+    }
+
+    @media (min-width: 900px) {
+      .kf-narrative { grid-template-columns: 1fr 1fr; }
+    }
+
+    .kf-content-flow h2 {
+      font-family: var(--font-header);
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      line-height: 1.1;
+    }
+
+    .kf-content-flow p {
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    /* 3. The Impact Tapestry (Visual Grid) */
+    .kf-tapestry {
+      background-color: var(--color-cream);
+      padding: 140px 0;
+      margin-top: 80px;
+    }
+
+    .kf-tapestry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 80px;
+    }
+
+    .kf-tapestry-item {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .kf-item-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .kf-tapestry-item h3 {
+      font-family: var(--font-header);
+      font-size: 1.8rem;
+    }
+
+    /* 4. Large Action Link */
+    .kf-action-area {
+      padding: 160px 0;
+      text-align: center;
+    }
+
+    .kf-big-link {
+      display: inline-block;
+      font-family: var(--font-header);
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      color: var(--color-forest);
+      text-decoration: none;
+      border-bottom: 4px solid var(--color-gold);
+      transition: opacity 0.3s ease;
+    }
+
+    .kf-big-link:hover { opacity: 0.7; }
+
+    /* 5. Signature Footer */
+    .kf-footer {
+      background-color: var(--color-forest);
+      color: var(--color-white);
+      padding: 140px 0;
+    }
+
+    .kf-quote {
+      font-family: var(--font-header);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.2;
+      margin-bottom: 60px;
+      max-width: 900px;
+    }
+
+    .kf-author {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .kf-dot { width: 8px; height: 8px; background: var(--color-gold); border-radius: 50%; }
+
+    @media (max-width: 900px) {
+      .kf-hero { grid-template-columns: 1fr; }
+      .kf-hero-img { height: 400px; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="container">
+      <section class="kf-hero">
+        <div class="kf-hero-text">
+          <h1 class="kf-hero-title">Nourishing <br>the Legacy</h1>
+          <p style="font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6;">Kismet Foundation</p>
+        </div>
+        <div class="kf-hero-img-wrap">
+          <img src="https://images.unsplash.com/photo-1547573854-74d2a71d0826?auto=format&fit=crop&w=1000&q=80" alt="Communal dining and fresh ingredients" class="kf-hero-img">
+        </div>
+      </section>
+    </div>
+
+    <div class="container">
+      <section class="kf-narrative">
+        <div class="kf-content-flow">
+          <h2>Feeding the Future of South Africa</h2>
+          <p>
+            At Kismet, our passion for meat and culinary excellence is matched only by our dedication to the communities we call home. The Kismet Foundation ensures that the prosperity of our restaurants directly supports those facing food insecurity across Gauteng.
+          </p>
+          <p>
+            We believe that every meal served in our restaurants should contribute to a meal for someone in need. Through our "Seed-to-Sizzle" program, we provide local farmers with the technology and resources needed to scale their operations ethically.
+          </p>
+        </div>
+        <div class="kf-visual-col">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Local farm and fresh produce" style="width: 100%; height: auto;">
+        </div>
+      </section>
+    </div>
+
+    <div class="kf-tapestry">
+      <div class="container">
+        <div class="kf-tapestry-grid">
+          <div class="kf-tapestry-item">
+            <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80" class="kf-item-img" alt="Culinary training">
+            <h3>Kitchen Incubator</h3>
+            <p>We provide professional workspace and mentorship for aspiring local chefs and street-food entrepreneurs.</p>
+          </div>
+          <div class="kf-tapestry-item">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" class="kf-item-img" alt="Community support">
+            <h3>Community Pantry</h3>
+            <p>Direct support to local food banks and NGOs, providing high-quality protein to under-resourced neighborhoods.</p>
+          </div>
+          <div class="kf-tapestry-item">
+            <img src="https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=600&q=80" class="kf-item-img" alt="Sustainability">
+            <h3>Sustainable Sourcing</h3>
+            <p>Investing in ethical livestock farming practices and training local farmers in regenerative agriculture.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="kf-action-area">
+      <div class="container">
+        <p style="margin-bottom: 20px; font-weight: 700; opacity: 0.6; text-transform: uppercase;">Join our mission</p>
+        <a href="#" class="kf-big-link">Support the Foundation</a>
+      </div>
+    </section>
+
+    <footer class="kf-footer">
+      <div class="container">
+        <blockquote class="kf-quote">
+          "The true measure of our success is not found in the meals we serve, but in the lives we empower through them."
+        </blockquote>
+        <div class="kf-author">
+          <div class="kf-dot"></div>
+          Lefa Mofokeng, Founder of Kismet
+        </div>
+      </div>
+    </footer>
+  </main>
+
+</body>
+</html>

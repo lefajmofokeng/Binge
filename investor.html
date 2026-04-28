@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Investors | Kismet Group</title>
+  <style>
+    /* --- Core Typography --- */
+    @font-face {
+      font-family: 'Sodo Sans';
+      src: url('fonts/SoDoSans-Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'Sodo Sans';
+      src: url('fonts/SoDoSans-Bold.ttf') format('truetype');
+      font-weight: 700;
+    }
+    @font-face {
+      font-family: 'Lander';
+      src: local('Georgia'), serif;
+      font-weight: 700;
+    }
+
+    :root {
+      --color-forest: #1e3932;
+      --color-bg: #0a0a0a; /* Dark themed for a high-end investor look */
+      --color-accent: #0091ff; /* Neon blue from Cronos branding */
+      --color-text: #e5e5e5;
+      --font-header: 'Lander', serif;
+      --font-body: 'Sodo Sans', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* --- Cinematic Hero --- */
+    .ir-hero-split {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      border-bottom: 1px solid #333;
+    }
+
+    .ir-hero-content {
+      max-width: 900px;
+    }
+
+    .ir-hero-tag {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: var(--color-accent);
+      margin-bottom: 20px;
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    .ir-hero-h1 {
+      font-family: var(--font-header);
+      font-size: clamp(3rem, 12vw, 10rem);
+      line-height: 0.8;
+      letter-spacing: -0.05em;
+    }
+
+    /* --- Horizontal Data Flow --- */
+    .ir-data-strip {
+      padding: 100px 0;
+      background: #111;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ir-ticker {
+      display: inline-block;
+      font-family: var(--font-header);
+      font-size: 6rem;
+      font-style: italic;
+      opacity: 0.1;
+      animation: ticker 30s linear infinite;
+    }
+
+    @keyframes ticker {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* --- The Synergy: Code & Cuisine --- */
+    .ir-synergy-section {
+      padding: 160px 5%;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .ir-visual-stack {
+      position: relative;
+    }
+
+    .ir-main-img {
+      width: 80%;
+      height: 600px;
+      object-fit: cover;
+      filter: brightness(0.7);
+    }
+
+    .ir-overlay-img {
+      position: absolute;
+      bottom: -50px;
+      right: 0;
+      width: 50%;
+      height: 350px;
+      object-fit: cover;
+      border: 10px solid var(--color-bg);
+    }
+
+    .ir-text-block h2 {
+      font-family: var(--font-header);
+      font-size: 4rem;
+      line-height: 1;
+      margin-bottom: 40px;
+    }
+
+    .ir-text-block p {
+      font-size: 1.2rem;
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    /* --- Metric Highlighting (Asymmetric) --- */
+    .ir-metric-wall {
+      padding: 120px 5%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .ir-metric-card {
+      border-left: 1px solid var(--color-accent);
+      padding: 40px;
+      transition: background 0.3s ease;
+    }
+
+    .ir-metric-card:hover {
+      background: #151515;
+    }
+
+    .ir-metric-card span {
+      display: block;
+      font-family: var(--font-header);
+      font-size: 5rem;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    /* --- Call to Action --- */
+    .ir-footer-action {
+      padding: 200px 5%;
+      text-align: center;
+      background: linear-gradient(to bottom, #0a0a0a, #1e3932);
+    }
+
+    .ir-btn-outline {
+      font-family: var(--font-header);
+      font-size: 4rem;
+      color: white;
+      text-decoration: none;
+      border-bottom: 2px solid var(--color-accent);
+      padding-bottom: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .ir-synergy-section { grid-template-columns: 1fr; }
+      .ir-metric-wall { grid-template-columns: 1fr; }
+      .ir-hero-h1 { font-size: 4.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section class="ir-hero-split">
+      <div class="ir-hero-content">
+        <span class="ir-hero-tag">Kismet Group Holdings</span>
+        <h1 class="ir-hero-h1">The Code <br>of Hospitality</h1>
+      </div>
+    </section>
+
+    <div class="ir-data-strip">
+      <div class="ir-ticker">
+        SCALABLE INFRASTRUCTURE — KISMET FOUNDATION — CRONOS IT SOLUTIONS — SOUTH AFRICAN EXPANSION 2026 — 
+      </div>
+    </div>
+
+    <section class="ir-synergy-section">
+      <div class="ir-visual-stack">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" alt="Data Analytics" class="ir-main-img">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Restaurant Scene" class="ir-overlay-img">
+      </div>
+      <div class="ir-text-block">
+        <h2>Hybrid <br>Asset Strategy</h2>
+        <p>
+          Lefa Mofokeng’s vision for the Kismet Group bridges the gap between digital scalability and physical presence. By utilizing the Cronos tech stack, we have engineered a hospitality ecosystem that is data-driven, operationally lean, and ready for rapid multi-territory expansion.
+        </p>
+        <p>
+          Our portfolio spans independent software development and premium fast-food operations, creating a unique risk-mitigation profile for long-term partners.
+        </p>
+      </div>
+    </section>
+
+    <div class="ir-metric-wall">
+      <div class="ir-metric-card">
+        <span style="color: var(--color-accent);">18%</span>
+        <p>Operational margin increase through Cronos integration.</p>
+      </div>
+      <div class="ir-metric-card">
+        <span style="color: #fff;">03</span>
+        <p>Flagship locations established in Gauteng's key economic zones.</p>
+      </div>
+      <div class="ir-metric-card">
+        <span style="color: #fff;">2026</span>
+        <p>Projected expansion into national franchise operations.</p>
+      </div>
+    </div>
+
+    <section class="ir-footer-action">
+      <span class="ir-hero-tag" style="margin-bottom: 60px;">Request Prospectus</span>
+      <a href="mailto:lefa@cronos-it.co.za" class="ir-btn-outline">Invest in the Future</a>
+      <p style="margin-top: 100px; opacity: 0.3; font-size: 0.8rem; letter-spacing: 2px;">
+        CRONOS / KISMET / FOUNDATION — LEFA MOFOKENG
+      </p>
+    </section>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+</head>
+<body>
+
+<!-- =============================================
+     SECTION 1: CONTACT HERO (mirrors about hero)
+     ============================================= -->
+<div class="contact-wrapper">
+  <div class="contact-inner">
+
+    <!-- Hero: Image + Overlapping Card -->
+    <div class="contact-hero">
+      <div class="contact-image-col">
+        <img
+          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+          alt="Friendly team member ready to help"
+          class="contact-img"
+        />
+      </div>
+      <div class="contact-text-card">
+        <p class="contact-eyebrow">GET IN TOUCH</p>
+        <h2 class="contact-title">We'd Love to Hear From You</h2>
+        <p class="contact-description">
+          Whether you have a question about our menu, want to give feedback, or are interested in a partnership — our team is always ready to connect with the communities we serve.
+        </p>
+        <a href="#contact-form" class="contact-link">
+          <span class="contact-icon-circle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+          Send a Message
+        </a>
+      </div>
+    </div>
+
+    <!-- =============================================
+         SECTION 2: CONTACT CHANNELS (3-column)
+         ============================================= -->
+    <div class="contact-channels-section">
+      <h2 class="contact-channels-heading">WAYS TO REACH US</h2>
+      <div class="contact-channels-grid">
+
+        <div class="contact-channel-item">
+          <div class="contact-channel-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/>
+            </svg>
+          </div>
+          <h3 class="contact-channel-title">Call Us</h3>
+          <p class="contact-channel-detail">+27 11 456 7890</p>
+          <p class="contact-channel-sub">Mon – Fri, 8am – 6pm</p>
+        </div>
+
+        <div class="contact-channel-item">
+          <div class="contact-channel-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <h3 class="contact-channel-title">Email Us</h3>
+          <p class="contact-channel-detail">hello@ourfastfood.co.za</p>
+          <p class="contact-channel-sub">We reply within 24 hours</p>
+        </div>
+
+        <div class="contact-channel-item">
+          <div class="contact-channel-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <h3 class="contact-channel-title">Visit Us</h3>
+          <p class="contact-channel-detail">14 Harvest Lane, Benoni</p>
+          <p class="contact-channel-sub">Gauteng, South Africa</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- =============================================
+     SECTION 3: CONTACT FORM (full-width cream bg)
+     ============================================= -->
+<div class="contact-form-section" id="contact-form">
+  <div class="contact-form-inner">
+
+    <div class="contact-form-left">
+      <p class="contact-eyebrow">SEND A MESSAGE</p>
+      <h2 class="contact-form-title">Tell Us What's On Your Mind</h2>
+      <p class="contact-form-sub">
+        From catering enquiries to community suggestions — every message is read by a real person on our team.
+      </p>
+
+      <div class="contact-form-tags">
+        <span class="contact-tag">General Enquiry</span>
+        <span class="contact-tag">Menu Feedback</span>
+        <span class="contact-tag">Catering</span>
+        <span class="contact-tag">Franchise</span>
+        <span class="contact-tag">Complaint</span>
+        <span class="contact-tag">Partnership</span>
+      </div>
+    </div>
+
+    <form class="contact-form-right" onsubmit="handleFormSubmit(event)">
+      <div class="contact-field-row">
+        <div class="contact-field">
+          <label for="cf-name">Full Name</label>
+          <input type="text" id="cf-name" placeholder="Jane Doe" required />
+        </div>
+        <div class="contact-field">
+          <label for="cf-email">Email Address</label>
+          <input type="email" id="cf-email" placeholder="jane@example.com" required />
+        </div>
+      </div>
+
+      <div class="contact-field">
+        <label for="cf-subject">Subject</label>
+        <input type="text" id="cf-subject" placeholder="What's this about?" />
+      </div>
+
+      <div class="contact-field">
+        <label for="cf-message">Your Message</label>
+        <textarea id="cf-message" rows="5" placeholder="Write your message here..." required></textarea>
+      </div>
+
+      <div class="contact-form-footer">
+        <p class="contact-form-note">We respect your privacy. Your details are never shared.</p>
+        <button type="submit" class="contact-submit-btn">
+          <span class="contact-icon-circle contact-icon-circle--white">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+          Send Message
+        </button>
+      </div>
+
+      <div class="contact-success" id="contact-success" aria-live="polite">
+        ✓ Message sent! We'll be in touch soon.
+      </div>
+    </form>
+
+  </div>
+</div>
+
+
+<!-- =============================================
+     SECTION 4: LOCATIONS STRIP
+     ============================================= -->
+<div class="contact-locations-section">
+  <div class="contact-locations-inner">
+    <h2 class="contact-locations-heading">OUR LOCATIONS</h2>
+
+    <div class="contact-locations-grid">
+
+      <div class="contact-location-card">
+        <div class="contact-location-img" style="background-image:url('https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="contact-location-body">
+          <h3>Benoni — Flagship</h3>
+          <p>14 Harvest Lane, Benoni, 1501</p>
+          <span class="contact-location-hours">Open daily · 07:00 – 22:00</span>
+          <a href="#" class="contact-link contact-link--sm">
+            <span class="contact-icon-circle contact-icon-circle--sm">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+            Get Directions
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-location-card">
+        <div class="contact-location-img" style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="contact-location-body">
+          <h3>Johannesburg CBD</h3>
+          <p>82 Commissioner St, Joburg, 2001</p>
+          <span class="contact-location-hours">Open daily · 08:00 – 21:00</span>
+          <a href="#" class="contact-link contact-link--sm">
+            <span class="contact-icon-circle contact-icon-circle--sm">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+            Get Directions
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-location-card">
+        <div class="contact-location-img" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="contact-location-body">
+          <h3>Sandton City</h3>
+          <p>Level 2, Sandton City Mall, 2196</p>
+          <span class="contact-location-hours">Open daily · 09:00 – 21:00</span>
+          <a href="#" class="contact-link contact-link--sm">
+            <span class="contact-icon-circle contact-icon-circle--sm">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+            Get Directions
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- =============================================
+     STYLES
+     ============================================= -->
+<style>
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Sodo Sans';
+  src: url('fonts/SoDoSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Sodo Sans';
+  src: url('fonts/SoDoSans-SemiBold.woff') format('woff');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Sodo Sans';
+  src: url('fonts/SoDoSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Circular Std';
+  src: url('fonts/CircularStd-Book.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Circular Std';
+  src: url('fonts/CircularStd.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Circular Std';
+  src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+/* --- CSS Variables (mirrors about.html palette) --- */
+:root {
+  --color-forest:   #1e3932;
+  --color-bg:       #f7f7f6;
+  --color-cream:    #dcd9c8;
+  --color-white:    #ffffff;
+  --color-border:   #dcdcdc;
+  --color-body:     #333333;
+  --color-muted:    #4a4a4a;
+  --font-primary:   'Sodo Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-secondary: 'Circular Std', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --radius-card:    0 40px 0 0;
+  --max-width:      1200px;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  color: var(--color-forest);
+}
+
+/* =============================================
+   SHARED COMPONENTS
+   ============================================= */
+
+.contact-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-forest);
+  margin-bottom: 14px;
+  opacity: 0.6;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--color-forest);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: opacity 0.3s ease;
+}
+.contact-link:hover { opacity: 0.65; }
+
+.contact-link--sm {
+  font-size: 0.82rem;
+  margin-top: 16px;
+}
+
+.contact-icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-forest);
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.contact-icon-circle--sm {
+  width: 26px;
+  height: 26px;
+}
+
+.contact-icon-circle--white {
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+/* =============================================
+   SECTION 1: HERO
+   ============================================= */
+
+.contact-wrapper {
+  width: 100%;
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+.contact-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* --- Hero Layout --- */
+.contact-hero {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 80px;
+}
+
+@media (min-width: 900px) {
+  .contact-hero {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.contact-image-col {
+  flex: 1;
+  width: 100%;
+}
+
+.contact-img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 8px 0 0 8px;
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .contact-img {
+    height: 100%;
+    min-height: 450px;
+    max-height: 500px;
+  }
+}
+
+.contact-text-card {
+  background-color: var(--color-white);
+  padding: 40px;
+  border-radius: var(--radius-card);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-top: -40px;
+  position: relative;
+  z-index: 2;
+  width: 90%;
+}
+
+@media (min-width: 900px) {
+  .contact-text-card {
+    flex: 0 0 45%;
+    width: auto;
+    margin-top: 0;
+    margin-left: -5%;
+    padding: 60px 50px;
+  }
+}
+
+.contact-title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 20px;
+  color: var(--color-forest);
+}
+
+.contact-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 30px;
+  color: var(--color-body);
+}
+
+/* --- Channels --- */
+.contact-channels-section {
+  position: relative;
+}
+
+.contact-channels-heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 30px;
+  color: var(--color-forest);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 20px;
+}
+
+.contact-channels-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+@media (min-width: 768px) {
+  .contact-channels-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.contact-channel-item {
+  padding: 30px 20px 30px 0;
+}
+
+@media (min-width: 768px) {
+  .contact-channel-item {
+    padding: 30px 40px 30px 20px;
+    border-right: 1px solid var(--color-border);
+  }
+  .contact-channel-item:first-child {
+    padding-left: 0;
+  }
+  .contact-channel-item:last-child {
+    border-right: none;
+  }
+}
+
+.contact-channel-icon {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-forest);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: var(--color-forest);
+}
+
+.contact-channel-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-forest);
+  margin-bottom: 8px;
+  display: inline-block;
+  position: relative;
+}
+
+/* Same highlight effect as stat numbers in about.html */
+.contact-channel-title::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background-color: rgba(240, 235, 225, 0.7);
+  z-index: -1;
+}
+
+.contact-channel-detail {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-body);
+  margin-bottom: 4px;
+}
+
+.contact-channel-sub {
+  font-size: 0.88rem;
+  color: var(--color-muted);
+}
+
+/* =============================================
+   SECTION 3: FORM
+   ============================================= */
+
+.contact-form-section {
+  width: 100%;
+  background-color: var(--color-cream);
+  padding: 100px 0 120px;
+}
+
+.contact-form-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+}
+
+@media (min-width: 900px) {
+  .contact-form-inner {
+    grid-template-columns: 1fr 1.4fr;
+    align-items: start;
+    gap: 80px;
+  }
+}
+
+/* Left column */
+.contact-form-title {
+  font-family: var(--font-secondary);
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-forest);
+  margin-bottom: 18px;
+}
+
+.contact-form-sub {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-body);
+  margin-bottom: 32px;
+}
+
+.contact-form-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contact-tag {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1px solid var(--color-forest);
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-forest);
+  letter-spacing: 0.3px;
+  opacity: 0.7;
+}
+
+/* Right column — form */
+.contact-form-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-field-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 600px) {
+  .contact-field-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-forest);
+  opacity: 0.75;
+}
+
+.contact-field input,
+.contact-field textarea {
+  font-family: var(--font-primary);
+  font-size: 0.97rem;
+  color: var(--color-forest);
+  background: var(--color-white);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  resize: vertical;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+  color: #aaa;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  border-color: var(--color-forest);
+  box-shadow: 0 0 0 3px rgba(30, 57, 50, 0.08);
+}
+
+/* Form footer */
+.contact-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.contact-form-note {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  max-width: 260px;
+}
+
+.contact-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--color-forest);
+  color: var(--color-white);
+  border: none;
+  padding: 14px 28px;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.contact-submit-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.contact-submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* Success message */
+.contact-success {
+  display: none;
+  background: var(--color-forest);
+  color: var(--color-white);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 16px 22px;
+  border-radius: 6px;
+  margin-top: -8px;
+}
+
+/* =============================================
+   SECTION 4: LOCATIONS
+   ============================================= */
+
+.contact-locations-section {
+  width: 100%;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 100px 0 120px;
+}
+
+.contact-locations-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contact-locations-heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 40px;
+  color: var(--color-forest);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 20px;
+}
+
+.contact-locations-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 50px;
+}
+
+@media (min-width: 768px) {
+  .contact-locations-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+}
+
+/* Card: image overlapping cream box (mirrors ffxp-card in about.html) */
+.contact-location-card {
+  position: relative;
+}
+
+.contact-location-img {
+  width: 100%;
+  height: 280px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-location-body {
+  background: var(--color-cream);
+  padding: 36px 28px 28px;
+  position: relative;
+  z-index: 1;
+  margin-top: -220px;
+  margin-left: -20px;
+  margin-right: 20px;
+  padding-top: 256px;
+}
+
+.contact-location-body h3 {
+  font-family: var(--font-secondary);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-forest);
+  margin-bottom: 6px;
+}
+
+.contact-location-body p {
+  font-size: 0.9rem;
+  color: var(--color-body);
+  margin-bottom: 4px;
+}
+
+.contact-location-hours {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-forest);
+  opacity: 0.6;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+/* =============================================
+   RESPONSIVE FIXES
+   ============================================= */
+
+@media (max-width: 767px) {
+  .contact-channels-heading,
+  .contact-locations-heading {
+    font-size: 1.8rem;
+  }
+  .contact-form-title {
+    font-size: 1.7rem;
+  }
+  .contact-title {
+    font-size: 1.6rem;
+  }
+  .contact-form-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .contact-location-body {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: -220px;
+    padding-top: 250px;
+  }
+}
+
+</style>
+
+
+<!-- =============================================
+     SCRIPT: Form submit & tag selection
+     ============================================= -->
+<script>
+  /* Tag toggle */
+  document.querySelectorAll('.contact-tag').forEach(tag => {
+    tag.addEventListener('click', () => {
+      const active = document.querySelector('.contact-tag--active');
+      if (active && active !== tag) active.classList.remove('contact-tag--active');
+      tag.classList.toggle('contact-tag--active');
+
+      const subject = document.getElementById('cf-subject');
+      if (tag.classList.contains('contact-tag--active')) {
+        subject.value = tag.textContent.trim();
+      }
+    });
+  });
+
+  /* Active tag style injected inline so it relies on existing --color-forest var */
+  const styleEl = document.createElement('style');
+  styleEl.textContent = `
+    .contact-tag { cursor: pointer; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+    .contact-tag:hover { opacity: 1; }
+    .contact-tag--active {
+      background-color: var(--color-forest);
+      color: var(--color-white);
+      opacity: 1;
+    }
+  `;
+  document.head.appendChild(styleEl);
+
+  /* Form submission */
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const success = document.getElementById('contact-success');
+    success.style.display = 'block';
+    e.target.reset();
+    document.querySelectorAll('.contact-tag--active').forEach(t => t.classList.remove('contact-tag--active'));
+    setTimeout(() => { success.style.display = 'none'; }, 5000);
+  }
+</script>
+
+</body>
+</html>
